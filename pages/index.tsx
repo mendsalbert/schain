@@ -7,7 +7,7 @@ const Index = (props: Props) => {
     <div>
       {/* layout */}
       <div className="font-Montserrat mx-6 relative">
-        <div className="fixed w-full left-0 -top-2">
+        <div className="fixed w-full left-0 -top-2 z-50">
           <img src={"/images/navector.svg"} className="w-full " />
           <div className="absolute px-6 py-5 top-0 w-full flex flex-row justify-between items-center">
             <img src={"/images/logo.svg"} className="w-24" />
@@ -43,7 +43,7 @@ const Index = (props: Props) => {
           </div>
         </div>
 
-        <div className=" h-full">
+        <div className="mt-16 h-full">
           <div className="relative wrap overflow-hidden h-full">
             <div
               className="border-2-2 absolute border-opacity-20 left-[50%] border-gray-700 h-full border"
@@ -55,11 +55,9 @@ const Index = (props: Props) => {
               <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
                 <h1 className="mx-auto font-semibold text-lg text-white">1</h1>
               </div>
-              <div className="order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12 px-6 py-4">
+              <div className="order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
                 <img src="/images/order.svg " className="w-16" />
-                <h3 className="mt-2 font-bold text-white text-xl">
-                  Make Order
-                </h3>
+                <h3 className="mt-2  text-white text-lg">Make Order</h3>
               </div>
             </div>
 
@@ -68,11 +66,9 @@ const Index = (props: Props) => {
               <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
                 <h1 className="mx-auto text-white font-semibold text-lg">2</h1>
               </div>
-              <div className="order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12 px-6 py-4">
+              <div className="order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12  p-4">
                 <img src="/images/confirm.svg " className="w-16" />
-                <h3 className="mt-2 font-bold text-white text-xl">
-                  Confirm Order
-                </h3>
+                <h3 className="mt-2  text-white text-lg">Confirm Order</h3>
               </div>
             </div>
 
@@ -81,11 +77,9 @@ const Index = (props: Props) => {
               <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
                 <h1 className="mx-auto font-semibold text-lg text-white">3</h1>
               </div>
-              <div className="order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12 px-6 py-4">
+              <div className="order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
                 <img src="/images/production.svg " className="w-16" />
-                <h3 className="mt-2 font-bold text-white text-xl">
-                  Production
-                </h3>
+                <h3 className="mt-2  text-white text-lg">Produce</h3>
               </div>
             </div>
 
@@ -94,9 +88,9 @@ const Index = (props: Props) => {
               <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
                 <h1 className="mx-auto text-white font-semibold text-lg">4</h1>
               </div>
-              <div className="order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12 px-6 py-4">
+              <div className="order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12  p-4">
                 <img src="/images/testing.svg " className="w-16" />
-                <h3 className="mt-2 font-bold text-white text-xl">Testing</h3>
+                <h3 className="mt-2  text-white text-lg">Testing</h3>
               </div>
             </div>
 
@@ -105,9 +99,9 @@ const Index = (props: Props) => {
               <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
                 <h1 className="mx-auto font-semibold text-lg text-white">5</h1>
               </div>
-              <div className="order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12 px-6 py-4">
+              <div className="order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12 p-4">
                 <img src="/images/shipping.svg " className="w-16" />
-                <h3 className="mt-2 font-bold text-white text-xl">Shipping</h3>
+                <h3 className="mt-2  text-white text-lg">Shipping</h3>
               </div>
             </div>
           </div>
