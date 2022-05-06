@@ -157,7 +157,7 @@ const Admin = (props: Props) => {
             </div>
 
             <div>
-              <p className="text-xl py-4 font-medium">Order 1</p>
+              <p className="text-xl py-4 font-medium">Order 2</p>
               <ol className="items-center sm:flex">
                 <li className="relative mb-6 sm:mb-0">
                   <div className="flex items-center">
@@ -205,7 +205,7 @@ const Admin = (props: Props) => {
                 </li>
                 <li className="relative mb-6 sm:mb-0">
                   <div className="flex items-center">
-                    <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-gray-400 rounded-full ring-0 ring-white ">
+                    <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-green-400 rounded-full ring-0 ring-white ">
                       <SparklesIcon className="h-8 text-white" />
                     </div>
                     <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
@@ -215,7 +215,7 @@ const Admin = (props: Props) => {
                       <h3 className="text-lg font-semibold text-gray-900 ">
                         Production
                       </h3>
-                      <RefreshIcon className="h-6" />
+                      <CheckCircleIcon className="h-6" />
                     </div>
                     <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
                       Order made on December 2, 2021 8:00PM
