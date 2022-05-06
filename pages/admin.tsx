@@ -37,7 +37,7 @@ const Admin = (props: Props) => {
                   <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-green-400 rounded-full ring-0 ring-white ">
                     <ClipboardListIcon className="h-8 text-white" />
                   </div>
-                  <div className="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
+                  <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
                 </div>
                 <div className="mt-3 sm:pr-8">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -68,7 +68,7 @@ const Admin = (props: Props) => {
                       ></path>
                     </svg>
                   </div>
-                  <div className="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
+                  <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
                 </div>
                 <div className="mt-3 sm:pr-8">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -99,7 +99,7 @@ const Admin = (props: Props) => {
                       ></path>
                     </svg>
                   </div>
-                  <div className="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
+                  <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
                 </div>
                 <div className="mt-3 sm:pr-8">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
