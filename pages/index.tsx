@@ -44,11 +44,13 @@ const Index = (props: Props) => {
           <div>
             <img src="/images/avatar.svg" className="w-full" />
           </div>
-          <p className="text-left font-extrabold text-3xl italic text-[#0469A1]">
-            Make an order, sit and watch the supply chain processes
-          </p>
-          <div className="bg-gradient-to-r italic from-[#0469A1] via-[#0469A1] mt-2 to-[#0C9FF2]  text-center w-max   px-6 py-2 rounded-full cursor-pointer text-white">
-            Make Order
+          <div>
+            <p className="text-left font-extrabold text-3xl italic text-[#0469A1]">
+              Make an order, sit and watch the supply chain processes
+            </p>
+            <div className="bg-gradient-to-r italic from-[#0469A1] via-[#0469A1] mt-2 to-[#0C9FF2]  text-center w-max   px-6 py-2 rounded-full cursor-pointer text-white">
+              Make Order
+            </div>
           </div>
         </div>
 
