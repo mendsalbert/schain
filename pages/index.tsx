@@ -73,94 +73,129 @@ const Index = (props: Props) => {
         <div className="mt-16 h-full">
           <div className="relative wrap overflow-hidden h-full">
             <div className="border-2-2 absolute border-opacity-20 left-[50%] border-gray-700 h-full border"></div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ ease: "easeOut", duration: 2 }}
+            >
+              <div className="mb-8 flex justify-between items-center w-full right-timeline">
+                <div className="order-1 w-5/12"></div>
+                <div className="z-20 flex items-center order-1 ring-2 bg-white shadow-xl w-8 h-8 rounded-full">
+                  <h1 className="mx-auto font-semibold text-lg text-white">
+                    1
+                  </h1>
+                </div>
 
-            <div className="mb-8 flex justify-between items-center w-full right-timeline">
-              <div className="order-1 w-5/12"></div>
-              <div className="z-20 flex items-center order-1 ring-2 bg-white shadow-xl w-8 h-8 rounded-full">
-                <h1 className="mx-auto font-semibold text-lg text-white">1</h1>
-              </div>
-              <div>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ ease: "easeOut", duration: 1 }}
-                >
-                  <div className="rounded-tl-full  lg:rounded-full md:p-8 flex flex-row justify-between items-center space-x-4 rounded-bl-full order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
-                    <div className="border-2 border-white p-2  rounded-full w-max h-max">
-                      <ClipboardListIcon className="h-7 md:h-9" />
-                    </div>
-                    <h3 className="mt-2 w-full text-white text-lg md:text-xl">
-                      Add Order
-                    </h3>
+                <div className="rounded-tl-full  lg:rounded-full md:p-8 flex flex-row justify-between items-center space-x-4 rounded-bl-full order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
+                  <div className="border-2 border-white p-2  rounded-full w-max h-max">
+                    <ClipboardListIcon className="h-7 md:h-9" />
                   </div>
-                </motion.div>
-              </div>
-            </div>
-
-            <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
-              <div className="order-1 w-5/12"></div>
-              <div className="z-20 flex items-center order-1 ring-2 ring-green-500 bg-white shadow-xl w-8 h-8 rounded-full">
-                <h1 className="mx-auto text-white font-semibold text-lg">2</h1>
-              </div>
-              {/* <div className="order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12  p-4"> */}
-              <div className="rounded-r-full lg:rounded-full md:p-8 flex flex-row-reverse justify-between items-center   order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12  p-4">
-                <div className="border-2 border-white p-2 rounded-full w-max h-max">
-                  <CheckIcon className="h-7 md:h-9" />
+                  <h3 className="mt-2 w-full text-white text-lg md:text-xl">
+                    Add Order
+                  </h3>
                 </div>
-
-                <h3 className="mt-2 w-full text-white text-lg md:text-xl">
-                  Confirm Order
-                </h3>
               </div>
-            </div>
-
-            <div className="mb-8 flex justify-between items-center w-full right-timeline">
-              <div className="order-1 w-5/12"></div>
-              <div className="z-20 flex items-center order-1 ring-2 bg-white shadow-xl w-8 h-8 rounded-full">
-                <h1 className="mx-auto font-semibold text-lg text-white">1</h1>
-              </div>
-              <div className="rounded-tl-full lg:rounded-full  md:p-8 flex flex-row justify-between items-center space-x-4 rounded-bl-full order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
-                <div className="border-2 border-white p-2 rounded-full w-max h-max">
-                  <SparklesIcon className="h-7 md:h-9" />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ ease: "easeOut", duration: 2 }}
+            >
+              <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                <div className="order-1 w-5/12"></div>
+                <div className="z-20 flex items-center order-1 ring-2 ring-green-500 bg-white shadow-xl w-8 h-8 rounded-full">
+                  <h1 className="mx-auto text-white font-semibold text-lg">
+                    2
+                  </h1>
                 </div>
-                <h3 className="mt-2 w-full text-white text-lg md:text-xl">
-                  Produce
-                </h3>
-              </div>
-            </div>
+                {/* <div className="order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12  p-4"> */}
+                <div className="rounded-r-full lg:rounded-full md:p-8 flex flex-row-reverse justify-between items-center   order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12  p-4">
+                  <div className="border-2 border-white p-2 rounded-full w-max h-max">
+                    <CheckIcon className="h-7 md:h-9" />
+                  </div>
 
-            <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
-              <div className="order-1 w-5/12"></div>
-              <div className="z-20 flex items-center order-1 ring-2 ring-green-500 bg-white shadow-xl w-8 h-8 rounded-full">
-                <h1 className="mx-auto text-white font-semibold text-lg">2</h1>
-              </div>
-              {/* <div className="order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12  p-4"> */}
-              <div className="rounded-r-full lg:rounded-full md:p-8 flex flex-row-reverse justify-between items-center   order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12  p-4">
-                <div className="border-2 border-white p-2 rounded-full w-max h-max">
-                  <AdjustmentsIcon className="h-7 md:h-9" />
+                  <h3 className="mt-2 w-full text-white text-lg md:text-xl">
+                    Confirm Order
+                  </h3>
                 </div>
-
-                <h3 className="mt-2 w-full text-white text-lg md:text-xl">
-                  Testing
-                </h3>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="mb-8 flex justify-between items-center w-full right-timeline">
-              <div className="order-1 w-5/12"></div>
-              <div className="z-20 flex items-center order-1 ring-2 bg-white shadow-xl w-8 h-8 rounded-full">
-                <h1 className="mx-auto font-semibold text-lg text-white">1</h1>
-              </div>
-              <div className="rounded-tl-full lg:rounded-full  md:p-8 flex flex-row justify-between items-center space-x-4 rounded-bl-full order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
-                <div className="border-2 border-white p-2 rounded-full w-max h-max">
-                  <TruckIcon className="h-7 md:h-9" />
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ ease: "easeOut", duration: 2 }}
+            >
+              <div className="mb-8 flex justify-between items-center w-full right-timeline">
+                <div className="order-1 w-5/12"></div>
+                <div className="z-20 flex items-center order-1 ring-2 bg-white shadow-xl w-8 h-8 rounded-full">
+                  <h1 className="mx-auto font-semibold text-lg text-white">
+                    1
+                  </h1>
                 </div>
-                <h3 className="mt-2 w-full text-white text-lg md:text-xl">
-                  Ship
-                </h3>
+                <div className="rounded-tl-full lg:rounded-full  md:p-8 flex flex-row justify-between items-center space-x-4 rounded-bl-full order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
+                  <div className="border-2 border-white p-2 rounded-full w-max h-max">
+                    <SparklesIcon className="h-7 md:h-9" />
+                  </div>
+                  <h3 className="mt-2 w-full text-white text-lg md:text-xl">
+                    Produce
+                  </h3>
+                </div>
               </div>
-            </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ ease: "easeOut", duration: 2 }}
+            >
+              <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                <div className="order-1 w-5/12"></div>
+                <div className="z-20 flex items-center order-1 ring-2 ring-green-500 bg-white shadow-xl w-8 h-8 rounded-full">
+                  <h1 className="mx-auto text-white font-semibold text-lg">
+                    2
+                  </h1>
+                </div>
+                {/* <div className="order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12  p-4"> */}
+                <div className="rounded-r-full lg:rounded-full md:p-8 flex flex-row-reverse justify-between items-center   order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12  p-4">
+                  <div className="border-2 border-white p-2 rounded-full w-max h-max">
+                    <AdjustmentsIcon className="h-7 md:h-9" />
+                  </div>
+
+                  <h3 className="mt-2 w-full text-white text-lg md:text-xl">
+                    Testing
+                  </h3>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ ease: "easeOut", duration: 2 }}
+            >
+              <div className="mb-8 flex justify-between items-center w-full right-timeline">
+                <div className="order-1 w-5/12"></div>
+                <div className="z-20 flex items-center order-1 ring-2 bg-white shadow-xl w-8 h-8 rounded-full">
+                  <h1 className="mx-auto font-semibold text-lg text-white">
+                    1
+                  </h1>
+                </div>
+                <div className="rounded-tl-full lg:rounded-full  md:p-8 flex flex-row justify-between items-center space-x-4 rounded-bl-full order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
+                  <div className="border-2 border-white p-2 rounded-full w-max h-max">
+                    <TruckIcon className="h-7 md:h-9" />
+                  </div>
+                  <h3 className="mt-2 w-full text-white text-lg md:text-xl">
+                    Ship
+                  </h3>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
         <div className="mt-16 h-full">
