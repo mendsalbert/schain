@@ -50,16 +50,16 @@ const Index = (props: Props) => {
 
         {/* <div className="mt-10 w-full"> */}
         <div className="mt-10 w-full md:flex md:flex-row-reverse md:items-center md:mt-16">
-          <div>
-            <motion.div
-              initial={{ x: 510, opacity: 1 }}
-              whileInView={{ x: 0 }}
-              viewport={{ once: true }}
-              transition={{ ease: "easeOut", duration: 1 }}
-            >
+          <motion.div
+            initial={{ x: 510, opacity: 1 }}
+            whileInView={{ x: 0 }}
+            viewport={{ once: true }}
+            transition={{ ease: "easeOut", duration: 1 }}
+          >
+            <div>
               <img src="/images/avatar.svg" className="w-full" />
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
           <div>
             <p className="text-left font-extrabold text-3xl italic text-[#0469A1]">
               Make an order, sit and watch the supply chain processes
