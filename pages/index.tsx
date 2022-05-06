@@ -86,7 +86,7 @@ const Index = (props: Props) => {
                   <div className="border-2 border-white p-2  rounded-full w-max h-max">
                     <ClipboardListIcon className="h-7 md:h-9" />
                   </div>
-                  <h3 className="mt-2 w-full text-white text-lg md:text-xl">
+                  <h3 className="mt-2 w-full opacity-0 text-white text-lg md:text-xl md:opacity-100">
                     Add Order
                   </h3>
                 </div>
@@ -111,7 +111,7 @@ const Index = (props: Props) => {
                     <CheckIcon className="h-7 md:h-9" />
                   </div>
 
-                  <h3 className="mt-2 w-full text-white text-lg md:text-xl">
+                  <h3 className="mt-2 w-full opacity-0 text-white text-lg md:text-xl md:opacity-100">
                     Confirm Order
                   </h3>
                 </div>
@@ -135,7 +135,7 @@ const Index = (props: Props) => {
                   <div className="border-2 border-white p-2 rounded-full w-max h-max">
                     <SparklesIcon className="h-7 md:h-9" />
                   </div>
-                  <h3 className="mt-2 w-full  text-white  text-lg md:text-xl">
+                  <h3 className="mt-2 w-full opacity-0 text-white text-lg md:text-xl md:opacity-100">
                     Produce
                   </h3>
                 </div>
@@ -185,7 +185,7 @@ const Index = (props: Props) => {
                   <div className="border-2 border-white p-2 rounded-full w-max h-max">
                     <TruckIcon className="h-7 md:h-9" />
                   </div>
-                  <h3 className="mt-2 w-full text-white text-lg md:text-xl">
+                  <h3 className="mt-2 w-full opacity-0 text-white text-lg md:text-xl md:opacity-100">
                     Ship
                   </h3>
                 </div>
