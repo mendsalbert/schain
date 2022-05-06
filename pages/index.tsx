@@ -23,7 +23,7 @@ const Index = (props: Props) => {
           <div>
             <img src="/images/landing.svg" className="w-full" />
           </div>
-          <p className="text-center font-extrabold italic text-[#0469A1]">
+          <p className="text-center font-extrabold text-2xl italic text-[#0469A1]">
             Logistics Supply chain on Blockchain
           </p>
         </div>
