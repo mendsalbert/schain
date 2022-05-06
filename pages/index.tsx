@@ -19,6 +19,11 @@ const Index = (props: Props) => {
             </div>
           </div>
         </div>
+        <div className="mt-36">
+          <div>
+            <img src="/images/landing.svg" className="w-8" />
+          </div>
+        </div>
       </div>
     </div>
   );
