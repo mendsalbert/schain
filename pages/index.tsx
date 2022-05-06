@@ -131,11 +131,11 @@ const Index = (props: Props) => {
                     1
                   </h1>
                 </div>
-                <div className="rounded-full lg:rounded-full  md:p-8 flex flex-row justify-between items-center space-x-4 rounded-bl-full order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390]  shadow-xl w-5/12  p-4">
+                <div className="rounded-tl-full lg:rounded-full  md:p-8 flex flex-row justify-between items-center space-x-4 rounded-bl-full order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
                   <div className="border-2 border-white p-2 rounded-full w-max h-max">
                     <SparklesIcon className="h-7 md:h-9" />
                   </div>
-                  <h3 className="mt-2 w-full hidden text-white text-lg md:text-xl">
+                  <h3 className="mt-2 w-full  text-white  text-lg md:text-xl">
                     Produce
                   </h3>
                 </div>
@@ -161,7 +161,7 @@ const Index = (props: Props) => {
                     <AdjustmentsIcon className="h-7 md:h-9" />
                   </div>
 
-                  <h3 className="mt-2 w-full text-white text-lg md:text-xl">
+                  <h3 className="mt-2 w-full opacity-0 text-white text-lg md:text-xl md:opacity-100">
                     Testing
                   </h3>
                 </div>
