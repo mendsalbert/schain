@@ -63,7 +63,7 @@ const Index = (props: Props) => {
               <div className="z-20 flex items-center order-1 ring-2 bg-white shadow-xl w-8 h-8 rounded-full">
                 <h1 className="mx-auto font-semibold text-lg text-white">1</h1>
               </div>
-              <div className="rounded-tl-full  lg:rounded-full md:p-10 flex flex-row justify-between items-center space-x-4 rounded-bl-full order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
+              <div className="rounded-tl-full  lg:rounded-full md:p-8 flex flex-row justify-between items-center space-x-4 rounded-bl-full order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
                 <div className="border-2 border-white p-2  rounded-full w-max h-max">
                   <ClipboardListIcon className="h-7 md:h-9" />
                 </div>
@@ -79,7 +79,7 @@ const Index = (props: Props) => {
                 <h1 className="mx-auto text-white font-semibold text-lg">2</h1>
               </div>
               {/* <div className="order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12  p-4"> */}
-              <div className="rounded-r-full lg:rounded-full md:p-10  flex flex-row-reverse justify-between items-center   order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12  p-4">
+              <div className="rounded-r-full lg:rounded-full md:p-8 flex flex-row-reverse justify-between items-center   order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12  p-4">
                 <div className="border-2 border-white p-2 rounded-full w-max h-max">
                   <CheckIcon className="h-7 md:h-9" />
                 </div>
@@ -95,7 +95,7 @@ const Index = (props: Props) => {
               <div className="z-20 flex items-center order-1 ring-2 bg-white shadow-xl w-8 h-8 rounded-full">
                 <h1 className="mx-auto font-semibold text-lg text-white">1</h1>
               </div>
-              <div className="rounded-tl-full lg:rounded-full  md:p-10 flex flex-row justify-between items-center space-x-4 rounded-bl-full order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
+              <div className="rounded-tl-full lg:rounded-full  md:p-8 flex flex-row justify-between items-center space-x-4 rounded-bl-full order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
                 <div className="border-2 border-white p-2 rounded-full w-max h-max">
                   <SparklesIcon className="h-7 md:h-9" />
                 </div>
@@ -111,7 +111,7 @@ const Index = (props: Props) => {
                 <h1 className="mx-auto text-white font-semibold text-lg">2</h1>
               </div>
               {/* <div className="order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12  p-4"> */}
-              <div className="rounded-r-full lg:rounded-full md:p-10 flex flex-row-reverse justify-between items-center   order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12  p-4">
+              <div className="rounded-r-full lg:rounded-full md:p-8 flex flex-row-reverse justify-between items-center   order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12  p-4">
                 <div className="border-2 border-white p-2 rounded-full w-max h-max">
                   <AdjustmentsIcon className="h-7 md:h-9" />
                 </div>
@@ -127,7 +127,7 @@ const Index = (props: Props) => {
               <div className="z-20 flex items-center order-1 ring-2 bg-white shadow-xl w-8 h-8 rounded-full">
                 <h1 className="mx-auto font-semibold text-lg text-white">1</h1>
               </div>
-              <div className="rounded-tl-full lg:rounded-full  md:p-10 flex flex-row justify-between items-center space-x-4 rounded-bl-full order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
+              <div className="rounded-tl-full lg:rounded-full  md:p-8 flex flex-row justify-between items-center space-x-4 rounded-bl-full order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
                 <div className="border-2 border-white p-2 rounded-full w-max h-max">
                   <TruckIcon className="h-7 md:h-9" />
                 </div>
@@ -144,7 +144,11 @@ const Index = (props: Props) => {
           </p>
           <p className="text-center  text-xl mt-6 text-[#0469A1]">
             Make an order, sit and watch the supply chain processes Make an
-            order, sit and watch the supply chain processes
+            order, sit and watch the supply chain processesLorem Ipsum is simply
+            dummy text of the printing and typesetting industry. Lorem Ipsum has
+            been the industry's standard dummy text ever since the 1500s, when
+            an unknown printer took a galley of type and scrambled it to make a
+            type specimen book.
           </p>
         </div>
 
