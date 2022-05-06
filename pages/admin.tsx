@@ -40,119 +40,237 @@ const Admin = (props: Props) => {
           </div>
 
           <div className="mt-16">
-            <p className="text-xl py-4">Order 1</p>
-            <ol className="items-center sm:flex">
-              <li className="relative mb-6 sm:mb-0">
-                <div className="flex items-center">
-                  <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-green-400 rounded-full ring-0 ring-white ">
-                    <ClipboardListIcon className="h-8 text-white" />
+            <div>
+              <p className="text-xl py-4 font-medium">Order 1</p>
+              <ol className="items-center sm:flex">
+                <li className="relative mb-6 sm:mb-0">
+                  <div className="flex items-center">
+                    <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-green-400 rounded-full ring-0 ring-white ">
+                      <ClipboardListIcon className="h-8 text-white" />
+                    </div>
+                    <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
                   </div>
-                  <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
-                </div>
-                <div className="mt-3 sm:pr-8">
-                  <div className="flex flex-row items-center space-x-2">
-                    <h3 className="text-lg font-semibold text-gray-900 ">
-                      Order
-                    </h3>
-                    <CheckCircleIcon className="h-6" />
+                  <div className="mt-3 sm:pr-8">
+                    <div className="flex flex-row items-center space-x-2">
+                      <h3 className="text-lg font-semibold text-gray-900 ">
+                        Order
+                      </h3>
+                      <CheckCircleIcon className="h-6" />
+                    </div>
+                    <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                      Order made on December 2, 2021 8:00PM
+                    </time>
+                    <p className="text-base font-normal text-gray-500 dark:text-gray-400">
+                      Order description
+                    </p>
                   </div>
-                  <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                    Order made on December 2, 2021 8:00PM
-                  </time>
-                  <p className="text-base font-normal text-gray-500 dark:text-gray-400">
-                    Order description
-                  </p>
-                </div>
-              </li>
-              <li className="relative mb-6 sm:mb-0">
-                <div className="flex items-center">
-                  <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-green-400 rounded-full ring-0 ring-white ">
-                    <CheckIcon className="h-8 text-white" />
+                </li>
+                <li className="relative mb-6 sm:mb-0">
+                  <div className="flex items-center">
+                    <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-green-400 rounded-full ring-0 ring-white ">
+                      <CheckIcon className="h-8 text-white" />
+                    </div>
+                    <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
                   </div>
-                  <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
-                </div>
-                <div className="mt-3 sm:pr-8">
-                  <div className="flex flex-row items-center space-x-2">
-                    <h3 className="text-lg font-semibold text-gray-900 ">
-                      Approved
-                    </h3>
-                    <CheckCircleIcon className="h-6" />
+                  <div className="mt-3 sm:pr-8">
+                    <div className="flex flex-row items-center space-x-2">
+                      <h3 className="text-lg font-semibold text-gray-900 ">
+                        Approved
+                      </h3>
+                      <CheckCircleIcon className="h-6" />
+                    </div>
+                    <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                      Order made on December 2, 2021 8:00PM
+                    </time>
+                    <p className="text-base font-normal text-gray-500 dark:text-gray-400">
+                      Order description
+                    </p>
                   </div>
-                  <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                    Order made on December 2, 2021 8:00PM
-                  </time>
-                  <p className="text-base font-normal text-gray-500 dark:text-gray-400">
-                    Order description
-                  </p>
-                </div>
-              </li>
-              <li className="relative mb-6 sm:mb-0">
-                <div className="flex items-center">
-                  <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-gray-400 rounded-full ring-0 ring-white ">
-                    <SparklesIcon className="h-8 text-white" />
+                </li>
+                <li className="relative mb-6 sm:mb-0">
+                  <div className="flex items-center">
+                    <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-gray-400 rounded-full ring-0 ring-white ">
+                      <SparklesIcon className="h-8 text-white" />
+                    </div>
+                    <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
                   </div>
-                  <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
-                </div>
-                <div className="mt-3 sm:pr-8">
-                  <div className="flex flex-row items-center space-x-2">
-                    <h3 className="text-lg font-semibold text-gray-900 ">
-                      Production
-                    </h3>
-                    <RefreshIcon className="h-6" />
+                  <div className="mt-3 sm:pr-8">
+                    <div className="flex flex-row items-center space-x-2">
+                      <h3 className="text-lg font-semibold text-gray-900 ">
+                        Production
+                      </h3>
+                      <RefreshIcon className="h-6" />
+                    </div>
+                    <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                      Order made on December 2, 2021 8:00PM
+                    </time>
+                    <p className="text-base font-normal text-gray-500 dark:text-gray-400">
+                      Order description
+                    </p>
                   </div>
-                  <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                    Order made on December 2, 2021 8:00PM
-                  </time>
-                  <p className="text-base font-normal text-gray-500 dark:text-gray-400">
-                    Order description
-                  </p>
-                </div>
-              </li>
-              <li className="relative mb-6 sm:mb-0">
-                <div className="flex items-center">
-                  <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-gray-400 rounded-full ring-0 ring-white ">
-                    <AdjustmentsIcon className="h-8 text-white" />
+                </li>
+                <li className="relative mb-6 sm:mb-0">
+                  <div className="flex items-center">
+                    <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-gray-400 rounded-full ring-0 ring-white ">
+                      <AdjustmentsIcon className="h-8 text-white" />
+                    </div>
+                    <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
                   </div>
-                  <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
-                </div>
-                <div className="mt-3 sm:pr-8">
-                  <div className="flex flex-row items-center space-x-2">
-                    <h3 className="text-lg font-semibold text-gray-900 ">
-                      Testing
-                    </h3>
-                    <RefreshIcon className="h-6" />
+                  <div className="mt-3 sm:pr-8">
+                    <div className="flex flex-row items-center space-x-2">
+                      <h3 className="text-lg font-semibold text-gray-900 ">
+                        Testing
+                      </h3>
+                      <RefreshIcon className="h-6" />
+                    </div>
+                    <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                      Order made on December 2, 2021 8:00PM
+                    </time>
+                    <p className="text-base font-normal text-gray-500 dark:text-gray-400">
+                      Order description
+                    </p>
                   </div>
-                  <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                    Order made on December 2, 2021 8:00PM
-                  </time>
-                  <p className="text-base font-normal text-gray-500 dark:text-gray-400">
-                    Order description
-                  </p>
-                </div>
-              </li>
-              <li className="relative mb-6 sm:mb-0">
-                <div className="flex items-center">
-                  <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-gray-400 rounded-full ring-0 ring-white ">
-                    <TruckIcon className="h-8 text-white" />
+                </li>
+                <li className="relative mb-6 sm:mb-0">
+                  <div className="flex items-center">
+                    <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-gray-400 rounded-full ring-0 ring-white ">
+                      <TruckIcon className="h-8 text-white" />
+                    </div>
+                    <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
                   </div>
-                  <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
-                </div>
-                <div className="mt-3 sm:pr-8">
-                  <div className="flex flex-row items-center space-x-2">
-                    <h3 className="text-lg font-semibold text-gray-900 ">
-                      Shipping
-                    </h3>
-                    <RefreshIcon className="h-6" />
+                  <div className="mt-3 sm:pr-8">
+                    <div className="flex flex-row items-center space-x-2">
+                      <h3 className="text-lg font-semibold text-gray-900 ">
+                        Shipping
+                      </h3>
+                      <RefreshIcon className="h-6" />
+                    </div>
+                    <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                      Order made on December 2, 2021 8:00PM
+                    </time>
+                    <p className="text-base font-normal text-gray-500 dark:text-gray-400">
+                      Order description
+                    </p>
                   </div>
-                  <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                    Order made on December 2, 2021 8:00PM
-                  </time>
-                  <p className="text-base font-normal text-gray-500 dark:text-gray-400">
-                    Order description
-                  </p>
-                </div>
-              </li>
-            </ol>
+                </li>
+              </ol>
+            </div>
+
+            <div>
+              <p className="text-xl py-4 font-medium">Order 1</p>
+              <ol className="items-center sm:flex">
+                <li className="relative mb-6 sm:mb-0">
+                  <div className="flex items-center">
+                    <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-green-400 rounded-full ring-0 ring-white ">
+                      <ClipboardListIcon className="h-8 text-white" />
+                    </div>
+                    <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
+                  </div>
+                  <div className="mt-3 sm:pr-8">
+                    <div className="flex flex-row items-center space-x-2">
+                      <h3 className="text-lg font-semibold text-gray-900 ">
+                        Order
+                      </h3>
+                      <CheckCircleIcon className="h-6" />
+                    </div>
+                    <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                      Order made on December 2, 2021 8:00PM
+                    </time>
+                    <p className="text-base font-normal text-gray-500 dark:text-gray-400">
+                      Order description
+                    </p>
+                  </div>
+                </li>
+                <li className="relative mb-6 sm:mb-0">
+                  <div className="flex items-center">
+                    <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-green-400 rounded-full ring-0 ring-white ">
+                      <CheckIcon className="h-8 text-white" />
+                    </div>
+                    <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
+                  </div>
+                  <div className="mt-3 sm:pr-8">
+                    <div className="flex flex-row items-center space-x-2">
+                      <h3 className="text-lg font-semibold text-gray-900 ">
+                        Approved
+                      </h3>
+                      <CheckCircleIcon className="h-6" />
+                    </div>
+                    <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                      Order made on December 2, 2021 8:00PM
+                    </time>
+                    <p className="text-base font-normal text-gray-500 dark:text-gray-400">
+                      Order description
+                    </p>
+                  </div>
+                </li>
+                <li className="relative mb-6 sm:mb-0">
+                  <div className="flex items-center">
+                    <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-gray-400 rounded-full ring-0 ring-white ">
+                      <SparklesIcon className="h-8 text-white" />
+                    </div>
+                    <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
+                  </div>
+                  <div className="mt-3 sm:pr-8">
+                    <div className="flex flex-row items-center space-x-2">
+                      <h3 className="text-lg font-semibold text-gray-900 ">
+                        Production
+                      </h3>
+                      <RefreshIcon className="h-6" />
+                    </div>
+                    <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                      Order made on December 2, 2021 8:00PM
+                    </time>
+                    <p className="text-base font-normal text-gray-500 dark:text-gray-400">
+                      Order description
+                    </p>
+                  </div>
+                </li>
+                <li className="relative mb-6 sm:mb-0">
+                  <div className="flex items-center">
+                    <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-gray-400 rounded-full ring-0 ring-white ">
+                      <AdjustmentsIcon className="h-8 text-white" />
+                    </div>
+                    <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
+                  </div>
+                  <div className="mt-3 sm:pr-8">
+                    <div className="flex flex-row items-center space-x-2">
+                      <h3 className="text-lg font-semibold text-gray-900 ">
+                        Testing
+                      </h3>
+                      <RefreshIcon className="h-6" />
+                    </div>
+                    <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                      Order made on December 2, 2021 8:00PM
+                    </time>
+                    <p className="text-base font-normal text-gray-500 dark:text-gray-400">
+                      Order description
+                    </p>
+                  </div>
+                </li>
+                <li className="relative mb-6 sm:mb-0">
+                  <div className="flex items-center">
+                    <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-gray-400 rounded-full ring-0 ring-white ">
+                      <TruckIcon className="h-8 text-white" />
+                    </div>
+                    <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
+                  </div>
+                  <div className="mt-3 sm:pr-8">
+                    <div className="flex flex-row items-center space-x-2">
+                      <h3 className="text-lg font-semibold text-gray-900 ">
+                        Shipping
+                      </h3>
+                      <RefreshIcon className="h-6" />
+                    </div>
+                    <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                      Order made on December 2, 2021 8:00PM
+                    </time>
+                    <p className="text-base font-normal text-gray-500 dark:text-gray-400">
+                      Order description
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </div>
           </div>
         </div>
       </div>
