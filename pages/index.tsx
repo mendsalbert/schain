@@ -70,11 +70,11 @@ const Index = (props: Props) => {
                 <h1 className="mx-auto text-white font-semibold text-lg">2</h1>
               </div>
               {/* <div className="order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12  p-4"> */}
-              <div className="rounded-tl-full  flex flex-row justify-between items-center space-x-4 rounded-bl-full order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12  p-4">
+              <div className="rounded-r-full  flex flex-row-reverse justify-between items-center   order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12  p-4">
                 <div className="border-2 border-white p-2 rounded-full w-max h-max">
                   <CheckIcon className="h-7" />
                 </div>
-                {/* <img src="/images/order.svg " className="w-14" /> */}
+
                 <h3 className="mt-2 w-full text-white text-lg">
                   Confirm Order
                 </h3>
