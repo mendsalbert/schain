@@ -16,7 +16,7 @@ const Admin = (props: Props) => {
             <ReplyIcon className="h-8 text-white" />
           </div>
         </div>
-        <div className="w-full p-4 mt-6 h-screen">
+        <div className="w-full px-10 mt-10 h-screen">
           <div className="flex flex-row justify-between">
             <div className="flex flex-row justify-center items-center space-x-2 ">
               <div className="bg-gray-500 rounded-md h-10 w-10"></div>
