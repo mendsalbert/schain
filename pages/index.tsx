@@ -26,8 +26,20 @@ const Index = (props: Props) => {
           <p className="text-left font-extrabold text-3xl italic text-[#0469A1]">
             Logistics Supply chain on Blockchain
           </p>
-          <div className="bg-gradient-to-r italic from-[#0469A1] via-purple-500 to-[#0C9FF2]  text-center w-max   px-6 py-2 rounded-full cursor-pointer text-white">
+          <div className="bg-gradient-to-r italic from-[#0469A1] via-[#0469A1] mt-2 to-[#0C9FF2]  text-center w-max   px-6 py-2 rounded-full cursor-pointer text-white">
             Read More
+          </div>
+        </div>
+
+        <div className="mt-10 bg-[#F6F6F6]">
+          <div>
+            <img src="/images/avatar.svg" className="w-full" />
+          </div>
+          <p className="text-left font-extrabold text-3xl italic text-[#0469A1]">
+            Make an order, sit and watch the supply chain processes
+          </p>
+          <div className="bg-gradient-to-r italic from-[#0469A1] via-[#0469A1] mt-2 to-[#0C9FF2]  text-center w-max   px-6 py-2 rounded-full cursor-pointer text-white">
+            Make Order
           </div>
         </div>
       </div>
