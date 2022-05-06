@@ -12,10 +12,10 @@ const Index = (props: Props) => {
   return (
     <div>
       {/* layout */}
-      <div className="font-Montserrat mx-4 relative">
-        <div className="fixed w-full left-0 -top-2 z-50">
+      <div className="font-Montserrat mx-4 sm:mx-8 md:mx-12 relative">
+        <div className="fixed w-full left-0 -top-2 md:-top-3 z-50">
           <img src={"/images/navector.svg"} className="w-full " />
-          <div className="absolute px-4 py-5 top-0 w-full flex flex-row justify-between items-center">
+          <div className="absolute px-4 sm:px-8 md:px-12 py-5 md:py-10  top-0 w-full flex flex-row justify-between items-center">
             <img src={"/images/logo.svg"} className="w-24" />
             <div
               onClick={() => {}}
