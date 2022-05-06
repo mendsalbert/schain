@@ -25,9 +25,9 @@ const Admin = (props: Props) => {
                 <p>User</p>
               </div>
             </div>
-            <div className="bg-gradient-to-r  from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max   px-6 py-2  rounded-lg cursor-pointer text-white">
+            <button className="bg-gradient-to-r  from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max   px-6 py-2  rounded-lg cursor-pointer text-white">
               Make Order
-            </div>
+            </button>
           </div>
         </div>
       </div>
