@@ -18,9 +18,12 @@ const Admin = (props: Props) => {
         </div>
         <div className="w-full p-4 mt-6 h-screen">
           <div className="flex flex-row justify-between">
-            <div>
-              <div className="bg-gray-500 rounded-md h-4 w-4"></div>
-              <div></div>
+            <div className="flex flex-row justify-center items-center space-x-2 ">
+              <div className="bg-gray-500 rounded-md h-10 w-10"></div>
+              <div>
+                <p>0x5ffdsef..455fad</p>
+                <p>User</p>
+              </div>
             </div>
             <div className="bg-gradient-to-r  from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max   px-6 py-2  rounded-lg cursor-pointer text-white">
               Make Order
