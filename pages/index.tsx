@@ -7,6 +7,7 @@ import {
   SparklesIcon,
   TruckIcon,
 } from "@heroicons/react/outline";
+
 type Props = {};
 
 const Index = (props: Props) => {
