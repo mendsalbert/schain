@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import {
   AdjustmentsIcon,
   CheckIcon,
@@ -29,20 +30,36 @@ const Index = (props: Props) => {
           <div>
             <img src="/images/landing.svg" className="w-full" />
           </div>
-          <div>
-            <p className="text-left font-extrabold text-3xl italic text-[#0469A1]">
-              Logistics Supply chain on Blockchain
-            </p>
-            <div className="bg-gradient-to-r italic from-[#0469A1] via-[#0469A1] mt-2 to-[#0C9FF2]  text-center w-max  px-6 py-2 md:px-8 md:py-3 rounded-full cursor-pointer text-white">
-              Read More
+          <motion.div
+            initial={{ x: -510, opacity: 1 }}
+            animate={{ x: 0, opacity: 1 }}
+            // whileInView={{ x: 0 }}
+            viewport={{ once: true }}
+            transition={{ ease: "easeOut", duration: 1 }}
+          >
+            <div>
+              <p className="text-left font-extrabold text-3xl italic text-[#0469A1]">
+                Logistics Supply chain on Blockchain
+              </p>
+              <div className="bg-gradient-to-r italic from-[#0469A1] via-[#0469A1] mt-2 to-[#0C9FF2]  text-center w-max  px-6 py-2 md:px-8 md:py-3 rounded-full cursor-pointer text-white">
+                Read More
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* <div className="mt-10 w-full"> */}
         <div className="mt-10 w-full md:flex md:flex-row-reverse md:items-center md:mt-16">
           <div>
-            <img src="/images/avatar.svg" className="w-full" />
+            <motion.div
+              initial={{ x: 510 }}
+              // animate={{ x: 100, y: 100, opacity: 1 }}
+              whileInView={{ x: 0 }}
+              viewport={{ once: true }}
+              transition={{ ease: "easeOut", duration: 1 }}
+            >
+              <img src="/images/avatar.svg" className="w-full" />
+            </motion.div>
           </div>
           <div>
             <p className="text-left font-extrabold text-3xl italic text-[#0469A1]">
