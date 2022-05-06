@@ -25,7 +25,7 @@ const Index = (props: Props) => {
             </div>
           </div>
         </div>
-        <div className="mt-36 md:flex md:flex-row-reverse md:items-center md:mt-52">
+        <div className="mt-36 md:flex md:flex-row-reverse md:items-center md:mt-56">
           <div>
             <img src="/images/landing.svg" className="w-full" />
           </div>
@@ -40,7 +40,7 @@ const Index = (props: Props) => {
         </div>
 
         {/* <div className="mt-10 w-full"> */}
-        <div className="mt-10 w-full md:flex md:flex-row-reverse md:items-center md:mt-56">
+        <div className="mt-10 w-full md:flex md:flex-row-reverse md:items-center md:mt-16">
           <div>
             <img src="/images/avatar.svg" className="w-full" />
           </div>
