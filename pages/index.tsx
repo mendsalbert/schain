@@ -19,7 +19,7 @@ const Index = (props: Props) => {
             <img src={"/images/logo.svg"} className="w-24 md:w-32" />
             <div
               onClick={() => {}}
-              className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  text-center w-max   px-6 py-2 rounded-full cursor-pointer text-white"
+              className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  text-center w-max   px-6 py-2 md:py-3 md:px-8 rounded-full cursor-pointer text-white"
             >
               Connect
             </div>
