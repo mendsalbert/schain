@@ -52,21 +52,20 @@ const Index = (props: Props) => {
 
             <div className="mb-8 flex justify-between items-center w-full right-timeline">
               <div className="order-1 w-5/12"></div>
-              <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
+              <div className="z-20 flex items-center order-1 ring-2 bg-white shadow-xl w-8 h-8 rounded-full">
                 <h1 className="mx-auto font-semibold text-lg text-white">1</h1>
               </div>
               <div className="rounded-tl-full  flex flex-row justify-between items-center space-x-4 rounded-bl-full order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
                 <div className="border-2 border-white p-2 rounded-full w-max h-max">
                   <ClipboardListIcon className="h-7" />
                 </div>
-                {/* <img src="/images/order.svg " className="w-14" /> */}
                 <h3 className="mt-2 w-full text-white text-lg">Add Order</h3>
               </div>
             </div>
 
             <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
               <div className="order-1 w-5/12"></div>
-              <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
+              <div className="z-20 flex items-center order-1 ring-2 bg-white shadow-xl w-8 h-8 rounded-full">
                 <h1 className="mx-auto text-white font-semibold text-lg">2</h1>
               </div>
               {/* <div className="order-1 bg-gradient-to-r from-green-500 via-green-600 text-white to-green-600 rounded-lg shadow-xl w-5/12  p-4"> */}
