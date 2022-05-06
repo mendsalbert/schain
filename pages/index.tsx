@@ -15,7 +15,7 @@ const Index = (props: Props) => {
       <div className="font-Montserrat mx-4 relative">
         <div className="fixed w-full left-0 -top-2 z-50">
           <img src={"/images/navector.svg"} className="w-full " />
-          <div className="absolute px-6 py-5 top-0 w-full flex flex-row justify-between items-center">
+          <div className="absolute px-4 py-5 top-0 w-full flex flex-row justify-between items-center">
             <img src={"/images/logo.svg"} className="w-24" />
             <div
               onClick={() => {}}
@@ -126,8 +126,12 @@ const Index = (props: Props) => {
           </div>
         </div>
         <div className="mt-16 h-full">
-          <p className="text-left font-extrabold text-3xl italic text-[#0469A1]">
-            Make an order, sit and watch the supply chain processes
+          <p className="text-center font-extrabold text-2xl italic text-[#0469A1]">
+            About
+          </p>
+          <p className="text-center  text-xl mt-6 text-[#0469A1]">
+            Make an order, sit and watch the supply chain processes Make an
+            order, sit and watch the supply chain processes
           </p>
         </div>
       </div>
