@@ -55,7 +55,7 @@ const Index = (props: Props) => {
               <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
                 <h1 className="mx-auto font-semibold text-lg text-white">1</h1>
               </div>
-              <div className="order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
+              <div className="rounded-tl-full order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
                 <img src="/images/order.svg " className="w-14" />
                 <h3 className="mt-2  text-white text-lg">Make Order</h3>
               </div>
