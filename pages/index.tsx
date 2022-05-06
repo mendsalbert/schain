@@ -1,5 +1,9 @@
 import React from "react";
-import { CheckIcon, ClipboardListIcon } from "@heroicons/react/outline";
+import {
+  CheckIcon,
+  ClipboardListIcon,
+  SparklesIcon,
+} from "@heroicons/react/outline";
 type Props = {};
 
 const Index = (props: Props) => {
@@ -82,12 +86,14 @@ const Index = (props: Props) => {
 
             <div className="mb-8 flex justify-between items-center w-full right-timeline">
               <div className="order-1 w-5/12"></div>
-              <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-                <h1 className="mx-auto font-semibold text-lg text-white">3</h1>
+              <div className="z-20 flex items-center order-1 ring-2 bg-white shadow-xl w-8 h-8 rounded-full">
+                <h1 className="mx-auto font-semibold text-lg text-white">1</h1>
               </div>
-              <div className="order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
-                <img src="/images/production.svg " className="w-14" />
-                <h3 className="mt-2  text-white text-lg">Produce</h3>
+              <div className="rounded-tl-full  flex flex-row justify-between items-center space-x-4 rounded-bl-full order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
+                <div className="border-2 border-white p-2 rounded-full w-max h-max">
+                  <SparklesIcon className="h-7" />
+                </div>
+                <h3 className="mt-2 w-full text-white text-lg">Produce</h3>
               </div>
             </div>
 
