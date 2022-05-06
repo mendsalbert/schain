@@ -127,7 +127,7 @@ const Index = (props: Props) => {
         </div>
         <div className="mt-16 h-full">
           <p className="text-center font-extrabold text-2xl italic text-[#0469A1]">
-            About
+            About Us
           </p>
           <p className="text-center  text-xl mt-6 text-[#0469A1]">
             Make an order, sit and watch the supply chain processes Make an
@@ -136,7 +136,7 @@ const Index = (props: Props) => {
         </div>
 
         <footer>
-          <div className="mt-28 text-center w-full py-4 flex flex-col justify-center items-center">
+          <div className="my-24 text-center w-full py-4 flex flex-col justify-center items-center">
             <p className="text-lg text-[#0469A1] ">Connet with us</p>
             <div className="flex flex-row space-x-4 cursor-pointer">
               <img src="/images/twitter.svg" className="w-7" />
