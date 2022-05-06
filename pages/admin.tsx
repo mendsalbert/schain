@@ -8,6 +8,7 @@ import {
   SparklesIcon,
   TrashIcon,
   TruckIcon,
+  XCircleIcon,
 } from "@heroicons/react/outline";
 import React from "react";
 
@@ -42,7 +43,10 @@ const Admin = (props: Props) => {
 
           <div className="mt-16">
             <div>
-              <p className="text-xl py-4 font-medium">Order 1</p>
+              <div className="py-4 flex flex-row text-gray-600 items-center space-x-2">
+                <p className="text-xl font-medium">Order 1</p>
+                <XCircleIcon className="w-8" />
+              </div>
               <ol className="items-center sm:flex">
                 <li className="relative mb-6 sm:mb-0">
                   <div className="flex items-center">
@@ -158,7 +162,10 @@ const Admin = (props: Props) => {
             </div>
 
             <div>
-              <p className="text-xl py-4 font-medium">Order 2</p>
+              <div className="py-4 flex flex-row text-gray-600 items-center space-x-2">
+                <p className="text-xl font-medium">Order 2</p>
+                <XCircleIcon className="w-8" />
+              </div>
               <ol className="items-center sm:flex">
                 <li className="relative mb-6 sm:mb-0">
                   <div className="flex items-center">
