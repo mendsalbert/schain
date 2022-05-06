@@ -6,6 +6,7 @@ import {
   RefreshIcon,
   ReplyIcon,
   SparklesIcon,
+  TrashIcon,
   TruckIcon,
 } from "@heroicons/react/outline";
 import React from "react";
@@ -22,14 +23,13 @@ const Admin = (props: Props) => {
             <ClipboardListIcon className="h-10 text-white" />
           </div>
           <div className="">
-            <ReplyIcon className="h-8 text-white" />
+            <TrashIcon className="h-8 text-white" />
           </div>
         </div>
         <div className="w-full px-10 mt-10 h-screen">
           <div className="flex flex-row justify-between">
             <div className="flex flex-row justify-center items-center space-x-2 ">
-              <img src="/images/profile.jpg" className="w-8" />
-
+              <img src="/images/profile.jpg" className="w-14 rounded-md" />
               <div>
                 <p>0x5ffdsef..455fad</p>
                 <p>User</p>
