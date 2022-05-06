@@ -52,8 +52,7 @@ const Index = (props: Props) => {
         <div className="mt-10 w-full md:flex md:flex-row-reverse md:items-center md:mt-16">
           <div>
             <motion.div
-              initial={{ x: 510 }}
-              // animate={{ x: 100, y: 100, opacity: 1 }}
+              initial={{ x: 510, opacity: 1 }}
               whileInView={{ x: 0 }}
               viewport={{ once: true }}
               transition={{ ease: "easeOut", duration: 1 }}
@@ -80,14 +79,21 @@ const Index = (props: Props) => {
               <div className="z-20 flex items-center order-1 ring-2 bg-white shadow-xl w-8 h-8 rounded-full">
                 <h1 className="mx-auto font-semibold text-lg text-white">1</h1>
               </div>
-              <div className="rounded-tl-full  lg:rounded-full md:p-8 flex flex-row justify-between items-center space-x-4 rounded-bl-full order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
-                <div className="border-2 border-white p-2  rounded-full w-max h-max">
-                  <ClipboardListIcon className="h-7 md:h-9" />
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ ease: "easeOut", duration: 1 }}
+              >
+                <div className="rounded-tl-full  lg:rounded-full md:p-8 flex flex-row justify-between items-center space-x-4 rounded-bl-full order-1 bg-gradient-to-r from-[#0C9FF2] via-[#0C9FF2] text-white to-[#136390] rounded-lg shadow-xl w-5/12  p-4">
+                  <div className="border-2 border-white p-2  rounded-full w-max h-max">
+                    <ClipboardListIcon className="h-7 md:h-9" />
+                  </div>
+                  <h3 className="mt-2 w-full text-white text-lg md:text-xl">
+                    Add Order
+                  </h3>
                 </div>
-                <h3 className="mt-2 w-full text-white text-lg md:text-xl">
-                  Add Order
-                </h3>
-              </div>
+              </motion.div>
             </div>
 
             <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
