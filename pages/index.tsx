@@ -21,8 +21,9 @@ const Index = (props: Props) => {
         </div>
         <div className="mt-36">
           <div>
-            <img src="/images/landing.svg" className="w-8" />
+            <img src="/images/landing.svg" className="w-full" />
           </div>
+          <p className="text-center">Logistics Supply chain on Blockchain</p>
         </div>
       </div>
     </div>
