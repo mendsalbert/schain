@@ -15,7 +15,7 @@ const Index = (props: Props) => {
       <div className="font-Montserrat mx-4 sm:mx-8 md:mx-12 relative">
         <div className="fixed w-full left-0 -top-2 md:-top-3 lg:-top-32 z-50 ">
           <img src={"/images/navector.svg"} className="w-full " />
-          <div className="absolute px-4 sm:px-8 md:px-12 py-5 md:py-10 lg:py-36 top-0 w-full flex flex-row justify-between items-center">
+          <div className="absolute px-4 sm:px-8 md:px-12 py-5 md:py-10 lg:py-40 top-0 w-full flex flex-row justify-between items-center">
             <img src={"/images/logo.svg"} className="w-24 md:w-32" />
             <div
               onClick={() => {}}
