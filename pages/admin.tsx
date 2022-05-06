@@ -16,7 +16,14 @@ const Admin = (props: Props) => {
             <ReplyIcon className="h-8 text-white" />
           </div>
         </div>
-        <div className="bg-green-500 w-full p-4 h-screen">fsdfsdf</div>
+        <div className="bg-green-500 w-full p-4 h-screen">
+          <div className="flex flex-row justify-between">
+            <p>account div</p>
+            <div className="bg-gradient-to-r italic from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max   px-6 py-2  rounded-lg cursor-pointer text-white">
+              Make Order
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
