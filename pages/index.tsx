@@ -31,7 +31,7 @@ const Index = (props: Props) => {
           </div>
         </div>
 
-        <div className="mt-10 bg-[#F6F6F6]">
+        <div className="mt-10 w-full">
           <div>
             <img src="/images/avatar.svg" className="w-full" />
           </div>
