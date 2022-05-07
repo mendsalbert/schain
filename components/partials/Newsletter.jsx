@@ -113,17 +113,12 @@ function Newsletter() {
                       aria-label="Your email…"
                     />
                     <a
-                      className="btn text-white bg-blue-600 hover:bg-blue-700 shadow"
+                      className="btn text-white flex flex-col items-center justify-center px-4 rounded-sm bg-blue-600 hover:bg-blue-700 shadow"
                       href="#0"
                     >
                       Subscribe
                     </a>
                   </div>
-                  {/* Success message */}
-                  {/* <p className="text-sm text-gray-400 mt-3">Thanks for subscribing!</p> */}
-                  <p className="text-sm text-gray-400 mt-3">
-                    7 days free trial. No credit card required.
-                  </p>
                 </form>
               </div>
             </div>
