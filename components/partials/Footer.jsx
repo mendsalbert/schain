@@ -198,7 +198,7 @@ function Footer() {
           <div className="text-sm text-gray-600 mr-4">
             <a
               className="text-blue-600 hover:underline"
-              href="https://cruip.com/"
+              href="https://netlify.schain.com/"
             >
               @schain 2022
             </a>
