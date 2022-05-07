@@ -41,7 +41,7 @@ function FeaturesBlocks() {
                 Make an Order
               </h4>
               <p className="text-gray-600 text-center">
-                Place an order on blockchain
+                places an order, processed by the DDap
               </p>
             </div>
 
@@ -51,10 +51,11 @@ function FeaturesBlocks() {
                 <CheckCircleIcon className="h-9" />
               </div>
               <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">
-                Initial Contact
+                Confirm Order
               </h4>
               <p className="text-gray-600 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Order get confirmed by a manager is then pushed onto the
+                production
               </p>
             </div>
 
@@ -64,10 +65,10 @@ function FeaturesBlocks() {
                 <SparklesIcon className="h-9" />
               </div>
               <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">
-                Initial Contact
+                Production
               </h4>
               <p className="text-gray-600 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Ordering of raw materials, approval of the project timeline
               </p>
             </div>
 
@@ -77,10 +78,10 @@ function FeaturesBlocks() {
                 <AdjustmentsIcon className="h-9" />
               </div>
               <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">
-                Initial Contact
+                Testing
               </h4>
               <p className="text-gray-600 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                The products are pushed on the quality testing
               </p>
             </div>
 
@@ -90,10 +91,10 @@ function FeaturesBlocks() {
                 <TruckIcon className="h-9" />
               </div>
               <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">
-                Initial Contact
+                Transportation
               </h4>
               <p className="text-gray-600 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Finished products has to be transported safely
               </p>
             </div>
 
