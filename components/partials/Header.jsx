@@ -25,7 +25,7 @@ function Header() {
           <div className="flex-shrink-0 mr-4">
             {/* Logo */}
             <div to="/" className="block" aria-label="Cruip">
-              <img src="/images/logo.svg" className="w-24" />
+              <img src="/images/logo.svg" className="w-28" />
             </div>
           </div>
 
@@ -33,7 +33,7 @@ function Header() {
           <nav className="flex flex-grow">
             <ul className="flex flex-grow justify-end flex-wrap items-center">
               <li>
-                <button className="bg-gradient-to-r active:outline-none active:border-none from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max   px-8 py-2  rounded-lg cursor-pointer text-white">
+                <button className="bg-gradient-to-r active:outline-none active:border-none from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max   px-8 py-2  rounded-full cursor-pointer text-white">
                   Connet
                 </button>
               </li>
