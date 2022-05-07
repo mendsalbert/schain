@@ -137,24 +137,26 @@ function Testimonials() {
                   </svg>
                   <img
                     className="relative rounded-full"
-                    src={"/images/testimonial.jpg"}
+                    src={"/images/harvard.png"}
                     width="96"
                     height="96"
                     alt="Testimonial 01"
                   />
                 </div>
                 <blockquote className="text-xl font-medium mb-4">
-                  “ I love this product and would recommend it to anyone. Could
-                  be not easier to use, and our multiple websites are wonderful.
-                  We get nice comments all the time. “
+                  “ One of the most promising applications of emerging
+                  blockchain technology is supply chain management. “
                 </blockquote>
                 <cite className="block font-bold text-lg not-italic mb-1">
-                  Darya Finger
+                  Harvard Business Review
                 </cite>
                 <div className="text-gray-600">
-                  <span>CEO & Co-Founder</span>{" "}
-                  <a className="text-blue-600 hover:underline" href="#0">
-                    @Dropbox
+                  {/* <span>CEO & Co-Founder</span>{" "} */}
+                  <a
+                    className="text-blue-600 hover:underline"
+                    href="https://hbr.org/2020/05/building-a-transparent-supply-chain"
+                  >
+                    @HarvardBusinessReview
                   </a>
                 </div>
               </div>
