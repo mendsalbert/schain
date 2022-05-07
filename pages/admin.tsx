@@ -4,17 +4,20 @@ import {
   CheckIcon,
   ClipboardListIcon,
   RefreshIcon,
-  ReplyIcon,
   SparklesIcon,
   TrashIcon,
   TruckIcon,
   XCircleIcon,
 } from "@heroicons/react/outline";
-import React from "react";
+import React, { useState } from "react";
+import Modal from "../components/Modal";
+import OrderModal from "../components/OrderModal";
 
 type Props = {};
 
 const Admin = (props: Props) => {
+  const [open, setOpen] = useState(false);
+  const [comp, setComp] = useState("") as any;
   return (
     <div className="font-Montserrat  w-full">
       <div className="flex flex-row  w-full">
@@ -36,7 +39,14 @@ const Admin = (props: Props) => {
                 <p>User</p>
               </div>
             </div>
-            <button className="bg-gradient-to-r  from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max   px-6 py-2  rounded-lg cursor-pointer text-white">
+            <button
+              onClick={() => {
+                setOpen(!open);
+
+                setComp(<OrderModal />);
+              }}
+              className="bg-gradient-to-r  from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max   px-6 py-2  rounded-lg cursor-pointer text-white"
+            >
               Make Order
             </button>
           </div>
@@ -282,6 +292,9 @@ const Admin = (props: Props) => {
           </div>
         </div>
       </div>
+      <Modal open={open} onClose={() => setOpen(false)}>
+        {comp}
+      </Modal>
     </div>
   );
 };
