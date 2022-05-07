@@ -101,7 +101,11 @@ function FeaturesBlocks() {
               <div className="bg-blue-600 w-max h-max p-5 m-2 text-white rounded-full">
                 <AnnotationIcon className="h-9" />
               </div>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">
+              <h4
+                className="text-xl font-bold text-center
+              
+              leading-snug tracking-tight mb-1"
+              >
                 Review and Suggestion
               </h4>
               <p className="text-gray-600 text-center">
