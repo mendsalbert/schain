@@ -32,8 +32,8 @@ function FeaturesBlocks() {
           <div className="max-w-sm mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start md:max-w-2xl lg:max-w-none">
             {/* 1st item */}
             <div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl">
-              <div className="bg-blue-600 w-max h-max p-5 text-white rounded-full">
-                <ClipboardListIcon className="h-8" />
+              <div className="bg-blue-600 w-max h-max p-5 m-2 text-white rounded-full">
+                <ClipboardListIcon className="h-9" />
               </div>
               <h4 className="text-xl font-bold leading-snug tracking-tight mb-1">
                 Initial Contact
