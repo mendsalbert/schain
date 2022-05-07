@@ -19,13 +19,7 @@ function Orders() {
           <XCircleIcon className="w-8" />
         </div>
         <ol className="items-center sm:flex">
-          <li className="relative mb-6 group sm:mb-0">
-            <div className="absolute bottom-0 flex-col items-center hidden mb-6 group-hover:flex">
-              <span className="relative z-10 p-4 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg">
-                A top aligned tooltip.
-              </span>
-              <div className="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
-            </div>
+          <li className="relative mb-6  sm:mb-0">
             <div className="flex items-center">
               <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-green-400 rounded-full ring-0 ring-white ">
                 <ClipboardListIcon className="h-8 text-white" />
