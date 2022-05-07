@@ -107,7 +107,7 @@ function FeaturesBlocks() {
                 Review and Suggestion
               </h4>
               <p className="text-gray-600 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Feedback and suggestions for the product taken online
               </p>
             </div>
           </div>
