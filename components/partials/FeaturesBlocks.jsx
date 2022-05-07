@@ -22,11 +22,10 @@ function FeaturesBlocks() {
         <div className="py-12 md:py-20">
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h2 className="h2 mb-4">How Simple works</h2>
+            <h2 className="h2 mb-4">How Simple it works</h2>
             <p className="text-xl text-gray-600">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur excepteur sint occaecat
-              cupidatat.
+              The Supply Chain is the movement of materials as they flow from
+              their source to the end customer
             </p>
           </div>
 
@@ -54,8 +53,7 @@ function FeaturesBlocks() {
                 Confirm Order
               </h4>
               <p className="text-gray-600 text-center">
-                Order get confirmed by a manager is then pushed onto the
-                production
+                Confirmed by a manager is then pushed onto the production
               </p>
             </div>
 
