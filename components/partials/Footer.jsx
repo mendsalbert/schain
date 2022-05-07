@@ -91,30 +91,6 @@ function Footer() {
                   About us
                 </div>
               </li>
-              <li className="mb-2">
-                <div
-                  href="#"
-                  className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
-                >
-                  Company values
-                </div>
-              </li>
-              <li className="mb-2">
-                <div
-                  href="#"
-                  className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
-                >
-                  Pricing
-                </div>
-              </li>
-              <li className="mb-2">
-                <div
-                  href="#"
-                  className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
-                >
-                  Privacy Policy
-                </div>
-              </li>
             </ul>
           </div>
 
