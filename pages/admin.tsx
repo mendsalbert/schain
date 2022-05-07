@@ -14,11 +14,14 @@ const Admin = (props: Props) => {
       <div className="flex flex-row  w-full">
         <AdminSideNav />
         <div className="w-full px-4 md:px-10 mt-10 h-screen">
-          <div className="flex flex-col-reverse  md:flex-row md:justify-between">
-            <div className="flex pt-5 md:pt-0  flex-row  items-center space-x-0 md:space-x-2 ">
-              <img src="/images/profile.jpg" className="w-14 rounded-md" />
+          <div className="flex flex-col-reverse  md:flex-row md:items-center md:justify-between">
+            <div className="flex bg-gradient-to-r from-pink-500 to-yellow-500 rounded-lg py-8 px-4 mt-5 md:mt-0 text-white   flex-row  items-center space-x-0 md:space-x-2 ">
+              <img
+                src="/images/profile.jpg"
+                className="w-14 h-14 rounded-full"
+              />
               <div>
-                <p>0x5ffdsef..455fad</p>
+                <p className="font-bold text-xl">0x5ffdsef..455fad</p>
                 <p>User</p>
               </div>
             </div>
