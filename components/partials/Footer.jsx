@@ -41,39 +41,7 @@ function Footer() {
                   href="#"
                   className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
                 >
-                  Web Studio
-                </div>
-              </li>
-              <li className="mb-2">
-                <div
-                  href="#"
-                  className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
-                >
-                  DynamicBox Flex
-                </div>
-              </li>
-              <li className="mb-2">
-                <div
-                  href="#"
-                  className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
-                >
-                  Programming Forms
-                </div>
-              </li>
-              <li className="mb-2">
-                <div
-                  href="#"
-                  className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
-                >
-                  Integrations
-                </div>
-              </li>
-              <li className="mb-2">
-                <div
-                  href="#"
-                  className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
-                >
-                  Command-line
+                  Dashboard
                 </div>
               </li>
             </ul>
@@ -91,36 +59,13 @@ function Footer() {
                   Documentation
                 </div>
               </li>
-              <li className="mb-2">
-                <div
-                  href="#"
-                  className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
-                >
-                  Tutorials & Guides
-                </div>
-              </li>
-              <li className="mb-2">
-                <div
-                  href="#"
-                  className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
-                >
-                  Blog
-                </div>
-              </li>
+
               <li className="mb-2">
                 <div
                   href="#"
                   className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
                 >
                   Support Center
-                </div>
-              </li>
-              <li className="mb-2">
-                <div
-                  href="#"
-                  className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
-                >
-                  Partners
                 </div>
               </li>
             </ul>
