@@ -66,9 +66,9 @@ function HeroHome() {
                 data-aos="zoom-y-out"
                 data-aos-delay="300"
               >
-                <div className="bg-gradient-to-r text-xl from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max  px-6 py-2 md:px-8 md:py-3 rounded-full cursor-pointer text-white">
+                <button className="bg-gradient-to-r text-xl active:outline-none active:border-none from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max   px-6 py-2  rounded-full cursor-pointer text-white">
                   Read More
-                </div>
+                </button>
               </div>
             </div>
           </div>
