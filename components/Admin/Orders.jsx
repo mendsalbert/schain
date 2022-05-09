@@ -16,10 +16,10 @@ function Orders() {
       <div className="w-full">
         <div className="py-4 flex flex-row  text-gray-600 items-center space-x-2">
           <p className="text-xl font-medium">Milo </p>
-          <div className="font-medium text-sm bg-green-500 w-max text-white rounded-full text-center hover:text-indigo-600 flex justify-center  items-center py-1 px-3">
+          <div className="font-medium text-sm bg-green-500 w-max text-white rounded-full text-center cursor-pointer hover:text-gray-200 flex justify-center  items-center py-1 px-3">
             Recieved
           </div>
-          <div className="font-medium text-sm bg-red-500 w-max text-white rounded-full text-center hover:text-indigo-600 flex justify-center  items-center py-1 px-3">
+          <div className="font-medium text-sm bg-red-500 w-max text-white rounded-full text-center curspr-pointer hover:text-gray-200 flex justify-center  items-center py-1 px-3">
             Cancel
           </div>
           {/* <XCircleIcon className="w-8" /> */}
