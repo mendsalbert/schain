@@ -58,7 +58,7 @@ const Admin = (props: Props) => {
                 </div>
               </div>
             </div>
-            <div className="bg-white shadow-lg py-4 md:py-7 px-4 md:px-8 xl:px-10">
+            <div className="bg-white shadow-lg ring-[1px] rounded-md ring-gray-200 py-4 md:py-7  ">
               <div className="sm:flex items-center justify-between">
                 <div className="flex items-center">
                   <a
