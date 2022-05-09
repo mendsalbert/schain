@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AdjustmentsIcon,
   CheckCircleIcon,
@@ -9,8 +9,11 @@ import {
   TruckIcon,
   XCircleIcon,
 } from "@heroicons/react/outline";
-
+import Modal from "../../components/Modal";
+import ReviewModal from "../../components/ReviewModal";
 function Orders() {
+  const [open, setOpen] = useState(false);
+  const [comp, setComp] = useState("");
   return (
     <div className=" col-span-full xl:col-span-12 bg-white shadow-lg w-full rounded-md border border-slate-200 p-3">
       <div className="w-full">
@@ -21,6 +24,16 @@ function Orders() {
           </div>
           <div className="cursor-pointer font-medium text-sm bg-red-500 w-max text-white rounded-full text-center  hover:text-gray-200 flex justify-center  items-center py-1 px-3">
             Cancel
+          </div>
+          <div
+            onClick={() => {
+              setOpen(!open);
+
+              setComp(<ReviewModal />);
+            }}
+            className="cursor-pointer font-medium text-sm bg-blue-500 w-max text-white rounded-full text-center  hover:text-gray-200 flex justify-center  items-center py-1 px-3"
+          >
+            Review
           </div>
           {/* <XCircleIcon className="w-8" /> */}
         </div>
@@ -251,7 +264,12 @@ function Orders() {
             </div>
           </li>
         </ol>
+
       </div> */}
+
+      <Modal open={open} onClose={() => setOpen(false)}>
+        {comp}
+      </Modal>
     </div>
   );
 }
