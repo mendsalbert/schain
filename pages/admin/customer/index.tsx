@@ -40,6 +40,19 @@ const Admin = (props: Props) => {
 
           {/* <Orders /> */}
 
+          <div>
+            <div className="pl-5">
+              <div className="flex items-center">
+                <img
+                  src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg5.svg"
+                  alt="paper clip"
+                />
+                <p className="text-sm leading-none text-gray-600   ml-2">
+                  04/21
+                </p>
+              </div>
+            </div>
+          </div>
           <div className=" w-full">
             <div className=" py-4 md:py-7">
               <div className="flex items-center justify-between">
