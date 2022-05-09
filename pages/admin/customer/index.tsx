@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import AdminSideNav from "../components/Admin/adminSideNav";
-import Orders from "../components/Admin/Orders";
-import Modal from "../components/Modal";
-import OrderModal from "../components/OrderModal";
+import AdminSideNav from "../../../components/Admin/adminSideNav";
+import Orders from "../../../components/Admin/Orders";
+import Modal from "../../../components/Modal";
+import OrderModal from "../../../components/OrderModal";
 
 type Props = {};
 
