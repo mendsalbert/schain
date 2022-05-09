@@ -16,8 +16,8 @@ function Orders() {
       <div className="w-full">
         <div className="py-4 flex flex-row  text-gray-600 items-center space-x-2">
           <p className="text-xl font-medium">Milo </p>
-          <div className="font-medium text-sm bg-blue-600 w-max text-white rounded-full text-center hover:text-indigo-600 flex justify-center w-full  items-center py-1 px-3">
-            Disconnect
+          <div className="font-medium text-sm bg-green-500 w-max text-white rounded-full text-center hover:text-indigo-600 flex justify-center  items-center py-1 px-3">
+            Recieved
           </div>
           <XCircleIcon className="w-8" />
         </div>
