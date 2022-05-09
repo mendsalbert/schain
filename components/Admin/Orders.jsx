@@ -19,7 +19,10 @@ function Orders() {
           <div className="font-medium text-sm bg-green-500 w-max text-white rounded-full text-center hover:text-indigo-600 flex justify-center  items-center py-1 px-3">
             Recieved
           </div>
-          <XCircleIcon className="w-8" />
+          <div className="font-medium text-sm bg-red-500 w-max text-white rounded-full text-center hover:text-indigo-600 flex justify-center  items-center py-1 px-3">
+            Cancel
+          </div>
+          {/* <XCircleIcon className="w-8" /> */}
         </div>
         <ol className="items-center sm:flex">
           <li className="relative mb-6  sm:mb-0">
