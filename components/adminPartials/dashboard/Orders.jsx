@@ -1,6 +1,6 @@
 import React from "react";
 
-function DashboardCard07() {
+function Orders() {
   return (
     <div className="col-span-full xl:col-span-12 bg-white shadow-lg w-full rounded-sm border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100">
@@ -203,4 +203,4 @@ function DashboardCard07() {
   );
 }
 
-export default DashboardCard07;
+export default Orders;

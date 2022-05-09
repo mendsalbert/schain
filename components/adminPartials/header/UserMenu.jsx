@@ -1,8 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-// import { div } from 'react-router-dom';
 import Transition from "../../../utils/Transition";
-
-// import UserAvatar from '../../images/user-avatar-32.png';
 
 function UserMenu() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -46,15 +43,12 @@ function UserMenu() {
       >
         <img
           className="w-8 h-8 rounded-full"
-          src={"/images/user-avatar-32.png"}
+          src={"/images/profile.jpg"}
           width="32"
           height="32"
           alt="User"
         />
-        <div className="flex items-center truncate">
-          <span className="truncate ml-2 text-sm font-medium group-hover:text-slate-800">
-            Acme Inc.
-          </span>
+        <div className="flex items-centeate ml-2 text-sm font-medium group-hover:text-slate-800">
           <svg
             className="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400"
             viewBox="0 0 12 12"
@@ -80,26 +74,17 @@ function UserMenu() {
           onBlur={() => setDropdownOpen(false)}
         >
           <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200">
-            <div className="font-medium text-slate-800">Acme Inc.</div>
-            <div className="text-xs text-slate-500 italic">Administrator</div>
+            <div className="font-medium text-slate-800">0xfedhlgedfa...5ef</div>
+            <div className="text-xs text-slate-500 italic">Customer</div>
           </div>
           <ul>
-            <li>
+            <li className="p-2">
               <div
-                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
+                className="font-medium text-sm bg-blue-600  text-white rounded-full text-center hover:text-indigo-600 flex justify-center w-full  items-center py-1 px-3"
                 to="/"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
-                Settings
-              </div>
-            </li>
-            <li>
-              <div
-                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                to="/"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-              >
-                Sign Out
+                Disconnect
               </div>
             </li>
           </ul>
