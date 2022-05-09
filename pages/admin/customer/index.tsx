@@ -39,8 +39,8 @@ const Admin = (props: Props) => {
 
           {/* <Orders /> */}
 
-          <div className="sm:px-6 w-full">
-            <div className="px-4 md:px-10 py-4 md:py-7">
+          <div className=" w-full">
+            <div className=" py-4 md:py-7">
               <div className="flex items-center justify-between">
                 <p className="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800 ">
                   Tasks
@@ -58,7 +58,7 @@ const Admin = (props: Props) => {
                 </div>
               </div>
             </div>
-            <div className="bg-white shadow-lg ring-[1px] rounded-md ring-gray-200 py-4 md:py-7  ">
+            <div className="bg-white shadow-lg ring-[1px] rounded-md ring-gray-200 py-4 md:py-7 px-4 md:px-8 xl:px-10">
               <div className="sm:flex items-center justify-between">
                 <div className="flex items-center">
                   <a
@@ -86,42 +86,16 @@ const Admin = (props: Props) => {
                     </div>
                   </a>
                 </div>
-                <button className="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
-                  <p className="text-sm font-medium leading-none text-white">
-                    Add Task
-                  </p>
-                </button>
               </div>
               <div className="mt-7 overflow-x-auto">
                 <table className="w-full whitespace-nowrap">
                   <tbody>
-                    <tr className="focus:outline-none h-16 border border-gray-100 dark:border-gray-600  rounded">
-                      <td>
-                        <div className="ml-5">
-                          <div className="bg-gray-200 dark:bg-gray-800  rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center relative">
-                            <input
-                              placeholder="checkbox"
-                              type="checkbox"
-                              className="focus:opacity-100 checkbox opacity-0 absolute cursor-pointer w-full h-full"
-                            />
-                            <div className="check-icon hidden bg-indigo-700 text-white rounded-sm">
-                              <img
-                                src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg7.svg"
-                                alt="check-icon"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </td>
+                    <tr className="focus:outline-none  h-16 border border-gray-200 rounded-lg">
                       <td className="">
                         <div className="flex items-center pl-5">
-                          <p className="text-base font-medium leading-none text-gray-700 dark:text-white  mr-2">
+                          <p className="text-base font-medium leading-none text-gray-700   mr-2">
                             Marketing Keynote Presentation
                           </p>
-                          <img
-                            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg1.svg"
-                            alt="clip"
-                          />
                         </div>
                       </td>
                       <td className="pl-24">
@@ -130,7 +104,7 @@ const Admin = (props: Props) => {
                             src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg2.svg"
                             alt="tag"
                           />
-                          <p className="text-sm leading-none text-gray-600 dark:text-gray-200  ml-2">
+                          <p className="text-sm leading-none text-gray-600   ml-2">
                             Urgent
                           </p>
                         </div>
@@ -141,7 +115,7 @@ const Admin = (props: Props) => {
                             src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg3.svg"
                             alt="list"
                           />
-                          <p className="text-sm leading-none text-gray-600 dark:text-gray-200  ml-2">
+                          <p className="text-sm leading-none text-gray-600   ml-2">
                             04/07
                           </p>
                         </div>
@@ -152,7 +126,7 @@ const Admin = (props: Props) => {
                             src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg4.svg"
                             alt="chat"
                           />
-                          <p className="text-sm leading-none text-gray-600 dark:text-gray-200  ml-2">
+                          <p className="text-sm leading-none text-gray-600   ml-2">
                             23
                           </p>
                         </div>
@@ -163,21 +137,17 @@ const Admin = (props: Props) => {
                             src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg5.svg"
                             alt="paper clip"
                           />
-                          <p className="text-sm leading-none text-gray-600 dark:text-gray-200  ml-2">
+                          <p className="text-sm leading-none text-gray-600   ml-2">
                             04/07
                           </p>
                         </div>
                       </td>
                       <td className="pl-5">
-                        <button className="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">
-                          Due today at 18:00
+                        <button className="py-3 px-3 text-sm focus:outline-none leading-none text-green-700 bg-green-100 rounded-full">
+                          Received
                         </button>
                       </td>
-                      <td className="pl-4">
-                        <button className="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 dark:text-gray-200  py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 dark:hover:bg-gray-700   dark:bg-gray-800  focus:outline-none">
-                          View
-                        </button>
-                      </td>
+
                       <td>
                         <div className="relative px-5 pt-2">
                           <button
