@@ -1,4 +1,4 @@
-import { ViewGridIcon } from "@heroicons/react/outline";
+import { ClipboardListIcon, ViewGridIcon } from "@heroicons/react/outline";
 import React, { useState, useEffect, useRef } from "react";
 // import { div, useLocation } from "react-router-dom";
 
@@ -71,16 +71,16 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
       <div
         id="sidebar"
         ref={sidebar}
-        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0  bg-gradient-to-b  from-[#0469A1] via-[#0469A1]  to-[#0C9FF2] p-4 transition-all duration-200 ease-in-out ${
+        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-24 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0  bg-gradient-to-b  from-[#0469A1] via-[#0469A1]  to-[#0C9FF2] p-4 transition-all duration-200 ease-in-out ${
           sidebarOpen ? "translate-x-0" : "-translate-x-64"
         }`}
       >
         {/* Sidebar header */}
-        <div className="flex justify-between mb-10 pr-3 sm:px-2">
+        <div className="flex justify-between mb-10 pr-3 pl-2 sm:px-2">
           {/* Close button */}
           <button
             ref={trigger}
-            className="lg:hidden text-slate-500 hover:text-slate-400"
+            className="lg:hidden text-white hover:text-slate-400"
             onClick={() => setSidebarOpen(!sidebarOpen)}
             aria-controls="sidebar"
             aria-expanded={sidebarOpen}
@@ -146,14 +146,14 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           <div>
             <ul className="mt-3">
               {/* Dashboard */}
-              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 `}>
+              <li className={`px-2 py-2 rounded-sm mb-0.5 last:mb-0 `}>
                 <div
                   end
                   to="/"
                   className={`block text-slate-200 hover:text-white truncate transition duration-150 ${"hover:text-slate-200"}`}
                 >
                   <div className="flex items-center">
-                    <ViewGridIcon className=" shrink-0 h-6 text-white" />
+                    <ViewGridIcon className=" shrink-0 h-9 text-white" />
                     <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                       Dashboard
                     </span>
@@ -161,369 +161,21 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 </div>
               </li>
               {/* Analytics */}
-              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 `}>
+              <li className={`px-2 py-2 rounded-sm mb-0.5 last:mb-0 `}>
                 <div
                   end
                   to="/"
                   className={`block text-slate-200 hover:text-white truncate transition duration-150 ${"hover:text-slate-200"}`}
                 >
                   <div className="flex items-center">
-                    <ViewGridIcon className=" shrink-0 h-7 text-white" />
+                    <ClipboardListIcon className=" shrink-0 h-9 text-white" />
 
                     <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                      Analytics
+                      Orders
                     </span>
                   </div>
                 </div>
               </li>
-              {/* E-Commerce */}
-              <SidebarLinkGroup
-              // activecondition={pathname.includes("ecommerce")}
-              >
-                {(handleClick, open) => {
-                  return (
-                    <React.Fragment>
-                      <a
-                        href="#0"
-                        className={`block text-slate-200 hover:text-white truncate transition duration-150 ${
-                          // pathname.includes("ecommerce") &&
-                          "hover:text-slate-200"
-                        }`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          sidebarExpanded
-                            ? handleClick()
-                            : setSidebarExpanded(true);
-                        }}
-                      >
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center">
-                            <svg
-                              className="shrink-0 h-6 w-6"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                className={`fill-current text-slate-400 ${
-                                  // pathname.includes("ecommerce") &&
-                                  "text-indigo-300"
-                                }`}
-                                d="M13 15l11-7L11.504.136a1 1 0 00-1.019.007L0 7l13 8z"
-                              />
-                              <path
-                                className={`fill-current text-slate-700 ${
-                                  // pathname.includes("ecommerce") &&
-                                  "!text-indigo-600"
-                                }`}
-                                d="M13 15L0 7v9c0 .355.189.685.496.864L13 24v-9z"
-                              />
-                              <path
-                                className={`fill-current text-slate-600 ${
-                                  // pathname.includes("ecommerce") &&
-                                  "text-indigo-500"
-                                }`}
-                                d="M13 15.047V24l10.573-7.181A.999.999 0 0024 16V8l-11 7.047z"
-                              />
-                            </svg>
-                            <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                              E-Commerce
-                            </span>
-                          </div>
-                          {/* Icon */}
-                          <div className="flex shrink-0 ml-2">
-                            <svg
-                              className={`w-3 h-3 shrink-0 ml-1 fill-current text-slate-400 ${
-                                open && "transform rotate-180"
-                              }`}
-                              viewBox="0 0 12 12"
-                            >
-                              <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
-                            </svg>
-                          </div>
-                        </div>
-                      </a>
-                      <div className="lg:hidden lg:sidebar-expanded:block 2xl:block">
-                        <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
-                          <li className="mb-1 last:mb-0">
-                            <div
-                              end
-                              to="/"
-                              className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Customers
-                              </span>
-                            </div>
-                          </li>
-                          <li className="mb-1 last:mb-0">
-                            <div
-                              end
-                              to="/"
-                              className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Orders
-                              </span>
-                            </div>
-                          </li>
-                          <li className="mb-1 last:mb-0">
-                            <div
-                              end
-                              to="/"
-                              className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Invoices
-                              </span>
-                            </div>
-                          </li>
-                          <li className="mb-1 last:mb-0">
-                            <div
-                              end
-                              to="/"
-                              className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Shop
-                              </span>
-                            </div>
-                          </li>
-                          <li className="mb-1 last:mb-0">
-                            <div
-                              end
-                              to="/"
-                              className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Shop 2
-                              </span>
-                            </div>
-                          </li>
-                          <li className="mb-1 last:mb-0">
-                            <div
-                              end
-                              to="/"
-                              className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Single Product
-                              </span>
-                            </div>
-                          </li>
-                          <li className="mb-1 last:mb-0">
-                            <div
-                              end
-                              to="/"
-                              className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Cart
-                              </span>
-                            </div>
-                          </li>
-                          <li className="mb-1 last:mb-0">
-                            <div
-                              end
-                              to="/"
-                              className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Cart 2
-                              </span>
-                            </div>
-                          </li>
-                          <li className="mb-1 last:mb-0">
-                            <div
-                              end
-                              to="/"
-                              className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Pay
-                              </span>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </React.Fragment>
-                  );
-                }}
-              </SidebarLinkGroup>
-              {/* Campaigns */}
-              <li
-                className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
-                  // pathname.includes("campaigns") &&
-                  "bg-slate-900"
-                }`}
-              >
-                <div
-                  end
-                  to="/"
-                  className={`block text-slate-200 hover:text-white truncate transition duration-150 ${
-                    // pathname.includes("campaigns") &&
-                    "hover:text-slate-200"
-                  }`}
-                >
-                  <div className="flex items-center">
-                    <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                      <path
-                        className={`fill-current text-slate-600 ${
-                          // pathname.includes("campaigns") &&
-                          "text-indigo-500"
-                        }`}
-                        d="M20 7a.75.75 0 01-.75-.75 1.5 1.5 0 00-1.5-1.5.75.75 0 110-1.5 1.5 1.5 0 001.5-1.5.75.75 0 111.5 0 1.5 1.5 0 001.5 1.5.75.75 0 110 1.5 1.5 1.5 0 00-1.5 1.5A.75.75 0 0120 7zM4 23a.75.75 0 01-.75-.75 1.5 1.5 0 00-1.5-1.5.75.75 0 110-1.5 1.5 1.5 0 001.5-1.5.75.75 0 111.5 0 1.5 1.5 0 001.5 1.5.75.75 0 110 1.5 1.5 1.5 0 00-1.5 1.5A.75.75 0 014 23z"
-                      />
-                      <path
-                        className={`fill-current text-slate-400 ${
-                          // pathname.includes("campaigns") &&
-                          "text-indigo-300"
-                        }`}
-                        d="M17 23a1 1 0 01-1-1 4 4 0 00-4-4 1 1 0 010-2 4 4 0 004-4 1 1 0 012 0 4 4 0 004 4 1 1 0 010 2 4 4 0 00-4 4 1 1 0 01-1 1zM7 13a1 1 0 01-1-1 4 4 0 00-4-4 1 1 0 110-2 4 4 0 004-4 1 1 0 112 0 4 4 0 004 4 1 1 0 010 2 4 4 0 00-4 4 1 1 0 01-1 1z"
-                      />
-                    </svg>
-                    <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                      Campaigns
-                    </span>
-                  </div>
-                </div>
-              </li>
-              {/* Team */}
-              <SidebarLinkGroup
-              //  activecondition={pathname.includes("team")}
-              >
-                {(handleClick, open) => {
-                  return (
-                    <React.Fragment>
-                      <a
-                        href="#0"
-                        className={`block text-slate-200 hover:text-white truncate transition duration-150 ${
-                          // pathname.includes("team") &&
-                          "hover:text-slate-200"
-                        }`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          sidebarExpanded
-                            ? handleClick()
-                            : setSidebarExpanded(true);
-                        }}
-                      >
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center">
-                            <svg
-                              className="shrink-0 h-6 w-6"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                className={`fill-current text-slate-600 ${
-                                  // pathname.includes("team") &&
-                                  "text-indigo-500"
-                                }`}
-                                d="M18.974 8H22a2 2 0 012 2v6h-2v5a1 1 0 01-1 1h-2a1 1 0 01-1-1v-5h-2v-6a2 2 0 012-2h.974zM20 7a2 2 0 11-.001-3.999A2 2 0 0120 7zM2.974 8H6a2 2 0 012 2v6H6v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5H0v-6a2 2 0 012-2h.974zM4 7a2 2 0 11-.001-3.999A2 2 0 014 7z"
-                              />
-                              <path
-                                className={`fill-current text-slate-400 ${
-                                  // pathname.includes("team") &&
-                                  "text-indigo-300"
-                                }`}
-                                d="M12 6a3 3 0 110-6 3 3 0 010 6zm2 18h-4a1 1 0 01-1-1v-6H6v-6a3 3 0 013-3h6a3 3 0 013 3v6h-3v6a1 1 0 01-1 1z"
-                              />
-                            </svg>
-                            <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                              Team
-                            </span>
-                          </div>
-                          {/* Icon */}
-                          <div className="flex shrink-0 ml-2">
-                            <svg
-                              className={`w-3 h-3 shrink-0 ml-1 fill-current text-slate-400 ${
-                                open && "transform rotate-180"
-                              }`}
-                              viewBox="0 0 12 12"
-                            >
-                              <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
-                            </svg>
-                          </div>
-                        </div>
-                      </a>
-                      <div className="lg:hidden lg:sidebar-expanded:block 2xl:block">
-                        <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
-                          <li className="mb-1 last:mb-0">
-                            <div
-                              end
-                              to="/"
-                              className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Team - Tabs
-                              </span>
-                            </div>
-                          </li>
-                          <li className="mb-1 last:mb-0">
-                            <div
-                              end
-                              to="/"
-                              className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Team - Tiles
-                              </span>
-                            </div>
-                          </li>
-                          <li className="mb-1 last:mb-0">
-                            <div
-                              end
-                              to="/"
-                              className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Profile
-                              </span>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </React.Fragment>
-                  );
-                }}
-              </SidebarLinkGroup>
-              {/* Messages */}
-              <li
-                className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
-                  // pathname.includes("messages") &&
-                  "bg-slate-900"
-                }`}
-              >
-                <div
-                  end
-                  to="/"
-                  className={`block text-slate-200 hover:text-white truncate transition duration-150 ${
-                    // pathname.includes("messages") &&
-                    "hover:text-slate-200"
-                  }`}
-                >
-                  <div className="flex items-center">
-                    <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                      <path
-                        className={`fill-current text-slate-600 ${
-                          // pathname.includes("messages") &&
-                          "text-indigo-500"
-                        }`}
-                        d="M14.5 7c4.695 0 8.5 3.184 8.5 7.111 0 1.597-.638 3.067-1.7 4.253V23l-4.108-2.148a10 10 0 01-2.692.37c-4.695 0-8.5-3.184-8.5-7.11C6 10.183 9.805 7 14.5 7z"
-                      />
-                      <path
-                        className={`fill-current text-slate-400 ${
-                          // pathname.includes("messages") &&
-                          "text-indigo-300"
-                        }`}
-                        d="M11 1C5.477 1 1 4.582 1 9c0 1.797.75 3.45 2 4.785V19l4.833-2.416C8.829 16.85 9.892 17 11 17c5.523 0 10-3.582 10-8s-4.477-8-10-8z"
-                      />
-                    </svg>
-                    <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                      Messages
-                    </span>
-                  </div>
-                </div>
-              </li>
-              {/* Tasks */}
             </ul>
           </div>
         </div>
@@ -538,10 +190,10 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 viewBox="0 0 24 24"
               >
                 <path
-                  className="text-slate-400"
+                  className="text-white"
                   d="M19.586 11l-5-5L16 4.586 23.414 12 16 19.414 14.586 18l5-5H7v-2z"
                 />
-                <path className="text-slate-600" d="M3 23H1V1h2z" />
+                <path className="text-white" d="M3 23H1V1h2z" />
               </svg>
             </button>
           </div>
