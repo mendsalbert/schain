@@ -41,7 +41,6 @@ function Dashboard() {
             </div>
             <div className="grid grid-cols-12 gap-6">
               <OrdersCard />
-
               <OrdersPendingCard />
               <OrderCancelCard />
               <Orders />
