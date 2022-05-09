@@ -27,9 +27,6 @@ function Order() {
 
           <main>
             <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-              {/* Welcome banner */}
-              <WelcomeBanner />
-              {/* Cards */}
               <div className="sm:flex sm:justify-end sm:items-center mb-8">
                 <div className="grid grid-flow-col sm:auto-cols-max justify-end sm:justify-end gap-2">
                   <button
@@ -51,9 +48,9 @@ function Order() {
                 </div>
               </div>
               <div className="grid grid-cols-12 gap-6">
-                <OrdersCard />
-                <OrdersPendingCard />
-                <OrderCancelCard />
+                {/* <OrdersCard /> */}
+                {/* <OrdersPendingCard /> */}
+                {/* <OrderCancelCard /> */}
                 <Orders />
               </div>
             </div>

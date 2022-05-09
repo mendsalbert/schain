@@ -12,10 +12,10 @@ import {
 
 function Orders() {
   return (
-    <div className=" col-span-full xl:col-span-12 bg-white shadow-lg w-full rounded-md border border-slate-200">
+    <div className=" col-span-full xl:col-span-12 bg-white shadow-lg w-full rounded-md border border-slate-200 p-3">
       <div className="w-full">
         <div className="py-4 flex flex-row w-full text-gray-600 items-center space-x-2">
-          <p className="text-xl font-medium">Order 1</p>
+          <p className="text-xl font-medium">Milo </p>
           <XCircleIcon className="w-8" />
         </div>
         <ol className="items-center sm:flex">
