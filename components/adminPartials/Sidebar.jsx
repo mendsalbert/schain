@@ -94,7 +94,11 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             </svg>
           </button>
           {/* Logo */}
-          <div end to="/" className="block">
+          <div
+            end
+            to="/"
+            className="block ring-2 ring-white rounded-full w-max h-max"
+          >
             <svg width="32" height="32" viewBox="0 0 32 32">
               <defs>
                 <linearGradient
