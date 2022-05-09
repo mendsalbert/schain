@@ -26,9 +26,9 @@ function Dashboard() {
             {/* Welcome banner */}
             <WelcomeBanner />
             {/* Cards */}
-            <div className="sm:flex sm:justify-between sm:items-center mb-8">
-              <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
-                <button className="px-4 py-2 flex flex-row items-center justify-center bg-indigo-500 hover:bg-indigo-600 text-white">
+            <div className="sm:flex sm:justify-end sm:items-center mb-8">
+              <div className="grid grid-flow-col sm:auto-cols-max justify-end sm:justify-end gap-2">
+                <button className="px-4 py-2 flex flex-row items-center justify-center bg-indigo-500 rounded-md hover:bg-indigo-600 text-white">
                   <svg
                     className="w-4 h-4 fill-current opacity-50 shrink-0"
                     viewBox="0 0 16 16"
