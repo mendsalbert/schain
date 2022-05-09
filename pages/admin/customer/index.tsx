@@ -1,3 +1,4 @@
+import { EyeIcon } from "@heroicons/react/outline";
 import React, { useState } from "react";
 import AdminSideNav from "../../../components/Admin/adminSideNav";
 import Orders from "../../../components/Admin/Orders";
@@ -42,25 +43,14 @@ const Admin = (props: Props) => {
           <div className=" w-full">
             <div className=" py-4 md:py-7">
               <div className="flex items-center justify-between">
-                <p className="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800 ">
-                  Tasks
+                <p className="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-500 ">
+                  Orders
                 </p>
-                <div className="py-3 px-4 flex items-center text-sm font-medium leading-none text-gray-600   bg-gray-200   hover:bg-gray-300     cursor-pointer rounded">
-                  <p>Sort By:</p>
-                  <select
-                    aria-label="select"
-                    className="focus:text-indigo-600 focus:outline-none bg-transparent ml-1"
-                  >
-                    <option className="text-sm text-indigo-800">Latest</option>
-                    <option className="text-sm text-indigo-800">Oldest</option>
-                    <option className="text-sm text-indigo-800">Latest</option>
-                  </select>
-                </div>
               </div>
             </div>
             <div className="bg-white shadow-lg ring-[1px] rounded-md ring-gray-200 py-4 md:py-7 px-4 md:px-8 xl:px-10">
               <div className="sm:flex items-center justify-between">
-                <div className="flex items-center">
+                <div className="flex items-center overflow-scroll md:overflow-x-hidden">
                   <a
                     className="rounded-full focus:outline-none focus:ring-2  focus:bg-indigo-50 focus:ring-indigo-800"
                     href=" javascript:void(0)"
@@ -74,7 +64,7 @@ const Admin = (props: Props) => {
                     href="javascript:void(0)"
                   >
                     <div className="py-2 px-8 text-gray-600   hover:text-indigo-700 hover:bg-indigo-100 rounded-full ">
-                      <p>Done</p>
+                      <p>Recieved</p>
                     </div>
                   </a>
                   <a
@@ -85,11 +75,77 @@ const Admin = (props: Props) => {
                       <p>Pending</p>
                     </div>
                   </a>
+                  <a
+                    className="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8"
+                    href="javascript:void(0)"
+                  >
+                    <div className="py-2 px-8 text-gray-600 hover:text-indigo-700 hover:bg-indigo-100 rounded-full ">
+                      <p>Returned</p>
+                    </div>
+                  </a>
                 </div>
               </div>
               <div className="mt-7 overflow-x-auto">
                 <table className="w-full whitespace-nowrap">
                   <tbody>
+                    <tr className="focus:outline-none   h-16 border border-gray-200 rounded-lg">
+                      <td className="">
+                        <div className="flex items-center pl-5">
+                          <p className="text-base font-medium leading-none text-gray-700   mr-2">
+                            Milo
+                          </p>
+                        </div>
+                      </td>
+                      <td className="pl-24">
+                        <div className="flex items-center">
+                          <img
+                            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg2.svg"
+                            alt="tag"
+                          />
+                          <p className="text-sm leading-none text-gray-600   ml-2">
+                            Beverage
+                          </p>
+                        </div>
+                      </td>
+                      <td className="pl-5">
+                        <div className="flex items-center">
+                          <img
+                            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg3.svg"
+                            alt="list"
+                          />
+                          <p className="text-sm leading-none text-gray-600   ml-2">
+                            04/07
+                          </p>
+                        </div>
+                      </td>
+
+                      <td className="pl-5">
+                        <div className="flex items-center">
+                          <img
+                            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg5.svg"
+                            alt="paper clip"
+                          />
+                          <p className="text-sm leading-none text-gray-600   ml-2">
+                            04/21
+                          </p>
+                        </div>
+                      </td>
+                      <td className="pl-5">
+                        <div className="flex items-center">
+                          <EyeIcon className="h-5 text-gray-600" />
+                          <p className="text-sm leading-none text-gray-600   ml-2">
+                            View
+                          </p>
+                        </div>
+                      </td>
+                      <td className="pl-5">
+                        <button className="py-3 px-3 text-sm focus:outline-none leading-none text-green-700 bg-green-100 rounded-full">
+                          Received
+                        </button>
+                      </td>
+                    </tr>
+                    <tr className="h-3"></tr>
+
                     <tr className="focus:outline-none  h-16 border border-gray-200 rounded-lg">
                       <td className="">
                         <div className="flex items-center pl-5">
