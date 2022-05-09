@@ -32,7 +32,7 @@ function Orders() {
               </tr>
             </thead>
             {/* Table body */}
-            <tbody className="text-sm font-medium divide-y divide-slate-100">
+            <tbody className="text-sm  font-medium divide-y divide-slate-100">
               {/* Row */}
               <tr>
                 <td className="p-2">
