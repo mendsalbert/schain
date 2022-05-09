@@ -11,7 +11,9 @@ const OrderModal = (props) => {
 
   return (
     <div className="p-5 font-Montserrat overflow-auto">
-      <p className="text-center text-gray-500 text-lg">Add Order</p>
+      <p className="text-center text-gray-500 text-lg">
+        Review and suggestions
+      </p>
       <div className="py-3 space-y-3">
         <input
           type="text"

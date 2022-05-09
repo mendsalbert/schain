@@ -17,7 +17,7 @@ function Orders() {
   return (
     <div className=" col-span-full xl:col-span-12 bg-white shadow-lg w-full rounded-md border border-slate-200 p-3">
       <div className="w-full">
-        <div className="py-4 flex flex-row  text-gray-600 items-center space-x-2">
+        <div className="py-4 flex md:flex-row flex-col  text-gray-600 md:items-center md:space-x-2 space-y-2 md:space-y-0">
           <p className="text-xl font-medium">Milo </p>
           <div className="cursor-pointer font-medium text-sm bg-green-500 w-max text-white rounded-full text-center  hover:text-gray-200 flex justify-center  items-center py-1 px-3">
             Recieved
@@ -28,7 +28,6 @@ function Orders() {
           <div
             onClick={() => {
               setOpen(!open);
-
               setComp(<ReviewModal />);
             }}
             className="cursor-pointer font-medium text-sm bg-blue-500 w-max text-white rounded-full text-center  hover:text-gray-200 flex justify-center  items-center py-1 px-3"
