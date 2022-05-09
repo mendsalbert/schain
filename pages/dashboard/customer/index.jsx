@@ -7,10 +7,13 @@ import Orders from "../../../components/adminPartials/dashboard/Orders";
 import OrdersCard from "../../../components/adminPartials/dashboard/OdersCards";
 import OrdersPendingCard from "../../../components/adminPartials/dashboard/OrdersPendingCard";
 import OrderCancelCard from "../../../components/adminPartials/dashboard/OrderCancelCard";
+import Modal from "../../../components/Modal";
+import OrderModal from "../../../components/OrderModal";
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
+  const [open, setOpen] = useState(false);
+  const [comp, setComp] = useState("");
   return (
     <div className="flex h-screen overflow-hidden font-Montserrat">
       {/* Sidebar */}
@@ -28,7 +31,14 @@ function Dashboard() {
             {/* Cards */}
             <div className="sm:flex sm:justify-end sm:items-center mb-8">
               <div className="grid grid-flow-col sm:auto-cols-max justify-end sm:justify-end gap-2">
-                <button className="px-4 py-2 flex flex-row items-center justify-center bg-indigo-500 rounded-md hover:bg-indigo-600 text-white">
+                <button
+                  onClick={() => {
+                    setOpen(!open);
+
+                    setComp(<OrderModal />);
+                  }}
+                  className="px-4 py-2 flex flex-row items-center justify-center bg-indigo-500 rounded-md hover:bg-indigo-600 text-white"
+                >
                   <svg
                     className="w-4 h-4 fill-current opacity-50 shrink-0"
                     viewBox="0 0 16 16"
@@ -47,6 +57,9 @@ function Dashboard() {
             </div>
           </div>
         </main>
+        <Modal open={open} onClose={() => setOpen(false)}>
+          {comp}
+        </Modal>
       </div>
     </div>
   );
