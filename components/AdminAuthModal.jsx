@@ -9,6 +9,7 @@ const AdminAuthModal = (props) => {
     if (username === uName && password === uPassword) {
       console.log("authenticated");
       localStorage.setItem("auth", true);
+      //pop meta mask approval here
     } else {
       alert("wrong password and username combination");
       localStorage.setItem("auth", false);
