@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { productData } from "../utils/sample-data";
 
 const OrderModal = (props) => {
+  const [image, setimage] = useState("");
   const [formInput, updateFormInput] = useState({
     title: "",
     description: "",
@@ -83,6 +85,7 @@ const OrderModal = (props) => {
       </p>
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full md:w-1/2 px-3">
+          <img src="/images/cerelac.png" />
           <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
             Product
           </label>
@@ -91,9 +94,9 @@ const OrderModal = (props) => {
               className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-state"
             >
-              <option>New Mexico</option>
-              <option>Missouri</option>
-              <option>Texas</option>
+              {productData.map((product) => (
+                <option>{product.name}</option>
+              ))}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
               <svg
