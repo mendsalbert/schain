@@ -4,7 +4,7 @@ import React from "react";
 function Orders() {
   return (
     <div className="col-span-full xl:col-span-12 bg-white shadow-lg w-full rounded-md border border-slate-200">
-      <header className="px-5 py-4 border-b border-slate-100 flex flex-row items-center">
+      <header className="px-5 py-4 border-b border-slate-100 flex flex-row items-center space-x-4">
         <h2 className="font-semibold text-slate-800">All Orders</h2>
 
         <select
@@ -25,10 +25,10 @@ function Orders() {
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
           aria-label="Default select example"
         >
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option selected>Select</option>
+          <option value="1">All</option>
+          <option value="2">Pending</option>
+          <option value="3">Retured</option>
         </select>
       </header>
       <div className="p-3">
