@@ -10,24 +10,31 @@ const AuthModal = (props) => {
         //web3modal here
         localStorage.setItem("customerAddr", address);
         break;
-      case "admin":
-        window.location.href = "/dashboard/customer/";
-        break;
       case "adminstrator":
         window.location.href = "/dashboard/admin/";
         break;
       case "manager":
-        window.location.href = "/dashboard/manager/";
+        if (address === "0x0") window.location.href = "/dashboard/manager/";
+        //web3modal here
+        localStorage.setItem("managerAddr", address);
         break;
       case "manufacturer":
-        window.location.href = "/dashboard/manufacture/";
+        if (address === "0x0") window.location.href = "/dashboard/manufacture/";
+        //web3modal here
+        localStorage.setItem("manufactureAddr", address);
         break;
       case "tester":
-        window.location.href = "/dashboard/tester/";
+        if (address === "0x0") window.location.href = "/dashboard/tester/";
+        //web3modal here
+        localStorage.setItem("testerAddr", address);
         break;
+
       case "transporter":
-        window.location.href = "/dashboard/transport/";
+        if (address === "0x0") window.location.href = "/dashboard/transport/";
+        //web3modal here
+        localStorage.setItem("transportAddr", address);
         break;
+
       default:
         break;
     }
