@@ -9,6 +9,7 @@ const AdminAuthModal = (props) => {
     if (username === uName && password === uPassword) {
       console.log("authenticated");
       localStorage.setItem("auth", true);
+      window.location.reload();
       //pop meta mask approval here
     } else {
       alert("wrong password and username combination");
@@ -16,6 +17,7 @@ const AdminAuthModal = (props) => {
       console.log("not authenticated");
     }
   };
+
   return (
     <>
       <div className="p-5 font-Montserrat overflow-auto">

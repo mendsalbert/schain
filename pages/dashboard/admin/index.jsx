@@ -18,8 +18,8 @@ function Dashboard() {
   useEffect(() => {
     let auth = localStorage.getItem("auth");
     console.log(auth);
-    if (!auth) {
-      setOpen(!open);
+    if (!auth || auth === "false") {
+      setOpen(true);
       setComp(<AdminAuthModal />);
     } else {
       setOpen(false);
