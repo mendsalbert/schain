@@ -11,6 +11,7 @@ const AdminAuthModal = (props) => {
       localStorage.setItem("auth", true);
     } else {
       alert("wrong password and username combination");
+      localStorage.setItem("auth", false);
       console.log("not authenticated");
     }
   };

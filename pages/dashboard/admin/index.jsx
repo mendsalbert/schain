@@ -9,14 +9,16 @@ import OrdersPendingCard from "../../../components/adminPartials/dashboard/Order
 import OrderCancelCard from "../../../components/adminPartials/dashboard/OrderCancelCard";
 import Modal from "../../../components/Modal";
 import OrderModal from "../../../components/OrderModal.jsx";
-import AdminAuthModal from "../../../components/AdminAuthModal";
+import AdminAuthModal from "../../../components/AdminAuthModal.jsx";
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
   const tablesection = useRef(null);
   useEffect(() => {
-    if (true) {
+    let auth = localStorage.getItem("auth");
+    console.log(auth);
+    if (!auth) {
       setOpen(!open);
       setComp(<AdminAuthModal />);
     }
