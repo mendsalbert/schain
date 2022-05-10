@@ -20,8 +20,8 @@ function Dashboard() {
   const [comp, setComp] = useState("");
 
   useEffect(() => {
-    let transporterAddr = localStorage.getItem("transporterAddr");
-    if (transporterAddr !== "0x0") {
+    let transportAddr = localStorage.getItem("transportAddr");
+    if (transportAddr !== "0x0") {
       window.location.href = "/";
     }
   }, []);
