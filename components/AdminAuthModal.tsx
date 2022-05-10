@@ -3,7 +3,7 @@ import { productData } from "../utils/sample-data";
 
 const AdminAuthModal = (props) => {
   const [username, setusername] = useState("");
-  const [setpassword, setsetpassword] = useState("");
+  const [password, setpassword] = useState("");
   return (
     <>
       <div className="p-5 font-Montserrat overflow-auto">
