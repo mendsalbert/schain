@@ -66,7 +66,6 @@ function Dashboard() {
                 <OrdersCard />
                 <OrdersPendingCard />
                 <OrderCancelCard />
-
                 <Orders />
               </div>
             </div>
