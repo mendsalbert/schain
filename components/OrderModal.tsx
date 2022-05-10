@@ -76,24 +76,22 @@ const OrderModal = (props) => {
     //   </div>
     // </div>
 
-    <form className="w-full max-w-lg">
+    // <form className="w-full ">
+    <>
+      <p className=" text-gray-500 uppercase text-md pb-4 font-bold">
+        Add Order
+      </p>
       <div className="flex flex-wrap -mx-3 mb-6">
-        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            for="grid-first-name"
-          >
-            First Name
+        <div className="w-full md:w-1/2 px-3">
+          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+            Last Name
           </label>
           <input
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            id="grid-first-name"
+            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            id="grid-last-name"
             type="text"
-            placeholder="Jane"
+            placeholder="Doe"
           />
-          <p className="text-red-500 text-xs italic">
-            Please fill out this field.
-          </p>
         </div>
         <div className="w-full md:w-1/2 px-3">
           <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
@@ -171,7 +169,21 @@ const OrderModal = (props) => {
           />
         </div>
       </div>
-    </form>
+      <div className="flex items-start">
+        <div className="text-xl font-bold text-slate-800 mr-2">
+          Total cost : $50
+        </div>
+      </div>
+      <div className="flex flex-wrap -mx-3 mb-6 mt-4">
+        <div className="w-full px-3">
+          <div className="bg-gradient-to-r w-full from-cyan-500 to-blue-500 px-6 py-3 rounded-lg text-center cursor-pointer text-white">
+            Make Order
+          </div>
+        </div>
+      </div>
+    </>
+
+    // </form>
   );
 };
 
