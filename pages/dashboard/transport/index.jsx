@@ -14,14 +14,17 @@ import UsersCard from "../../../components/adminPartials/dashboard/UsersCard";
 import UserRoles from "../../../components/adminPartials/dashboard/UserRoles";
 import ApproveOrder from "../../../components/adminPartials/dashboard/ApproveOrder";
 import ConfrimOrders from "../../../components/adminPartials/dashboard/ConfirmOrders";
+import OrdersProduced from "../../../components/adminPartials/dashboard/OrdersProduced";
+import OrdersToTest from "../../../components/adminPartials/dashboard/OrdersToTest";
+import OrderToTransport from "../../../components/adminPartials/dashboard/OrderToTransport";
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
 
   useEffect(() => {
-    let transportAddr = localStorage.getItem("transportAddr");
-    if (transportAddr !== "0x0") {
+    let manufactureAddr = localStorage.getItem("manufactureAddr");
+    if (manufactureAddr !== "0x0") {
       window.location.href = "/";
     }
   }, []);
@@ -41,14 +44,20 @@ function Dashboard() {
           <main>
             <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
               {/* Welcome banner */}
-              <WelcomeBanner />
+              <WelcomeBanner
+                type="Transpoter"
+                message="Here are some order to transport"
+              />
               {/* Cards */}
 
               <div className="grid grid-cols-12 gap-6">
                 {/* <O /> */}
-                <OrdersPendingCard />
-                <ConfrimOrders />
-                <ApproveOrder />
+                {/* <OrdersPendingCard /> */}
+                {/* <ConfrimOrders /> */}
+                {/* <ApproveOrder /> */}
+                {/* <OrdersProduced /> */}
+                {/* <OrdersToTest /> */}
+                <OrderToTransport />
               </div>
             </div>
           </main>
