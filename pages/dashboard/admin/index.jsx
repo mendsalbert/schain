@@ -21,6 +21,8 @@ function Dashboard() {
     if (!auth) {
       setOpen(!open);
       setComp(<AdminAuthModal />);
+    } else {
+      setOpen(false);
     }
   }, []);
 
@@ -72,7 +74,7 @@ function Dashboard() {
         </div>
       </div>
       {/* if not authenticated? return false else setOpen is true */}
-      <Modal open={open} onClose={() => setOpen(false)}>
+      <Modal open={open} onClose={() => setOpen(!auth ? true : false)}>
         {comp}
       </Modal>
     </>
