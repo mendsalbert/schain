@@ -85,7 +85,6 @@ const OrderModal = (props) => {
       </p>
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full md:w-1/2 px-3">
-          <img src="/images/cerelac.png" />
           <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
             Product
           </label>
@@ -95,7 +94,11 @@ const OrderModal = (props) => {
               id="grid-state"
             >
               {productData.map((product) => (
-                <option>{product.name}</option>
+                <option>
+                  {" "}
+                  <img src="/images/cerelac.png" />
+                  {product.name}
+                </option>
               ))}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
