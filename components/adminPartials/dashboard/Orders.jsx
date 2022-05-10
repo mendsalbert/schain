@@ -79,7 +79,7 @@ function Orders() {
                     <div className="text-center text-sky-500">$3,877</div>
                   </td>
                   <td className="p-2">
-                    <div className="text-center text-sky-500">Address</div>
+                    <div className="text-center ">Address</div>
                   </td>
                   <td className="p-2">
                     <div className="text-center text-sky-500">
@@ -110,7 +110,7 @@ function Orders() {
                   <div className="text-center text-sky-500">$3,877</div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center text-sky-500">Address</div>
+                  <div className="text-center ">Address</div>
                 </td>
                 <td className="p-2">
                   <div className="text-center text-sky-500">
@@ -140,7 +140,7 @@ function Orders() {
                   <div className="text-center text-sky-500">$3,877</div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center text-sky-500">Address</div>
+                  <div className="text-center">Address</div>
                 </td>
                 <td className="p-2">
                   <div className="text-center text-sky-500">
