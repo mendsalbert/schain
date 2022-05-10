@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 import Sidebar from "../../../components/adminPartials/Sidebar";
 import Header from "../../../components/adminPartials/Header";
@@ -14,7 +14,13 @@ function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
-  const tablesection = useRef(null);
+
+  useEffect(() => {
+    let customerAddress = localStorage.getItem("customerAddr");
+    if (customerAddress !== "0x0") {
+      window.location.href = "/";
+    }
+  }, []);
 
   return (
     <>

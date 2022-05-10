@@ -2,6 +2,37 @@ import React, { useState, useEffect } from "react";
 
 const AuthModal = (props) => {
   const [role, setrole] = useState("");
+  let address = "0x0";
+  const onAuthUserHandler = () => {
+    switch (role) {
+      case "customer":
+        if (address === "0x0") window.location.href = "/dashboard/customer/";
+        //web3modal here
+        localStorage.setItem("customerAddr", address);
+        break;
+      case "admin":
+        window.location.href = "/dashboard/customer/";
+        break;
+      case "adminstrator":
+        window.location.href = "/dashboard/admin/";
+        break;
+      case "manager":
+        window.location.href = "/dashboard/manager/";
+        break;
+      case "manufacturer":
+        window.location.href = "/dashboard/manufacture/";
+        break;
+      case "tester":
+        window.location.href = "/dashboard/tester/";
+        break;
+      case "transporter":
+        window.location.href = "/dashboard/transport/";
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <>
       <div className="relative">
@@ -32,7 +63,10 @@ const AuthModal = (props) => {
       </div>
       <div className="flex flex-wrap -mx-3 mb-6 mt-4">
         <div className="w-full px-3">
-          <div className="bg-gradient-to-r w-full from-cyan-500 to-blue-500 px-6 py-3 rounded-lg text-center cursor-pointer text-white">
+          <div
+            onClick={() => onAuthUserHandler()}
+            className="bg-gradient-to-r w-full from-cyan-500 to-blue-500 px-6 py-3 rounded-lg text-center cursor-pointer text-white"
+          >
             Connect
           </div>
         </div>
