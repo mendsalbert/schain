@@ -14,6 +14,7 @@ import UsersCard from "../../../components/adminPartials/dashboard/UsersCard";
 import UserRoles from "../../../components/adminPartials/dashboard/UserRoles";
 import ApproveOrder from "../../../components/adminPartials/dashboard/ApproveOrder";
 import ConfrimOrders from "../../../components/adminPartials/dashboard/ConfirmOrders";
+import OrdersProduced from "../../../components/adminPartials/dashboard/OrdersProduced";
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
@@ -46,9 +47,10 @@ function Dashboard() {
 
               <div className="grid grid-cols-12 gap-6">
                 {/* <O /> */}
-                <OrdersPendingCard />
-                <ConfrimOrders />
-                <ApproveOrder />
+                {/* <OrdersPendingCard /> */}
+                {/* <ConfrimOrders /> */}
+                {/* <ApproveOrder /> */}
+                <OrdersProduced />
               </div>
             </div>
           </main>

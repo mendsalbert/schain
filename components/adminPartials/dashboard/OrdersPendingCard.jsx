@@ -1,7 +1,7 @@
 import { ExclamationCircleIcon } from "@heroicons/react/outline";
 import React from "react";
 
-function OrdersPendingCard() {
+function OrdersPendingCard({}) {
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white shadow-lg rounded-md border border-slate-200">
       <div className="px-5 pt-5">
