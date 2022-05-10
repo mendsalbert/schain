@@ -60,35 +60,37 @@ function Orders() {
             {/* Table body */}
             <tbody className="text-sm  font-medium divide-y divide-slate-100">
               {/* Row */}
-              <tr>
-                <td className="p-2">
-                  <div className="flex items-center">
-                    <div className="text-slate-800">Milo</div>
-                  </div>
-                </td>
-                <td className="p-2">
-                  <div className="text-center">Beverage</div>
-                </td>
-                <td className="p-2">
-                  <div className="text-center ">22/05/22</div>
-                </td>
-                <td className="p-2">
-                  <div className="text-center">57</div>
-                </td>
-                <td className="p-2">
-                  <div className="text-center text-sky-500">$3,877</div>
-                </td>
-                <td className="p-2">
-                  <div className="text-center text-sky-500">
-                    <EyeIcon className="h-5 text-gray-600" />
-                  </div>
-                </td>
-                <td className="p-2">
-                  <span className=" px-2 py-2 rounded-full text-green-700 bg-green-100">
-                    Recieved
-                  </span>
-                </td>
-              </tr>
+              <Link href={"/dashboard/customer/order"}>
+                <tr>
+                  <td className="p-2">
+                    <div className="flex items-center">
+                      <div className="text-slate-800">Milo</div>
+                    </div>
+                  </td>
+                  <td className="p-2">
+                    <div className="text-center">Beverage</div>
+                  </td>
+                  <td className="p-2">
+                    <div className="text-center ">22/05/22</div>
+                  </td>
+                  <td className="p-2">
+                    <div className="text-center">57</div>
+                  </td>
+                  <td className="p-2">
+                    <div className="text-center text-sky-500">$3,877</div>
+                  </td>
+                  <td className="p-2">
+                    <div className="text-center text-sky-500">
+                      <EyeIcon className="h-5 text-gray-600" />
+                    </div>
+                  </td>
+                  <td className="p-2">
+                    <span className=" px-2 py-2 rounded-full text-green-700 bg-green-100">
+                      Recieved
+                    </span>
+                  </td>
+                </tr>
+              </Link>
               <tr>
                 <td className="p-2">
                   <div className="flex items-center">
