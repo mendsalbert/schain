@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import Sidebar from "../../../components/adminPartials/Sidebar";
 import Header from "../../../components/adminPartials/Header";
@@ -14,10 +14,22 @@ function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
+  const tablesection = useRef(null);
+
+  const scrollDown = (ref) => {
+    console.log(tablesection);
+    // console.log("I just triggered this function");
+    window.scrollTo({
+      top: tablesection.current.offsetTop,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
       <div className="flex h-screen overflow-hidden font-Montserrat">
         {/* Sidebar */}
+
         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
         {/* Content area */}
@@ -54,7 +66,9 @@ function Dashboard() {
                 <OrdersCard />
                 <OrdersPendingCard />
                 <OrderCancelCard />
-                <Orders />
+                <div ref={tablesection}>
+                  <Orders />
+                </div>
               </div>
             </div>
           </main>
