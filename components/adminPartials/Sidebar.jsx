@@ -1,16 +1,17 @@
 import { ClipboardListIcon, ViewGridIcon } from "@heroicons/react/outline";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-
+import { useRouter } from "next/router";
 import SidebarLinkGroup from "./SidebarLinkGroup";
 
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
   // const location = useLocation();
   // const { pathname } = location;
-
+  const router = useRouter();
   const trigger = useRef(null);
   const sidebar = useRef(null);
 
+  console.log(router.pathname);
   let storedSidebarExpanded;
 
   if (typeof window !== "undefined") {
@@ -151,11 +152,18 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
               >
                 <Link
                   href={"/dashboard/customer/"}
-                  className={`block text-slate-200 hover:text-white truncate transition duration-150 ${"hover:text-slate-200"}`}
+
+                  // className={`block text-slate-200 hover:text-white truncate transition duration-150 ${"hover:text-slate-200"}`}
                 >
-                  <div className="flex items-center">
+                  <div
+                    className={`flex items-center ${
+                      router.pathname === "/dashboard/customer"
+                        ? "ring-2 rounded-md ring-white"
+                        : ""
+                    }`}
+                  >
                     <ViewGridIcon className=" shrink-0 h-9 text-white" />
-                    <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                    <span className="text-sm font-medium ml-3 text-white lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                       Dashboard
                     </span>
                   </div>
