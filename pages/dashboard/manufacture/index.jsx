@@ -20,8 +20,8 @@ function Dashboard() {
   const [comp, setComp] = useState("");
 
   useEffect(() => {
-    let managerAddr = localStorage.getItem("managerAddr");
-    if (managerAddr !== "0x0") {
+    let manufactureAddr = localStorage.getItem("manufactureAddr");
+    if (manufactureAddr !== "0x0") {
       window.location.href = "/";
     }
   }, []);
