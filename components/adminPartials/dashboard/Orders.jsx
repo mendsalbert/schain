@@ -1,6 +1,6 @@
 import { EyeIcon } from "@heroicons/react/outline";
 import React from "react";
-
+import Link from "next/link";
 function Orders() {
   return (
     <div className="col-span-full xl:col-span-12 bg-white shadow-lg w-full rounded-md border border-slate-200">
@@ -53,6 +53,8 @@ function Orders() {
                 <th className="p-2">
                   <div className="font-semibold text-center">Price</div>
                 </th>
+                <th className="p-2"></th>
+                <th className="p-2"></th>
               </tr>
             </thead>
             {/* Table body */}
