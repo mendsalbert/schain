@@ -46,8 +46,13 @@ function Orders() {
                 <th className="p-2">
                   <div className="font-semibold text-center">Quantity</div>
                 </th>
+
                 <th className="p-2">
                   <div className="font-semibold text-center">Price</div>
+                </th>
+
+                <th className="p-2">
+                  <div className="font-semibold text-center">Address</div>
                 </th>
                 <th className="p-2"></th>
                 <th className="p-2"></th>
@@ -72,6 +77,9 @@ function Orders() {
                   </td>
                   <td className="p-2">
                     <div className="text-center text-sky-500">$3,877</div>
+                  </td>
+                  <td className="p-2">
+                    <div className="text-center text-sky-500">Address</div>
                   </td>
                   <td className="p-2">
                     <div className="text-center text-sky-500">
@@ -102,6 +110,9 @@ function Orders() {
                   <div className="text-center text-sky-500">$3,877</div>
                 </td>
                 <td className="p-2">
+                  <div className="text-center text-sky-500">Address</div>
+                </td>
+                <td className="p-2">
                   <div className="text-center text-sky-500">
                     <EyeIcon className="h-5 text-gray-600" />
                   </div>
@@ -127,6 +138,9 @@ function Orders() {
                 </td>
                 <td className="p-2">
                   <div className="text-center text-sky-500">$3,877</div>
+                </td>
+                <td className="p-2">
+                  <div className="text-center text-sky-500">Address</div>
                 </td>
                 <td className="p-2">
                   <div className="text-center text-sky-500">
