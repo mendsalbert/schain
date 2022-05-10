@@ -5,7 +5,7 @@ const OrderModal = (props) => {
   const [image, setimage] = useState("");
   const [productname, setproductname] = useState("");
 
-  const filterImage = productData.filter((p) => p.id === productname);
+  const filterImage = productData.filter((p) => p.name === productname);
   console.log(filterImage);
   const [formInput, updateFormInput] = useState({
     title: "",
@@ -126,6 +126,9 @@ const OrderModal = (props) => {
             placeholder="quantity"
           />
         </div>
+      </div>
+      <div>
+        <img src={filterImage[0].imageUrl} className="mb-4" />
       </div>
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full px-3">
