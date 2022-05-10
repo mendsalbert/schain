@@ -15,7 +15,7 @@ function UserCard() {
           Total number of customers
         </div>
         <div className="flex items-start">
-          <div className="text-3xl font-bold text-slate-800 mr-2">50</div>
+          <div className="text-3xl font-bold text-slate-800 mr-2">500</div>
         </div>
       </div>
       <div className="grow"></div>
