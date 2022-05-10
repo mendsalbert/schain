@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import Sidebar from "../../../components/adminPartials/Sidebar";
 import Header from "../../../components/adminPartials/Header";
@@ -9,16 +9,19 @@ import OrdersPendingCard from "../../../components/adminPartials/dashboard/Order
 import OrderCancelCard from "../../../components/adminPartials/dashboard/OrderCancelCard";
 import Modal from "../../../components/Modal";
 import OrderModal from "../../../components/OrderModal.jsx";
-import AuthModal from "../../../components/AuthModal";
+import AdminAuthModal from "../../../components/AdminAuthModal";
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
   const tablesection = useRef(null);
+  useEffect(() => {
+    if (true) {
+      setOpen(!open);
+      setComp(<AdminAuthModal />);
+    }
+  }, []);
 
-  if (true) {
-    setComp(<AuthModal />);
-  }
   return (
     <>
       <div className="flex h-screen overflow-hidden font-Montserrat">
@@ -66,6 +69,7 @@ function Dashboard() {
           </main>
         </div>
       </div>
+      {/* if not authenticated? return false else setOpen is true */}
       <Modal open={open} onClose={() => setOpen(false)}>
         {comp}
       </Modal>
