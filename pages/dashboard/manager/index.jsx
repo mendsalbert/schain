@@ -41,7 +41,10 @@ function Dashboard() {
           <main>
             <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
               {/* Welcome banner */}
-              <WelcomeBanner />
+              <WelcomeBanner
+                type="Manager"
+                message="Here are some orders to confirm"
+              />
               {/* Cards */}
 
               <div className="grid grid-cols-12 gap-6">

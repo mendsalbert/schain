@@ -75,7 +75,7 @@ function UserMenu() {
         >
           <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200">
             <div className="font-medium text-slate-800">0xfedhlgedfa...5ef</div>
-            <div className="text-xs text-slate-500 italic">Customer</div>
+            {/* <div className="text-xs text-slate-500 italic">Customer</div> */}
           </div>
           <ul>
             <li className="p-2">
