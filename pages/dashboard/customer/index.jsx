@@ -8,7 +8,7 @@ import OrdersCard from "../../../components/adminPartials/dashboard/OdersCards";
 import OrdersPendingCard from "../../../components/adminPartials/dashboard/OrdersPendingCard";
 import OrderCancelCard from "../../../components/adminPartials/dashboard/OrderCancelCard";
 import Modal from "../../../components/Modal";
-import OrderModal from "../../../components/OrderModal";
+import OrderModal from "../../../components/OrderModal.jsx";
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);

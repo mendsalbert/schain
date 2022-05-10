@@ -3,6 +3,10 @@ import { productData } from "../utils/sample-data";
 
 const OrderModal = (props) => {
   const [image, setimage] = useState("");
+  const [productname, setproductname] = useState("");
+
+  const filterImage = productData.filter((p) => p.id === productname);
+  console.log(filterImage);
   const [formInput, updateFormInput] = useState({
     title: "",
     description: "",
@@ -90,15 +94,14 @@ const OrderModal = (props) => {
           </label>
           <div className="relative">
             <select
+              onChange={(e) => {
+                setproductname(e.target.value);
+              }}
               className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-state"
             >
               {productData.map((product) => (
-                <option>
-                  {" "}
-                  <img src="/images/cerelac.png" />
-                  {product.name}
-                </option>
+                <option value={product.name}>{product.name}</option>
               ))}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
