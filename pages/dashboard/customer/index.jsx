@@ -66,9 +66,8 @@ function Dashboard() {
                 <OrdersCard />
                 <OrdersPendingCard />
                 <OrderCancelCard />
-                <div ref={tablesection}>
-                  <Orders />
-                </div>
+
+                <Orders />
               </div>
             </div>
           </main>

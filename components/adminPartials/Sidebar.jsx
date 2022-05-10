@@ -4,15 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import SidebarLinkGroup from "./SidebarLinkGroup";
 
-function Sidebar({ sidebarOpen, setSidebarOpen, tablesection }) {
-  const scrollDown = (ref) => {
-    console.log(tablesection);
-    // console.log("I just triggered this function");
-    window.scrollTo({
-      top: tablesection.current.offsetTop,
-      behavior: "smooth",
-    });
-  };
+function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const router = useRouter();
   const trigger = useRef(null);
   const sidebar = useRef(null);
@@ -175,26 +167,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen, tablesection }) {
                 </Link>
               </li>
               {/* Analytics */}
-              <li
-                onClick={() => {
-                  scrollDown();
-                }}
-                className={`px-2 py-2 rounded-sm mb-0.5 last:mb-0 `}
-              >
-                <div
-                  end
-                  to="/"
-                  className={`block text-slate-200 hover:text-white truncate transition duration-150 ${"hover:text-slate-200"}`}
-                >
-                  <div className="flex items-center">
-                    <ClipboardListIcon className=" shrink-0 h-9 text-white" />
-
-                    <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                      Orders
-                    </span>
-                  </div>
-                </div>
-              </li>
             </ul>
           </div>
         </div>
