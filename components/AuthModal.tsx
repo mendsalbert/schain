@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { productData } from "../utils/sample-data";
 
 const AuthModal = (props) => {
+  const [role, setrole] = useState("");
   return (
     <>
       <div className="relative">
         <select
+          onChange={(e) => {
+            setrole(e.target.value);
+          }}
           className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           id="grid-state"
         >
           <option>Select Role</option>
-          <option>Customer</option>
-          <option>Admininstrator</option>
-          <option>Manager</option>
-          <option>Manufacturer</option>
-          <option>Tester</option>
-          <option>Tranporter</option>
+          <option value="customer">Customer</option>
+          <option value="adminstrator">Admininstrator</option>
+          <option value="manager">Manager</option>
+          <option value="manufacturer">Manufacturer</option>
+          <option value="tester">Tester</option>
+          <option value="transporter">Tranporter</option>
         </select>
         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
           <svg
