@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import AuthModal from "../AuthModal";
 
+import Modal from "../Modal";
 function Header() {
   const [top, setTop] = useState(true);
-
+  const [open, setOpen] = useState(false);
+  const [comp, setComp] = useState("");
   // detect whether user has scrolled the page down by 10px
   useEffect(() => {
     const scrollHandler = () => {
@@ -32,7 +35,14 @@ function Header() {
           <nav className="flex flex-grow">
             <ul className="flex flex-grow justify-end flex-wrap items-center">
               <li>
-                <button className="bg-gradient-to-r active:outline-none active:border-none from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max   px-8 py-2  rounded-full cursor-pointer text-white">
+                <button
+                  onClick={() => {
+                    setOpen(!open);
+
+                    setComp(<AuthModal />);
+                  }}
+                  className="bg-gradient-to-r active:outline-none active:border-none from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max   px-8 py-2  rounded-full cursor-pointer text-white"
+                >
                   Connet
                 </button>
               </li>
@@ -40,6 +50,9 @@ function Header() {
           </nav>
         </div>
       </div>
+      <Modal open={open} onClose={() => setOpen(false)}>
+        {comp}
+      </Modal>
     </header>
   );
 }
