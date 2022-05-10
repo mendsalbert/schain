@@ -56,9 +56,12 @@ const OrderModal = (props) => {
         </div>
       </div>
       <div>
-        <img src={filterImage[0].imageUrl} className="mb-4" />
+        <img
+          src={filterImage.length > 0 ? filterImage[0].imageUrl : ""}
+          className="mb-4"
+        />
       </div>
-      <div className="flex flex-wrap -mx-3 mb-6">
+      <div className="flex flex-wrap -mx-3 mb-1">
         <div className="w-full px-3">
           <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
             Address Line 1
@@ -71,7 +74,7 @@ const OrderModal = (props) => {
           />
         </div>
       </div>
-      <div className="flex flex-wrap -mx-3 mb-6">
+      <div className="flex flex-wrap -mx-3 mb-1">
         <div className="w-full px-3">
           <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
             Phone Number
@@ -121,7 +124,9 @@ const OrderModal = (props) => {
       </div>
       <div className="flex items-start">
         <div className="text-xl font-bold text-slate-800 mr-2">
-          Total cost : ${filterImage[0].price * quantity} - 0.00041ETH
+          Total cost : $
+          {filterImage.length > 0 ? filterImage[0].price * quantity : 0} -
+          0.00041ETH
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-6 mt-4">

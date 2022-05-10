@@ -41,9 +41,7 @@ function Orders() {
                 <th className="p-2">
                   <div className="font-semibold text-left">Name</div>
                 </th>
-                <th className="p-2">
-                  <div className="font-semibold text-center">Type</div>
-                </th>
+
                 <th className="p-2">
                   <div className="font-semibold text-center">Order date</div>
                 </th>
@@ -67,9 +65,7 @@ function Orders() {
                       <div className="text-slate-800">Milo</div>
                     </div>
                   </td>
-                  <td className="p-2">
-                    <div className="text-center">Beverage</div>
-                  </td>
+
                   <td className="p-2">
                     <div className="text-center ">22/05/22</div>
                   </td>
@@ -97,9 +93,7 @@ function Orders() {
                     <div className="text-slate-800">Milo</div>
                   </div>
                 </td>
-                <td className="p-2">
-                  <div className="text-center">Beverage</div>
-                </td>
+
                 <td className="p-2">
                   <div className="text-center ">22/05/22</div>
                 </td>
@@ -126,9 +120,7 @@ function Orders() {
                     <div className="text-slate-800">Milo</div>
                   </div>
                 </td>
-                <td className="p-2">
-                  <div className="text-center">Beverage</div>
-                </td>
+
                 <td className="p-2">
                   <div className="text-center ">22/05/22</div>
                 </td>
