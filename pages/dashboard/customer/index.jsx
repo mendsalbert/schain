@@ -16,15 +16,6 @@ function Dashboard() {
   const [comp, setComp] = useState("");
   const tablesection = useRef(null);
 
-  const scrollDown = (ref) => {
-    console.log(tablesection);
-    // console.log("I just triggered this function");
-    window.scrollTo({
-      top: tablesection.current.offsetTop,
-      behavior: "smooth",
-    });
-  };
-
   return (
     <>
       <div className="flex h-screen overflow-hidden font-Montserrat">
