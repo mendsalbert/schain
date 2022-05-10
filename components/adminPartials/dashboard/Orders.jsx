@@ -7,13 +7,15 @@ function Orders() {
       <header className="px-5 py-4 border-b border-slate-100 flex flex-row items-center space-x-4">
         <h2 className="font-semibold text-slate-800">All Orders</h2>
 
-        <div className="w-full md:w-1/2 px-3">
+        <div className="w-max md:w-max px-3">
           <div className="relative">
             <select
               className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-state"
             >
-              <option>Select Product</option>
+              <option>All</option>
+              <option>Pending</option>
+              <option>Returned</option>
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
               <svg
