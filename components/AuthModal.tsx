@@ -3,60 +3,8 @@ import { useContext } from "react";
 import { AuthContext } from "../utils/AuthProvider";
 
 const AuthModal = (props) => {
-  const {
-    address,
-    chainId,
-    connect,
-    contract,
-    disconnect,
-    provider,
-    web3Provider,
-    logout,
-  } = useContext(AuthContext);
+  const { connect } = useContext(AuthContext);
   const [role, setrole] = useState("customer");
-
-  const onAuthUserHandler = () => {
-    console.log("called");
-    console.log(address);
-    switch (role) {
-      case "customer":
-        // if (address === "address from smart contract") window.location.href = "/dashboard/customer/";
-        // console.log(address);
-        if (address) {
-          localStorage.setItem("customerAddr", address);
-          window.location.href = "/dashboard/customer/";
-        }
-
-        break;
-      case "adminstrator":
-        window.location.href = "/dashboard/admin/";
-        break;
-      case "manager":
-        if (address === "0x0") window.location.href = "/dashboard/manager/";
-        //web3modal here
-        localStorage.setItem("managerAddr", address);
-        break;
-      case "manufacturer":
-        if (address === "0x0") window.location.href = "/dashboard/manufacture/";
-        //web3modal here
-        localStorage.setItem("manufactureAddr", address);
-        break;
-      case "tester":
-        if (address === "0x0") window.location.href = "/dashboard/tester/";
-        //web3modal here
-        localStorage.setItem("testerAddr", address);
-        break;
-
-      case "transporter":
-        if (address === "0x0") window.location.href = "/dashboard/transport/";
-        //web3modal here
-        localStorage.setItem("transportAddr", address);
-        break;
-
-      default:
-        break;
-    }
-  };
 
   return (
     <>
@@ -90,12 +38,8 @@ const AuthModal = (props) => {
       <div className="flex flex-wrap -mx-3 mb-6 mt-4">
         <div className="w-full  px-3">
           <div
-            // onClick={connect}
             onClick={() => {
               connect(role);
-              // setTimeout(() => {
-              // onAuthUserHandler();
-              // }, 2000);
             }}
             className="bg-gradient-to-r w-full from-cyan-500 to-blue-500 px-6 py-3 rounded-lg text-center cursor-pointer text-white"
           >
@@ -104,8 +48,6 @@ const AuthModal = (props) => {
         </div>
       </div>
     </>
-
-    // </form>
   );
 };
 
