@@ -92,10 +92,10 @@ const AuthModal = (props) => {
           <div
             // onClick={connect}
             onClick={() => {
-              connect();
-              setTimeout(() => {
-                onAuthUserHandler();
-              }, 2000);
+              connect;
+              // setTimeout(() => {
+              onAuthUserHandler();
+              // }, 2000);
             }}
             className="bg-gradient-to-r w-full from-cyan-500 to-blue-500 px-6 py-3 rounded-lg text-center cursor-pointer text-white"
           >
