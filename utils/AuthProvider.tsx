@@ -8,15 +8,35 @@ import {
 import { useRouter } from "next/router";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { ethers, providers } from "ethers";
-// import { donationAddress } from "../config";
+import { donationAddress } from "../config";
 import axios from "axios";
 import WalletLink from "walletlink";
-// import DonationContractABI from "../artifacts/contracts/Donation.sol/Donation.json";
+import DonationContractABI from "../artifacts/contracts/Donation.sol/Donation.json";
 import Web3Modal from "web3modal";
 import { ellipseAddress, getChainData } from "../lib/utilities";
 
 //write a type for status and user
-export const AuthContext = createContext({ status: {}, user: {} });
+type authContextType = {
+  provider?: any;
+  web3Provider?: any;
+  contract?: any;
+  address?: string;
+  chainId?: number;
+  connect?: () => void;
+  disconnect?: () => void;
+};
+const authContextDefaultValues: authContextType = {
+  provider: null,
+  web3Provider: null,
+  contract: null,
+  address: null,
+  chainId: null,
+  connect: () => {},
+  disconnect: () => {},
+};
+export const AuthContext = createContext<authContextType>(
+  authContextDefaultValues
+);
 
 const INFURA_ID = "460f40a260564ac4a4f4b3fffb032dad";
 
@@ -61,6 +81,7 @@ if (typeof window !== "undefined") {
 }
 
 type StateType = {
+  contract?: any;
   provider?: any;
   web3Provider?: any;
   address?: string;
@@ -76,6 +97,11 @@ type ActionType =
       chainId?: StateType["chainId"];
     }
   | {
+      type: "SET_CONTRACT";
+
+      contract?: StateType["contract"];
+    }
+  | {
       type: "SET_ADDRESS";
       address?: StateType["address"];
     }
@@ -88,6 +114,7 @@ type ActionType =
     };
 
 const initialState: StateType = {
+  contract: null,
   provider: null,
   web3Provider: null,
   address: null,
@@ -103,6 +130,12 @@ function reducer(state: StateType, action: ActionType): StateType {
         web3Provider: action.web3Provider,
         address: action.address,
         chainId: action.chainId,
+      };
+    case "SET_CONTRACT":
+      return {
+        ...state,
+
+        contract: action.contract,
       };
     case "SET_ADDRESS":
       return {
@@ -122,6 +155,114 @@ function reducer(state: StateType, action: ActionType): StateType {
 }
 
 const AuthProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { provider, web3Provider, contract, address, chainId } = state;
+
+  async function loadContracts() {
+    /* create a generic provider and query for unsold market items */
+    // const provider = new ethers.providers.JsonRpcProvider();
+    const provider = new ethers.providers.JsonRpcProvider(
+      "https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c"
+    );
+    //
+
+    const contract = new ethers.Contract(
+      donationAddress,
+      DonationContractABI.abi,
+      provider
+    );
+    const { chainId } = await provider.getNetwork();
+    if (chainId) {
+      dispatch({
+        type: "SET_CONTRACT",
+        contract: contract,
+      });
+      const data = await contract.donationCount();
+    } else {
+      window.alert("Donation contract not deployed to detected network");
+    }
+  }
+
+  const connect = useCallback(async function () {
+    // This is the initial `provider` that is returned when
+    // using web3Modal to connect. Can be MetaMask or WalletConnect.
+    const provider = await web3Modal.connect();
+
+    // We plug the initial `provider` into ethers.js and get back
+    // a Web3Provider. This will add on methods from ethers.js and
+    // event listeners such as `.on()` will be different.
+    const web3Provider = new providers.Web3Provider(provider);
+
+    const signer = web3Provider.getSigner() as any;
+    const address = await signer.getAddress();
+    const network = (await web3Provider.getNetwork()) as any;
+
+    console.log(signer);
+
+    dispatch({
+      type: "SET_WEB3_PROVIDER",
+      provider,
+      web3Provider,
+      address,
+      chainId: network.chainId,
+    });
+  }, []);
+
+  const disconnect = useCallback(
+    async function () {
+      await web3Modal.clearCachedProvider();
+      if (provider?.disconnect && typeof provider.disconnect === "function") {
+        await provider.disconnect();
+      }
+      dispatch({
+        type: "RESET_WEB3_PROVIDER",
+      });
+    },
+    [provider]
+  );
+
+  useEffect(() => {
+    if (web3Modal.cachedProvider) {
+      connect();
+    }
+  }, [connect]);
+
+  useEffect(() => {
+    if (provider?.on) {
+      const handleAccountsChanged = (accounts: string[]) => {
+        console.log("accountsChanged", accounts);
+        dispatch({
+          type: "SET_ADDRESS",
+          address: accounts[0],
+        });
+      };
+
+      const handleChainChanged = (_hexChainId: string) => {
+        window.location.reload();
+      };
+
+      const handleDisconnect = (error: { code: number; message: string }) => {
+        console.log("disconnect", error);
+        disconnect();
+      };
+
+      provider.on("accountsChanged", handleAccountsChanged);
+      provider.on("chainChanged", handleChainChanged);
+      provider.on("disconnect", handleDisconnect);
+
+      // Subscription Cleanup
+      return () => {
+        if (provider.removeListener) {
+          provider.removeListener("accountsChanged", handleAccountsChanged);
+          provider.removeListener("chainChanged", handleChainChanged);
+          provider.removeListener("disconnect", handleDisconnect);
+        }
+      };
+    }
+  }, [provider, disconnect]);
+
+  const chainData = getChainData(chainId);
+
   const [loggedIn, setLoggedIn] = useState(false);
   const [userDetails, setUserDetails] = useState([]);
 
@@ -141,18 +282,24 @@ const AuthProvider = ({ children }) => {
 
   const contextValue = {
     status: {
-      loggedIn,
-      login,
-      logout,
+      provider,
+      web3Provider,
+      contract,
+      address,
+      chainId,
+      connect,
+      disconnect,
     },
-    user: {
-      userDetails,
-      setUserDetails,
-    },
+    // user: {
+    //   userDetails,
+    //   setUserDetails,
+    // },
   };
 
   return (
-    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={contextValue as authContextType}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 export default AuthProvider;
