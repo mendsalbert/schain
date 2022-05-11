@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../utils/AuthProvider";
 
 const AuthModal = (props) => {
+  const { status, user } = useContext(AuthContext);
   const [role, setrole] = useState("");
+  //get this address from authprovidere
   let address = "0x0";
+
   const onAuthUserHandler = () => {
     switch (role) {
       case "customer":
@@ -71,7 +76,7 @@ const AuthModal = (props) => {
       <div className="flex flex-wrap -mx-3 mb-6 mt-4">
         <div className="w-full px-3">
           <div
-            onClick={() => onAuthUserHandler()}
+            // onClick={() => onAuthUserHandler()}
             className="bg-gradient-to-r w-full from-cyan-500 to-blue-500 px-6 py-3 rounded-lg text-center cursor-pointer text-white"
           >
             Connect
