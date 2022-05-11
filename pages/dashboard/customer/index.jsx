@@ -21,22 +21,14 @@ function Content() {
   if (address) {
     if (typeof window !== "undefined") {
       let customerAddress = localStorage.getItem("customerAddr");
-      console.log(customerAddress);
-      console.log(address);
       if (customerAddress !== address) {
-        console.log("not authenticated");
-        // window.location.href = "/";
+        window.location.href = "/";
       } else {
-        console.log(" authenticated");
-        // window.location.href = "/dashboard/customer";
       }
     }
   } else {
-    window.location.href = "/";
   }
 
-  // setcustomeraddress(customerAddress);
-  // }, []);
   return (
     <>
       <div className="flex h-screen overflow-hidden font-Montserrat">
