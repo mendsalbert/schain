@@ -15,8 +15,8 @@ function OrdersToTest() {
             >
               {/* <option>All</option> */}
               <option>All</option>
-              <option>Tested</option>
               <option>Pending</option>
+              <option>Produced</option>
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
               <svg
@@ -50,6 +50,9 @@ function OrdersToTest() {
                 <th className="p-2">
                   <div className="font-semibold text-center">Price</div>
                 </th>
+                <th className="p-2">
+                  <div className="font-semibold text-center">Address</div>
+                </th>
                 <th className="p-2"></th>
                 <th className="p-2"></th>
               </tr>
@@ -75,10 +78,9 @@ function OrdersToTest() {
                     <div className="text-center text-sky-500">$3,877</div>
                   </td>
                   <td className="p-2">
-                    <div className="text-center text-sky-500">
-                      <EyeIcon className="h-5 text-gray-600" />
-                    </div>
+                    <div className="text-center">57</div>
                   </td>
+
                   <td className="p-2">
                     <span className=" px-2 py-2 rounded-full text-green-700 bg-green-100">
                       Tested
@@ -103,9 +105,7 @@ function OrdersToTest() {
                   <div className="text-center text-sky-500">$3,877</div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center text-sky-500">
-                    <EyeIcon className="h-5 text-gray-600" />
-                  </div>
+                  <div className="text-center">57</div>
                 </td>
                 <td className="p-2">
                   <span className=" px-2 py-2 rounded-full text-red-700 bg-red-100">
@@ -130,9 +130,7 @@ function OrdersToTest() {
                   <div className="text-center text-sky-500">$3,877</div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center text-sky-500">
-                    <EyeIcon className="h-5 text-gray-600" />
-                  </div>
+                  <div className="text-center">57</div>
                 </td>
                 <td className="p-2">
                   <span className=" px-2 py-2 rounded-full text-green-700 bg-green-100">
