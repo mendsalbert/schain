@@ -15,6 +15,7 @@ const AuthModal = (props) => {
   } = useContext(AuthContext);
   const [role, setrole] = useState("");
 
+  console.log(address);
   const onAuthUserHandler = () => {
     switch (role) {
       case "customer":
@@ -89,7 +90,7 @@ const AuthModal = (props) => {
           <div
             // onClick={connect}
             onClick={() => {
-              connect;
+              connect();
               onAuthUserHandler();
             }}
             className="bg-gradient-to-r w-full from-cyan-500 to-blue-500 px-6 py-3 rounded-lg text-center cursor-pointer text-white"
