@@ -15,8 +15,9 @@ const AuthModal = (props) => {
   } = useContext(AuthContext);
   const [role, setrole] = useState("customer");
 
-  // console.log(address);
+  console.log(address);
   const onAuthUserHandler = () => {
+    console.log("called");
     switch (role) {
       case "customer":
         // if (address === "address from smart contract") window.location.href = "/dashboard/customer/";
@@ -91,8 +92,8 @@ const AuthModal = (props) => {
           <div
             // onClick={connect}
             onClick={() => {
-              connect();
               onAuthUserHandler();
+              connect();
             }}
             className="bg-gradient-to-r w-full from-cyan-500 to-blue-500 px-6 py-3 rounded-lg text-center cursor-pointer text-white"
           >

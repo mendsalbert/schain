@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../../utils/AuthProvider";
 import AuthModal from "../AuthModal";
-
 import Modal from "../Modal";
 function Header() {
   const [top, setTop] = useState(true);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
   // detect whether user has scrolled the page down by 10px
+
+  const { address, disconnect, web3Provider } = useContext(AuthContext);
+  console.log(web3Provider);
   useEffect(() => {
     const scrollHandler = () => {
       window.pageYOffset > 10 ? setTop(false) : setTop(true);
@@ -35,16 +38,27 @@ function Header() {
           <nav className="flex flex-grow">
             <ul className="flex flex-grow justify-end flex-wrap items-center">
               <li>
-                <button
-                  onClick={() => {
-                    setOpen(!open);
+                {!web3Provider ? (
+                  <button
+                    onClick={() => {
+                      setOpen(!open);
 
-                    setComp(<AuthModal />);
-                  }}
-                  className="bg-gradient-to-r active:outline-none active:border-none from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max   px-8 py-2  rounded-full cursor-pointer text-white"
-                >
-                  Connet
-                </button>
+                      setComp(<AuthModal />);
+                    }}
+                    className="bg-gradient-to-r active:outline-none active:border-none from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max   px-8 py-2  rounded-full cursor-pointer text-white"
+                  >
+                    Connect
+                  </button>
+                ) : (
+                  <>
+                    <button
+                      onClick={disconnect}
+                      className="bg-gradient-to-r active:outline-none active:border-none from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max   px-4 py-2  rounded-full cursor-pointer text-white"
+                    >
+                      Disconnect
+                    </button>
+                  </>
+                )}
               </li>
             </ul>
           </nav>
