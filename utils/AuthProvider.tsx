@@ -22,7 +22,7 @@ type authContextType = {
   contract?: any;
   address?: string;
   chainId?: number;
-  connect?: () => void;
+  connect?: (value: string) => void;
   disconnect?: () => void;
   logout?: () => void;
 };
@@ -185,7 +185,7 @@ const AuthProvider = ({ children }) => {
     }
   }
 
-  const connect = useCallback(async function () {
+  const connect = useCallback(async function (role = "") {
     // This is the initial `provider` that is returned when
     // using web3Modal to connect. Can be MetaMask or WalletConnect.
     const provider = await web3Modal.connect();
@@ -194,13 +194,11 @@ const AuthProvider = ({ children }) => {
     // a Web3Provider. This will add on methods from ethers.js and
     // event listeners such as `.on()` will be different.
     const web3Provider = new providers.Web3Provider(provider);
-
     const signer = web3Provider.getSigner() as any;
     const address = await signer.getAddress();
     const network = (await web3Provider.getNetwork()) as any;
 
     // console.log(signer);
-
     dispatch({
       type: "SET_WEB3_PROVIDER",
       provider,
@@ -208,6 +206,45 @@ const AuthProvider = ({ children }) => {
       address,
       chainId: network.chainId,
     });
+
+    //auth users page
+    console.log(role);
+    switch (role) {
+      case "customer":
+        if (address) {
+          localStorage.setItem("customerAddr", address);
+          window.location.href = "/dashboard/customer/";
+        }
+        break;
+      case "adminstrator":
+        window.location.href = "/dashboard/admin/";
+        break;
+      case "manager":
+        // if (address === "address from smart contract") window.location.href = "/dashboard/customer/";
+        if (address === "0x0") window.location.href = "/dashboard/manager/";
+        //web3modal here
+        localStorage.setItem("managerAddr", address);
+        break;
+      case "manufacturer":
+        if (address === "0x0") window.location.href = "/dashboard/manufacture/";
+        //web3modal here
+        localStorage.setItem("manufactureAddr", address);
+        break;
+      case "tester":
+        if (address === "0x0") window.location.href = "/dashboard/tester/";
+        //web3modal here
+        localStorage.setItem("testerAddr", address);
+        break;
+
+      case "transporter":
+        if (address === "0x0") window.location.href = "/dashboard/transport/";
+        //web3modal here
+        localStorage.setItem("transportAddr", address);
+        break;
+
+      default:
+        break;
+    }
   }, []);
 
   const disconnect = useCallback(
