@@ -24,6 +24,7 @@ type authContextType = {
   chainId?: number;
   connect?: () => void;
   disconnect?: () => void;
+  logout?: () => void;
 };
 const authContextDefaultValues: authContextType = {
   provider: null,
@@ -31,8 +32,9 @@ const authContextDefaultValues: authContextType = {
   contract: null,
   address: null,
   chainId: null,
-  connect: () => {},
-  disconnect: () => {},
+  connect: null,
+  disconnect: null,
+  logout: () => {},
 };
 export const AuthContext = createContext<authContextType>(
   authContextDefaultValues
@@ -221,7 +223,12 @@ const AuthProvider = ({ children }) => {
     [provider]
   );
 
+  const logout = () => {
+    alert("something");
+  };
+
   useEffect(() => {
+    loadContracts();
     if (web3Modal.cachedProvider) {
       connect();
     }
@@ -264,21 +271,20 @@ const AuthProvider = ({ children }) => {
   const chainData = getChainData(chainId);
 
   const contextValue = {
-    status: {
-      provider,
-      web3Provider,
-      contract,
-      address,
-      chainId,
-      connect,
-      disconnect,
-    },
+    // status{
+    provider,
+    web3Provider,
+    contract,
+    address,
+    chainId,
+    connect,
+    disconnect,
+    logout,
+    // },
   };
 
   return (
-    <AuthContext.Provider value={contextValue as authContextType}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
 };
 export default AuthProvider;

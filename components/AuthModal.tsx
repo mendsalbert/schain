@@ -11,6 +11,7 @@ const AuthModal = (props) => {
     disconnect,
     provider,
     web3Provider,
+    logout,
   } = useContext(AuthContext);
   const [role, setrole] = useState("");
 
@@ -18,12 +19,12 @@ const AuthModal = (props) => {
     switch (role) {
       case "customer":
         // if (address === "address from smart contract") window.location.href = "/dashboard/customer/";
+        console.log(address);
+        localStorage.setItem("customerAddr", address);
         if (address) {
-          connect();
           window.location.href = "/dashboard/customer/";
         }
 
-        localStorage.setItem("customerAddr", address);
         break;
       case "adminstrator":
         window.location.href = "/dashboard/admin/";
@@ -84,9 +85,13 @@ const AuthModal = (props) => {
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-6 mt-4">
-        <div className="w-full px-3">
+        <div className="w-full  px-3">
           <div
-            // onClick={() => onAuthUserHandler()}
+            // onClick={connect}
+            onClick={() => {
+              connect;
+              onAuthUserHandler();
+            }}
             className="bg-gradient-to-r w-full from-cyan-500 to-blue-500 px-6 py-3 rounded-lg text-center cursor-pointer text-white"
           >
             Connect
