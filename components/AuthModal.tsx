@@ -3,16 +3,26 @@ import { useContext } from "react";
 import { AuthContext } from "../utils/AuthProvider";
 
 const AuthModal = (props) => {
-  const { status, user } = useContext(AuthContext);
+  const {
+    address,
+    chainId,
+    connect,
+    contract,
+    disconnect,
+    provider,
+    web3Provider,
+  } = useContext(AuthContext);
   const [role, setrole] = useState("");
-  //get this address from authprovidere
-  let address = "0x0";
 
   const onAuthUserHandler = () => {
     switch (role) {
       case "customer":
-        if (address === "0x0") window.location.href = "/dashboard/customer/";
-        //web3modal here
+        // if (address === "address from smart contract") window.location.href = "/dashboard/customer/";
+        if (address) {
+          connect();
+          window.location.href = "/dashboard/customer/";
+        }
+
         localStorage.setItem("customerAddr", address);
         break;
       case "adminstrator":

@@ -263,23 +263,6 @@ const AuthProvider = ({ children }) => {
 
   const chainData = getChainData(chainId);
 
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [userDetails, setUserDetails] = useState([]);
-
-  const login = (value) => {
-    alert("logging in");
-    // setLoggedIn(true);
-    // setUserDetails({
-    //   name: "Alan",
-    //   notifications: 3,
-    // });
-  };
-
-  const logout = (value) => {
-    setLoggedIn(false);
-    setUserDetails([]);
-  };
-
   const contextValue = {
     status: {
       provider,
@@ -290,10 +273,6 @@ const AuthProvider = ({ children }) => {
       connect,
       disconnect,
     },
-    // user: {
-    //   userDetails,
-    //   setUserDetails,
-    // },
   };
 
   return (
