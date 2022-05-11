@@ -13,14 +13,14 @@ const AuthModal = (props) => {
     web3Provider,
     logout,
   } = useContext(AuthContext);
-  const [role, setrole] = useState("");
+  const [role, setrole] = useState("customer");
 
-  console.log(address);
+  // console.log(address);
   const onAuthUserHandler = () => {
     switch (role) {
       case "customer":
         // if (address === "address from smart contract") window.location.href = "/dashboard/customer/";
-        console.log(address);
+        // console.log(address);
         localStorage.setItem("customerAddr", address);
         if (address) {
           window.location.href = "/dashboard/customer/";
@@ -61,13 +61,14 @@ const AuthModal = (props) => {
     <>
       <div className="relative">
         <select
+          required
           onChange={(e) => {
             setrole(e.target.value);
           }}
           className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           id="grid-state"
         >
-          <option>Select Role</option>
+          <option>User Type</option>
           <option value="customer">Customer</option>
           <option value="adminstrator">Admininstrator</option>
           <option value="manager">Manager</option>

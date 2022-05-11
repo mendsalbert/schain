@@ -1,42 +1,43 @@
 import React, { useState, useEffect, useContext } from "react";
-import Sidebar from "../../../components/adminPartials/Sidebar";
-import Header from "../../../components/adminPartials/Header";
-import WelcomeBanner from "../../../components/adminPartials/dashboard/WelcomeBanner";
-import Orders from "../../../components/adminPartials/dashboard/Orders";
-import OrdersCard from "../../../components/adminPartials/dashboard/OdersCards";
-import OrdersPendingCard from "../../../components/adminPartials/dashboard/OrdersPendingCard";
-import OrderCancelCard from "../../../components/adminPartials/dashboard/OrderCancelCard";
-import Modal from "../../../components/Modal";
-import OrderModal from "../../../components/OrderModal.jsx";
-import { AuthContext } from "../../../utils/AuthProvider";
-import { off } from "process";
-// import Content from "../../../components/customer/content";
+import Sidebar from "../adminPartials/Sidebar";
+import Header from "../adminPartials/Header";
+import WelcomeBanner from "../adminPartials/dashboard/WelcomeBanner";
+import Orders from "../adminPartials/dashboard/Orders";
+import OrdersCard from "../adminPartials/dashboard/OdersCards";
+import OrdersPendingCard from "../adminPartials/dashboard/OrdersPendingCard";
+import OrderCancelCard from "../adminPartials/dashboard/OrderCancelCard";
+// import Modal from "../../../components/Modal";
+import Modal from "../Modal";
+import OrderModal from "../OrderModal";
+// import OrderModal from "../../../components/OrderModal.jsx";
+import { AuthContext } from "../../utils/AuthProvider";
+
 function Content() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
 
-  const { address } = useContext(AuthContext);
-  // useEffect(() => {
-  if (address) {
-    if (typeof window !== "undefined") {
-      let customerAddress = localStorage.getItem("customerAddr");
-      console.log(customerAddress);
-      console.log(address);
-      if (customerAddress !== address) {
-        console.log("not authenticated");
-        // window.location.href = "/";
-      } else {
-        console.log(" authenticated");
-        // window.location.href = "/dashboard/customer";
-      }
-    }
-  } else {
-    window.location.href = "/";
-  }
+  const {
+    address,
+    chainId,
+    connect,
+    contract,
+    disconnect,
+    provider,
+    web3Provider,
+    logout,
+  } = useContext(AuthContext);
+  //   const [role, setrole] = useState("customer");
 
-  // setcustomeraddress(customerAddress);
-  // }, []);
+  console.log(address);
+  useEffect(() => {
+    let customerAddress = localStorage.getItem("customerAddr");
+    console.log(customerAddress);
+    console.log(address);
+    // if (customerAddress !== address) {
+    //   window.location.href = "/";
+    // }
+  }, []);
   return (
     <>
       <div className="flex h-screen overflow-hidden font-Montserrat">
@@ -91,8 +92,4 @@ function Content() {
   );
 }
 
-function Dashboard() {
-  return <Content />;
-}
-
-export default Dashboard;
+export default Content;

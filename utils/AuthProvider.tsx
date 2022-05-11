@@ -199,7 +199,7 @@ const AuthProvider = ({ children }) => {
     const address = await signer.getAddress();
     const network = (await web3Provider.getNetwork()) as any;
 
-    console.log(signer);
+    // console.log(signer);
 
     dispatch({
       type: "SET_WEB3_PROVIDER",
