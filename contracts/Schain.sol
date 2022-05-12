@@ -43,6 +43,7 @@ contract Schain {
       string zipcode;
       string state;
       uint recievedate;
+      uint confirmdate;
       uint producedate;
       uint testdate;
       uint transportdate; 
@@ -52,6 +53,7 @@ contract Schain {
       bool produced;
       bool tested;
       bool transported;
+      bool recieved;
     }
 
     event AddOrder (
@@ -68,6 +70,7 @@ contract Schain {
       string zipcode,
       string state,
       uint recievedate,
+      uint confirmdate,
       uint producedate,
       uint testdate,
       uint transportdate, 
@@ -76,7 +79,8 @@ contract Schain {
       bool confirmed,
       bool produced,
       bool tested,
-      bool transported
+      bool transported,
+      bool recieved
     );
 
     event RoleAdded (
@@ -102,12 +106,12 @@ contract Schain {
     //modifier functions
 
     //add role
-     function addRole(string memory _role, address _roleaddress) public payable {
-       require(_roleaddress == roles[_role], "Role has been added already");
-       roles[_role] = _roleaddress;
-       rolesCount++;
-       emit RoleAdded(_role, _roleaddress);
-     }
+    function addRole(string memory _role, address _roleaddress) public payable {
+      require(_roleaddress == roles[_role], "Role has been added already");
+      roles[_role] = _roleaddress;
+      rolesCount++;
+      emit RoleAdded(_role, _roleaddress);
+    }
 
     //add order
     function addOrderItem(
@@ -138,6 +142,7 @@ contract Schain {
      order.state = _state;
      order.recievedate = 0;
      order.producedate = 0;
+     order.confirmdate = 0;
      order.testdate = 0;
      order.transportdate = 0;
      order.pending = true;
@@ -146,21 +151,105 @@ contract Schain {
      order.produced = false;
      order.tested = false;
      order.transported = false;
-     emit AddOrder(ordersCount, msg.sender, _product, _quantity,order.orderdate, msg.value, _addressline, _contact, _city, order.review, _zipcode, _state, order.recievedate, order.producedate, order.testdate, order.transportdate, order.pending, order.returned, order.confirmed, order.produced, order.tested, transported);
+     order.recieved = false;
+
+     emit AddOrder(ordersCount, msg.sender, _product, _quantity,order.orderdate, msg.value, _addressline, _contact, _city, order.review, _zipcode, _state, order.recievedate, order.confirmdate , order.producedate, order.testdate, order.transportdate, order.pending, order.returned, order.confirmed, order.produced, order.tested, order.transported, order.recieved);
     }
 
     //confirm order
-    //test order
+    function confrimOrder(uint _id, string memory _role) public{
+      require(_id > 0 && _id <= ordersCount,"order id not valid");
+      require(roles[_role] != msg.sender , 'You dont have permission to confirm order');
+      OrderItem storage order = orders[_id];
+      require(order.confirmed == false);
+      order.confirmed = true;
+      order.confirmdate = block.timestamp;
+      orders[_id] = order;
+    }
+
     //produced order
+     function produceOrder(uint _id, string memory _role) public{
+      require(_id > 0 && _id <= ordersCount,"order id not valid");
+      require(roles[_role] != msg.sender , 'You dont have permission to produce order');
+      OrderItem storage order = orders[_id];
+      require(order.produced == false);
+      order.produced = true;
+      order.producedate = block.timestamp;
+      orders[_id] = order;
+    }
+
+    //test order
+     function testOrder(uint _id, string memory _role) public{
+      require(_id > 0 && _id <= ordersCount,"order id not valid");
+      require(roles[_role] != msg.sender , 'You dont have permission to test order');
+      OrderItem storage order = orders[_id];
+      require(order.tested == false);
+      order.tested = true;
+      order.testdate = block.timestamp;
+      orders[_id] = order;
+    }
+
     //transported order
+     function transportOrder(uint _id, string memory _role) public{
+      require(_id > 0 && _id <= ordersCount,"order id not valid");
+      require(roles[_role] != msg.sender , 'You dont have permission to transport order');
+      OrderItem storage order = orders[_id];
+      require(order.transported == false);
+      order.transported = true;
+      order.transportdate = block.timestamp;
+      orders[_id] = order;
+    }
+    
     //add review
+     function addReveiw(uint _id, string memory _review) public{
+      require(_id > 0 && _id <= ordersCount,"order id not valid");
+      OrderItem storage order = orders[_id];
+      order.review = _review;
+      orders[_id] = order;
+    }
+
+    //return order
+     function returnOrder(uint _id, string memory _review) public{
+      require(_id > 0 && _id <= ordersCount,"order id not valid");
+      OrderItem storage order = orders[_id];
+      order.review = _review;
+      orders[_id] = order;
+    }
+      
+    //recieved order
+    function receiveOrder(uint _id) public{
+      require(_id > 0 && _id <= ordersCount,"order id not valid");
+      OrderItem storage order = orders[_id];
+      order.recieved = true;
+      orders[_id] = order;
+    }
 
     //get function
 
      //users get
     //my orders
-    //my pending
-    //my returns
+     function fetchMyOrders() public view returns (OrderItem[] memory) {
+      uint totalItemCount = ordersCount;
+      uint itemCount = 0;
+      uint currentIndex = 0;
+
+      for (uint i = 0; i < totalItemCount; i++) {
+        if (orders[i + 1].owner == msg.sender) {
+          itemCount += 1;
+        }
+      }
+
+      OrderItem[] memory items = new OrderItem[](itemCount);
+      for (uint i = 0; i < totalItemCount; i++) {
+        if (orders[i + 1].owner == msg.sender) {
+          uint currentId = i + 1;
+          OrderItem storage order = orders[currentId];
+          items[currentIndex] = order;
+          currentIndex += 1;
+        }
+      }
+      return items;
+    }
 
     //all orders
     function fetchOrderItems() public view returns (OrderItem[] memory){
