@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import Sidebar from "../../../components/adminPartials/Sidebar";
 import Header from "../../../components/adminPartials/Header";
 import WelcomeBanner from "../../../components/adminPartials/dashboard/WelcomeBanner";
@@ -17,7 +17,6 @@ function Content() {
   const [comp, setComp] = useState("");
 
   const { address } = useContext(AuthContext);
-  // useEffect(() => {
   if (address) {
     if (typeof window !== "undefined") {
       let customerAddress = localStorage.getItem("customerAddr");

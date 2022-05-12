@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 
 import Sidebar from "../../../components/adminPartials/Sidebar";
 import Header from "../../../components/adminPartials/Header";
@@ -14,17 +14,24 @@ import UsersCard from "../../../components/adminPartials/dashboard/UsersCard";
 import UserRoles from "../../../components/adminPartials/dashboard/UserRoles";
 import ApproveOrder from "../../../components/adminPartials/dashboard/ApproveOrder";
 import ConfrimOrders from "../../../components/adminPartials/dashboard/ConfirmOrders";
+import { AuthContext } from "../../../utils/AuthProvider";
+
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
 
-  useEffect(() => {
-    let managerAddr = localStorage.getItem("managerAddr");
-    if (managerAddr !== "0x0") {
-      window.location.href = "/";
+  const { address } = useContext(AuthContext);
+  if (address) {
+    if (typeof window !== "undefined") {
+      let managerAddr = localStorage.getItem("managerAddr");
+      if (managerAddr !== address) {
+        window.location.href = "/";
+      } else {
+      }
     }
-  }, []);
+  } else {
+  }
 
   return (
     <>

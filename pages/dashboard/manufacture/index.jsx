@@ -1,31 +1,27 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import Sidebar from "../../../components/adminPartials/Sidebar";
 import Header from "../../../components/adminPartials/Header";
 import WelcomeBanner from "../../../components/adminPartials/dashboard/WelcomeBanner";
-import Orders from "../../../components/adminPartials/dashboard/Orders";
-import OrdersCard from "../../../components/adminPartials/dashboard/OdersCards";
-import OrdersPendingCard from "../../../components/adminPartials/dashboard/OrdersPendingCard";
-import OrderCancelCard from "../../../components/adminPartials/dashboard/OrderCancelCard";
 import Modal from "../../../components/Modal";
-import OrderModal from "../../../components/OrderModal.jsx";
-import AdminAuthModal from "../../../components/AdminAuthModal.jsx";
-import UsersCard from "../../../components/adminPartials/dashboard/UsersCard";
-import UserRoles from "../../../components/adminPartials/dashboard/UserRoles";
-import ApproveOrder from "../../../components/adminPartials/dashboard/ApproveOrder";
-import ConfrimOrders from "../../../components/adminPartials/dashboard/ConfirmOrders";
 import OrdersProduced from "../../../components/adminPartials/dashboard/OrdersProduced";
+import { AuthContext } from "../../../utils/AuthProvider";
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
 
-  useEffect(() => {
-    let manufactureAddr = localStorage.getItem("manufactureAddr");
-    if (manufactureAddr !== "0x0") {
-      window.location.href = "/";
+  const { address } = useContext(AuthContext);
+  if (address) {
+    if (typeof window !== "undefined") {
+      let manufactureAddr = localStorage.getItem("manufactureAddr");
+      if (manufactureAddr !== address) {
+        window.location.href = "/";
+      } else {
+      }
     }
-  }, []);
+  } else {
+  }
 
   return (
     <>

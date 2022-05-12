@@ -221,14 +221,17 @@ const AuthProvider = ({ children }) => {
         break;
       case "manager":
         // if (address === "address from smart contract") window.location.href = "/dashboard/customer/";
-        if (address === "0x0") window.location.href = "/dashboard/manager/";
-        //web3modal here
-        localStorage.setItem("managerAddr", address);
+        if (address) {
+          localStorage.setItem("managerAddr", address);
+          window.location.href = "/dashboard/manager/";
+        }
         break;
       case "manufacturer":
-        if (address === "0x0") window.location.href = "/dashboard/manufacture/";
-        //web3modal here
-        localStorage.setItem("manufactureAddr", address);
+        // if (address === "address from smart contract") window.location.href = "/dashboard/customer/";
+        if (address) {
+          localStorage.setItem("manufactureAddr", address);
+          window.location.href = "/dashboard/manufacture/";
+        }
         break;
       case "tester":
         if (address === "0x0") window.location.href = "/dashboard/tester/";
