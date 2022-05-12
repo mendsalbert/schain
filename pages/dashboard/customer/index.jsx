@@ -20,18 +20,21 @@ function Dashboard() {
   const [cancel, setcancel] = useState("");
   const { address, signer } = useContext(AuthContext);
 
-  // console.log(signer.fetchMyOrders());
-  const loadOrders = async () => {
-    // const data = await signer.fetchMyOrders();
-    // const pending = productData.filter((p) => p.name === productname);
-    // setorders(data);
-    // console.log(data);
-    console.log(address);
-  };
+  console.log(signer);
+  console.log(address);
 
   useEffect(() => {
-    loadOrders();
-  }, []);
+    if (address) {
+      const loadOrders = async () => {
+        const data = await signer.fetchMyOrders();
+        const pending = data.filter((p) => p.pending === true);
+        console.log(pending);
+        setorders(data);
+        // console.log(items);
+      };
+      loadOrders();
+    }
+  }, [signer]);
 
   if (address) {
     if (typeof window !== "undefined") {
