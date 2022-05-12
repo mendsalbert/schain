@@ -22,10 +22,11 @@ function Dashboard() {
 
   // console.log(signer.fetchMyOrders());
   const loadOrders = async () => {
-    const data = await signer.fetchMyOrders();
+    // const data = await signer.fetchMyOrders();
     // const pending = productData.filter((p) => p.name === productname);
     // setorders(data);
-    console.log(data);
+    // console.log(data);
+    console.log(signer);
   };
 
   useEffect(() => {

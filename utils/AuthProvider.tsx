@@ -318,17 +318,6 @@ const AuthProvider = ({ children }) => {
   }, [connect]);
 
   useEffect(() => {
-    const signer_ = web3Provider.getSigner();
-    const signer = new ethers.Contract(
-      schainAddress,
-      schainContract.abi,
-      signer_
-    );
-
-    dispatch({
-      type: "SET_SIGNER",
-      signer: signer,
-    });
     if (provider?.on) {
       const handleAccountsChanged = (accounts: string[]) => {
         console.log("accountsChanged", accounts);
@@ -389,6 +378,8 @@ const AuthProvider = ({ children }) => {
     logout,
     // },
   };
+
+  // console.log(signer);
 
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
