@@ -26,7 +26,7 @@ function Dashboard() {
     // const pending = productData.filter((p) => p.name === productname);
     // setorders(data);
     // console.log(data);
-    console.log(signer);
+    console.log(address);
   };
 
   useEffect(() => {
