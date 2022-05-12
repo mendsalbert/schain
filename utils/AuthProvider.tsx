@@ -211,18 +211,6 @@ const AuthProvider = ({ children }) => {
     const address = await signer.getAddress();
     const network = (await web3Provider.getNetwork()) as any;
 
-    // if (web3Provider) {
-    // const signer_ = await web3Provider.getSigner();
-    const signer_ = new ethers.Contract(
-      schainAddress,
-      schainContract.abi,
-      signer
-    );
-
-    dispatch({
-      type: "SET_SIGNER",
-      signer: signer_,
-    });
     // console.log(signer);
     dispatch({
       type: "SET_WEB3_PROVIDER",
@@ -293,6 +281,22 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    if (web3Provider) {
+      const signer_ = web3Provider.getSigner();
+      const signer = new ethers.Contract(
+        schainAddress,
+        schainContract.abi,
+        signer_
+      );
+
+      dispatch({
+        type: "SET_SIGNER",
+        signer: signer,
+      });
+    }
+  }, []);
+
+  useEffect(() => {
     loadContracts();
 
     if (web3Modal.cachedProvider) {
@@ -309,6 +313,18 @@ const AuthProvider = ({ children }) => {
           address: accounts[0],
         });
       };
+
+      // const signer_ = web3Provider.getSigner();
+      // const signer = new ethers.Contract(
+      //   schainAddress,
+      //   schainContract.abi,
+      //   signer_
+      // );
+
+      // dispatch({
+      //   type: "SET_SIGNER",
+      //   signer: signer,
+      // });
 
       const handleChainChanged = (_hexChainId: string) => {
         window.location.reload();
