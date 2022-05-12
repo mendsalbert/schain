@@ -306,9 +306,7 @@ const AuthProvider = ({ children }) => {
         signer: signer_,
       });
     };
-    web3pro();
-
-    // }
+    // web3pro();
   }, []);
 
   useEffect(() => {
@@ -320,6 +318,17 @@ const AuthProvider = ({ children }) => {
   }, [connect]);
 
   useEffect(() => {
+    const signer_ = web3Provider.getSigner();
+    const signer = new ethers.Contract(
+      schainAddress,
+      schainContract.abi,
+      signer_
+    );
+
+    dispatch({
+      type: "SET_SIGNER",
+      signer: signer,
+    });
     if (provider?.on) {
       const handleAccountsChanged = (accounts: string[]) => {
         console.log("accountsChanged", accounts);
