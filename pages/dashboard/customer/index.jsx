@@ -16,7 +16,9 @@ function Dashboard() {
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
   const [orders, setorders] = useState([]);
-  const [pending, setpending] = useState("");
+  const [pending, setpending] = useState([]);
+  const [returned, setreturned] = useState([]);
+
   const [cancel, setcancel] = useState("");
   const { address, signer } = useContext(AuthContext);
 
@@ -28,7 +30,9 @@ function Dashboard() {
       const loadOrders = async () => {
         const data = await signer.fetchMyOrders();
         const pending = data.filter((p) => p.pending === true);
-        console.log(pending);
+        const returned = data.filter((r) => r.returned === true);
+        setreturned(returned);
+        setpending(pending);
         setorders(data);
         // console.log(items);
       };
@@ -86,8 +90,8 @@ function Dashboard() {
               </div>
               <div className="grid grid-cols-12 gap-6">
                 <OrdersCard length={orders.length} />
-                <OrdersPendingCard />
-                <OrderCancelCard />
+                <OrdersPendingCard length={pending.length} />
+                <OrderCancelCard length={returned.length} />
                 <Orders />
               </div>
             </div>
