@@ -157,7 +157,7 @@ contract Schain {
      order.confirmdate = 0;
      order.testdate = 0;
      order.transportdate = 0;
-     order.pending = false;
+     order.pending = true;
      order.returned = false;
      order.confirmed = false;
      order.produced = false;
@@ -176,7 +176,6 @@ contract Schain {
       OrderItem storage order = orders[_id];
       require(order.confirmed == false);
       order.confirmed = true;
-      order.pending = false;
       order.confirmdate = block.timestamp;
       orders[_id] = order;
     }
@@ -238,6 +237,7 @@ contract Schain {
       require(_id > 0 && _id <= ordersCount,"order id not valid");
       OrderItem storage order = orders[_id];
       order.recieved = true;
+      order.pending = false;
       orders[_id] = order;
     }
 
@@ -281,4 +281,121 @@ contract Schain {
       }
       return items;
     }
+
+      //all orders confirmed
+    function fetchOrdersConfirm() public view returns (OrderItem[] memory) {
+      uint totalItemCount = ordersCount;
+      uint itemCount = 0;
+      uint currentIndex = 0;
+
+      for (uint i = 0; i < totalItemCount; i++) {
+        if (
+        orders[i + 1].confirmed == false && 
+        orders[i + 1].produced == false && 
+        orders[i + 1].tested == false &&
+        orders[i + 1].transported == false 
+        ) {
+          itemCount += 1;
+        }
+      }
+
+      OrderItem[] memory items = new OrderItem[](itemCount);
+      for (uint i = 0; i < totalItemCount; i++) {
+        if (orders[i + 1].owner == msg.sender) {
+          uint currentId = i + 1;
+          OrderItem storage order = orders[currentId];
+          items[currentIndex] = order;
+          currentIndex += 1;
+        }
+      }
+      return items;
+    }
+    
+     //fetch orders produced
+    function fetchOrdersProduced() public view returns (OrderItem[] memory) {
+      uint totalItemCount = ordersCount;
+      uint itemCount = 0;
+      uint currentIndex = 0;
+
+      for (uint i = 0; i < totalItemCount; i++) {
+        if (
+        orders[i + 1].confirmed == true && 
+        orders[i + 1].produced == false && 
+        orders[i + 1].tested == false &&
+        orders[i + 1].transported == false 
+        ) {
+          itemCount += 1;
+        }
+      }
+
+      OrderItem[] memory items = new OrderItem[](itemCount);
+      for (uint i = 0; i < totalItemCount; i++) {
+        if (orders[i + 1].owner == msg.sender) {
+          uint currentId = i + 1;
+          OrderItem storage order = orders[currentId];
+          items[currentIndex] = order;
+          currentIndex += 1;
+        }
+      }
+      return items;
+    }
+
+    //fetch orders tested
+    function fetchOrdersTested() public view returns (OrderItem[] memory) {
+      uint totalItemCount = ordersCount;
+      uint itemCount = 0;
+      uint currentIndex = 0;
+
+      for (uint i = 0; i < totalItemCount; i++) {
+        if (
+        orders[i + 1].confirmed == true && 
+        orders[i + 1].produced == true && 
+        orders[i + 1].tested == false &&
+        orders[i + 1].transported == false 
+        ) {
+          itemCount += 1;
+        }
+      }
+
+      OrderItem[] memory items = new OrderItem[](itemCount);
+      for (uint i = 0; i < totalItemCount; i++) {
+        if (orders[i + 1].owner == msg.sender) {
+          uint currentId = i + 1;
+          OrderItem storage order = orders[currentId];
+          items[currentIndex] = order;
+          currentIndex += 1;
+        }
+      }
+      return items;
+    }
+
+    //fetch orders transported
+    function fetchOrdersTransported() public view returns (OrderItem[] memory) {
+      uint totalItemCount = ordersCount;
+      uint itemCount = 0;
+      uint currentIndex = 0;
+
+      for (uint i = 0; i < totalItemCount; i++) {
+        if (
+        orders[i + 1].confirmed == true && 
+        orders[i + 1].produced == true && 
+        orders[i + 1].tested == true &&
+        orders[i + 1].transported == false 
+        ) {
+          itemCount += 1;
+        }
+      }
+
+      OrderItem[] memory items = new OrderItem[](itemCount);
+      for (uint i = 0; i < totalItemCount; i++) {
+        if (orders[i + 1].owner == msg.sender) {
+          uint currentId = i + 1;
+          OrderItem storage order = orders[currentId];
+          items[currentIndex] = order;
+          currentIndex += 1;
+        }
+      }
+      return items;
+    }
+
 }

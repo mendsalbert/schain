@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Sidebar from "../../../components/adminPartials/Sidebar";
 import Header from "../../../components/adminPartials/Header";
 import WelcomeBanner from "../../../components/adminPartials/dashboard/WelcomeBanner";
@@ -11,12 +11,27 @@ import OrderModal from "../../../components/OrderModal.jsx";
 import { AuthContext } from "../../../utils/AuthProvider";
 
 // import Content from "../../../components/customer/content";
-function Content() {
+function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
+  const [orders, setorders] = useState([]);
+  const [pending, setpending] = useState("");
+  const [cancel, setcancel] = useState("");
+  const { address, signer } = useContext(AuthContext);
 
-  const { address } = useContext(AuthContext);
+  // console.log(signer.fetchMyOrders());
+  const loadOrders = async () => {
+    const data = await signer.fetchMyOrders();
+    // const pending = productData.filter((p) => p.name === productname);
+    // setorders(data);
+    console.log(data);
+  };
+
+  useEffect(() => {
+    loadOrders();
+  }, []);
+
   if (address) {
     if (typeof window !== "undefined") {
       let customerAddress = localStorage.getItem("customerAddr");
@@ -66,7 +81,7 @@ function Content() {
                 </div>
               </div>
               <div className="grid grid-cols-12 gap-6">
-                <OrdersCard />
+                <OrdersCard length={orders.length} />
                 <OrdersPendingCard />
                 <OrderCancelCard />
                 <Orders />
@@ -80,10 +95,6 @@ function Content() {
       </Modal>
     </>
   );
-}
-
-function Dashboard() {
-  return <Content />;
 }
 
 export default Dashboard;

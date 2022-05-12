@@ -8,16 +8,17 @@ import {
 import { useRouter } from "next/router";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { ethers, providers } from "ethers";
-import { donationAddress } from "../config";
+import { schainAddress } from "../config";
 import axios from "axios";
 import WalletLink from "walletlink";
-import DonationContractABI from "../artifacts/contracts/Donation.sol/Donation.json";
+import schainContract from "../artifacts/contracts/Schain.sol/Schain.json";
 import Web3Modal from "web3modal";
 import { ellipseAddress, getChainData } from "../lib/utilities";
 
 //write a type for status and user
 type authContextType = {
   provider?: any;
+  signer?: any;
   web3Provider?: any;
   contract?: any;
   address?: string;
@@ -28,6 +29,7 @@ type authContextType = {
 };
 const authContextDefaultValues: authContextType = {
   provider: null,
+  signer: null,
   web3Provider: null,
   contract: null,
   address: null,
@@ -84,6 +86,7 @@ if (typeof window !== "undefined") {
 
 type StateType = {
   contract?: any;
+  signer?: any;
   provider?: any;
   web3Provider?: any;
   address?: string;
@@ -104,6 +107,11 @@ type ActionType =
       contract?: StateType["contract"];
     }
   | {
+      type: "SET_SIGNER";
+
+      signer?: StateType["signer"];
+    }
+  | {
       type: "SET_ADDRESS";
       address?: StateType["address"];
     }
@@ -117,6 +125,7 @@ type ActionType =
 
 const initialState: StateType = {
   contract: null,
+  signer: null,
   provider: null,
   web3Provider: null,
   address: null,
@@ -139,6 +148,11 @@ function reducer(state: StateType, action: ActionType): StateType {
 
         contract: action.contract,
       };
+    case "SET_SIGNER":
+      return {
+        ...state,
+        signer: action.signer,
+      };
     case "SET_ADDRESS":
       return {
         ...state,
@@ -158,28 +172,27 @@ function reducer(state: StateType, action: ActionType): StateType {
 
 const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { provider, web3Provider, contract, address, chainId } = state;
+  const { provider, web3Provider, contract, signer, address, chainId } = state;
 
   async function loadContracts() {
     /* create a generic provider and query for unsold market items */
     // const provider = new ethers.providers.JsonRpcProvider();
-    const provider = new ethers.providers.JsonRpcProvider(
-      "https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c"
-    );
+    const provider = new ethers.providers.JsonRpcProvider();
+    // "https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c"
     //
-
     const contract = new ethers.Contract(
-      donationAddress,
-      DonationContractABI.abi,
+      schainAddress,
+      schainContract.abi,
       provider
     );
+
     const { chainId } = await provider.getNetwork();
     if (chainId) {
       dispatch({
         type: "SET_CONTRACT",
         contract: contract,
       });
-      const data = await contract.donationCount();
+      // const data = await contract.donationCount();
     } else {
       window.alert("Donation contract not deployed to detected network");
     }
@@ -198,6 +211,18 @@ const AuthProvider = ({ children }) => {
     const address = await signer.getAddress();
     const network = (await web3Provider.getNetwork()) as any;
 
+    // if (web3Provider) {
+    // const signer_ = await web3Provider.getSigner();
+    const signer_ = new ethers.Contract(
+      schainAddress,
+      schainContract.abi,
+      signer
+    );
+
+    dispatch({
+      type: "SET_SIGNER",
+      signer: signer_,
+    });
     // console.log(signer);
     dispatch({
       type: "SET_WEB3_PROVIDER",
@@ -269,6 +294,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     loadContracts();
+
     if (web3Modal.cachedProvider) {
       connect();
     }
@@ -315,6 +341,7 @@ const AuthProvider = ({ children }) => {
     provider,
     web3Provider,
     contract,
+    signer,
     address,
     chainId,
     connect,
