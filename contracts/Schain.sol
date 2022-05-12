@@ -13,7 +13,8 @@ contract Schain {
     AggregatorV3Interface internal eth_usd_price_feed;
 
     //roles and address
-    mapping(string => address ) roles;
+    mapping(string => UserRole ) roles;
+    // mapping(uint=>  mapping (string => UserRole)) roless;
     mapping(uint256 => OrderItem ) orders;
 
     uint public usersCount = 0;
@@ -27,6 +28,12 @@ contract Schain {
     constructor(){
      companyAddress = payable(msg.sender);
      eth_usd_price_feed = AggregatorV3Interface(0x9326BFA02ADD2366b30bacB125260Af641031331);
+    }
+
+    struct UserRole {
+      uint id;
+      string role;
+      address roleaddress;
     }
 
     struct OrderItem{
@@ -87,7 +94,7 @@ contract Schain {
       string  role,
       address roleaddress
     );
-
+    
 
       //get EthUsd
     function getEthUsd() public  view returns (uint) {
@@ -107,9 +114,11 @@ contract Schain {
 
     //add role
     function addRole(string memory _role, address _roleaddress) public payable {
-      require(_roleaddress == roles[_role], "Role has been added already");
-      roles[_role] = _roleaddress;
+      UserRole storage role = roles[_role];
+      require(_roleaddress == role.roleaddress, "Role has been added already");
       rolesCount++;
+      role.role = _role;
+      role.roleaddress = _roleaddress;
       emit RoleAdded(_role, _roleaddress);
     }
 
@@ -127,7 +136,10 @@ contract Schain {
      require(_quantity > 0, "quantity must be greater than 0");
      require(msg.sender != address(0x0));
      ordersCount++;
+     usersCount++;
      OrderItem storage order = orders[ordersCount];
+     address payable _owner = companyAddress;
+     _owner.transfer(msg.value);
      order.id = ordersCount;
      order.owner = payable(address(msg.sender));
      order.product = _product;
@@ -145,7 +157,7 @@ contract Schain {
      order.confirmdate = 0;
      order.testdate = 0;
      order.transportdate = 0;
-     order.pending = true;
+     order.pending = false;
      order.returned = false;
      order.confirmed = false;
      order.produced = false;
@@ -153,16 +165,18 @@ contract Schain {
      order.transported = false;
      order.recieved = false;
 
-     emit AddOrder(ordersCount, msg.sender, _product, _quantity,order.orderdate, msg.value, _addressline, _contact, _city, order.review, _zipcode, _state, order.recievedate, order.confirmdate , order.producedate, order.testdate, order.transportdate, order.pending, order.returned, order.confirmed, order.produced, order.tested, order.transported, order.recieved);
+    //  emit AddOrder(ordersCount, msg.sender, _product, _quantity,order.orderdate, msg.value, _addressline, _contact, _city, order.review, _zipcode, _state, order.recievedate, order.confirmdate , order.producedate, order.testdate, order.transportdate, order.pending, order.returned, order.confirmed, order.produced, order.tested, order.transported, order.recieved);
     }
 
     //confirm order
     function confrimOrder(uint _id, string memory _role) public{
       require(_id > 0 && _id <= ordersCount,"order id not valid");
-      require(roles[_role] != msg.sender , 'You dont have permission to confirm order');
+      UserRole storage role = roles[_role];
+      require(role.roleaddress != msg.sender , 'You dont have permission to confirm order');
       OrderItem storage order = orders[_id];
       require(order.confirmed == false);
       order.confirmed = true;
+      order.pending = false;
       order.confirmdate = block.timestamp;
       orders[_id] = order;
     }
@@ -170,7 +184,8 @@ contract Schain {
     //produced order
      function produceOrder(uint _id, string memory _role) public{
       require(_id > 0 && _id <= ordersCount,"order id not valid");
-      require(roles[_role] != msg.sender , 'You dont have permission to produce order');
+      UserRole storage role = roles[_role];
+      require(role.roleaddress != msg.sender , 'You dont have permission to produce order');
       OrderItem storage order = orders[_id];
       require(order.produced == false);
       order.produced = true;
@@ -181,7 +196,8 @@ contract Schain {
     //test order
      function testOrder(uint _id, string memory _role) public{
       require(_id > 0 && _id <= ordersCount,"order id not valid");
-      require(roles[_role] != msg.sender , 'You dont have permission to test order');
+      UserRole storage role = roles[_role];
+      require(role.roleaddress != msg.sender , 'You dont have permission to test order');
       OrderItem storage order = orders[_id];
       require(order.tested == false);
       order.tested = true;
@@ -192,7 +208,8 @@ contract Schain {
     //transported order
      function transportOrder(uint _id, string memory _role) public{
       require(_id > 0 && _id <= ordersCount,"order id not valid");
-      require(roles[_role] != msg.sender , 'You dont have permission to transport order');
+      UserRole storage role = roles[_role];
+      require(role.roleaddress != msg.sender , 'You dont have permission to transport order');
       OrderItem storage order = orders[_id];
       require(order.transported == false);
       order.transported = true;
@@ -252,21 +269,16 @@ contract Schain {
     }
 
     //all orders
-    function fetchOrderItems() public view returns (OrderItem[] memory){
-      
+    function fetchOrderItems() public view returns (OrderItem[] memory) {
+      uint itemCount = ordersCount;
+      uint currentIndex = 0;
+      OrderItem[] memory items = new OrderItem[](itemCount);
+      for (uint i = 0; i < itemCount; i++) {
+          uint currentId = i + 1;
+          OrderItem storage currentItem = orders[currentId];
+          items[currentIndex] = currentItem;
+          currentIndex += 1;
+      }
+      return items;
     }
-
-    //all roles
-    //all pending
-    //all customers
-    //all confrimed
-    //all unconfirmed
-    //all produced 
-    //all unproduced
-    //all tested
-    //all untested
-    //all shipped
-    //all unshiped
-
-
 }
