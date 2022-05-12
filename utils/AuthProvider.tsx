@@ -281,19 +281,34 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (web3Provider) {
-      const signer_ = web3Provider.getSigner();
-      const signer = new ethers.Contract(
+    // if (web3Provider) {
+
+    // const signer_ = web3Provider.getSigner();
+    const web3pro = async () => {
+      const web3Modal = new Web3Modal({
+        cacheProvider: true,
+        providerOptions: {},
+      });
+
+      const web3Provider = await web3Modal.connect();
+      const ethersProvider = new ethers.providers.Web3Provider(web3Provider);
+      // const ethersSigner = ethersProvider.getSigner()
+      const signer = ethersProvider.getSigner();
+      const signer_ = new ethers.Contract(
         schainAddress,
         schainContract.abi,
-        signer_
+        signer
       );
 
+      console.log(signer);
       dispatch({
         type: "SET_SIGNER",
-        signer: signer,
+        signer: signer_,
       });
-    }
+    };
+    web3pro();
+
+    // }
   }, []);
 
   useEffect(() => {
