@@ -18,12 +18,15 @@ function Dashboard() {
   const [comp, setComp] = useState("");
   const { address, signer } = useContext(AuthContext);
   const [customers, setcustomers] = useState([]);
+  const [orders, setorders] = useState([]);
   useEffect(() => {
     if (address) {
       const loadOrders = async () => {
-        const data = await signer.fetchMyOrders();
+        const data = await signer.fetchCustomers();
+        const allOrders = await signer.fetchOrderItems();
         setcustomers(data);
-        // console.log(data);
+        setorders(allOrders);
+        console.log(data);
         // console.log(items);
       };
       loadOrders();
@@ -61,7 +64,7 @@ function Dashboard() {
 
               <div className="grid grid-cols-12 gap-6">
                 <UsersCard users={customers.length} />
-                <OrdersCard />
+                <OrdersCard allorders={orders.length} />
                 <OrdersPendingCard />
                 <OrderCancelCard />
                 <UserRoles />
