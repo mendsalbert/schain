@@ -37,7 +37,13 @@ function Dashboard() {
         setreturned(returned);
         setpending(pending);
 
+        const verifyRole = await signer.validateRole(
+          "manager",
+          "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+        );
+        console.log(verifyRole);
         // console.log(customers);
+
         // console.log(items);
       };
       loadOrders();

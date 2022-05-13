@@ -2,20 +2,16 @@ import { EyeIcon } from "@heroicons/react/outline";
 import React, { useContext, useState } from "react";
 import Link from "next/link";
 import { AuthContext } from "../../../utils/AuthProvider";
-
+import Spinner from "../../spinner";
 function UserRoles() {
   const { contract, signer } = useContext(AuthContext);
   // console.log(provider);
   const [role, setrole] = useState("");
   const [address, setaddress] = useState("");
   const [loading, setloading] = useState(false);
+
   const assignRoleHandler = async () => {
-    const transaction = await signer.addRole(
-      role,
-      address
-      // "role",
-      // "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
-    );
+    const transaction = await signer.addRole(role, address);
     setloading(true);
     await transaction.wait();
     setloading(false);
