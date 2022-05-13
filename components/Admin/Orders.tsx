@@ -105,67 +105,103 @@ function Orders({ order }) {
                   </div>
                   <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
                     {order.confirmed
-                      ? `Order made on ${timeConverter(
+                      ? `Order confirmed on ${timeConverter(
                           order.confirmdate.toString()
                         )}`
-                      : ""}
+                      : "This order has not been Approved yet "}
                   </time>
                 </div>
               </li>
-              <li className="relative mb-6 sm:mb-0">
+              <li className="relative mb-6  sm:mb-0">
                 <div className="flex items-center">
-                  <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-gray-400 rounded-full ring-0 ring-white ">
+                  <div
+                    className={`flex z-10 justify-center items-center w-max h-max p-2 ${
+                      order.produced ? "bg-green-400" : "bg-gray-400"
+                    } rounded-full ring-0 ring-white`}
+                  >
                     <SparklesIcon className="h-8 text-white" />
                   </div>
                   <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
                 </div>
-                <div className="mt-3 sm:pr-8">
-                  <div className="flex flex-row items-center space-x-2">
+                <div className="mt-3 group sm:pr-8">
+                  <div className="flex  flex-row items-center space-x-2">
                     <h3 className="text-lg font-semibold text-gray-900 ">
                       Production
                     </h3>
-                    <RefreshIcon className="h-6" />
+                    {order.produced ? (
+                      <CheckCircleIcon className="h-6" />
+                    ) : (
+                      <RefreshIcon className="h-6" />
+                    )}
                   </div>
                   <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                    Order made on December 2, 2021 8:00PM
+                    {order.produced
+                      ? `Order produced on ${timeConverter(
+                          order.producedate.toString()
+                        )}`
+                      : "This order has not been Produced yet "}
                   </time>
                 </div>
               </li>
-              <li className="relative mb-6 sm:mb-0">
+              <li className="relative mb-6  sm:mb-0">
                 <div className="flex items-center">
-                  <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-gray-400 rounded-full ring-0 ring-white ">
+                  <div
+                    className={`flex z-10 justify-center items-center w-max h-max p-2 ${
+                      order.tested ? "bg-green-400" : "bg-gray-400"
+                    } rounded-full ring-0 ring-white`}
+                  >
                     <AdjustmentsIcon className="h-8 text-white" />
                   </div>
                   <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
                 </div>
-                <div className="mt-3 sm:pr-8">
-                  <div className="flex flex-row items-center space-x-2">
+                <div className="mt-3 group sm:pr-8">
+                  <div className="flex  flex-row items-center space-x-2">
                     <h3 className="text-lg font-semibold text-gray-900 ">
                       Testing
                     </h3>
-                    <RefreshIcon className="h-6" />
+                    {order.tested ? (
+                      <CheckCircleIcon className="h-6" />
+                    ) : (
+                      <RefreshIcon className="h-6" />
+                    )}
                   </div>
                   <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                    Order made on December 2, 2021 8:00PM
+                    {order.tested
+                      ? `Order made on ${timeConverter(
+                          order.testdate.toString()
+                        )}`
+                      : "This order has not been Tested yet "}
                   </time>
                 </div>
               </li>
-              <li className="relative mb-6 sm:mb-0">
+              <li className="relative mb-6  sm:mb-0">
                 <div className="flex items-center">
-                  <div className="flex z-10 justify-center items-center w-max h-max p-2 bg-gray-400 rounded-full ring-0 ring-white ">
+                  <div
+                    className={`flex z-10 justify-center items-center w-max h-max p-2 ${
+                      order.transported ? "bg-green-400" : "bg-gray-400"
+                    } rounded-full ring-0 ring-white`}
+                  >
                     <TruckIcon className="h-8 text-white" />
                   </div>
                   <div className="hidden sm:flex w-full bg-gray-200 h-0.5 "></div>
                 </div>
-                <div className="mt-3 sm:pr-8">
-                  <div className="flex flex-row items-center space-x-2">
+                <div className="mt-3 group sm:pr-8">
+                  <div className="flex  flex-row items-center space-x-2">
                     <h3 className="text-lg font-semibold text-gray-900 ">
                       Shipping
                     </h3>
-                    <RefreshIcon className="h-6" />
+                    {order.transported ? (
+                      <CheckCircleIcon className="h-6" />
+                    ) : (
+                      <RefreshIcon className="h-6" />
+                    )}
                   </div>
                   <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                    Order made on December 2, 2021 8:00PM
+                    {order.transported
+                      ? `Order made on ${timeConverter(
+                          order.transportdate.toString()
+                        )}`
+                      : "This order has not been Shipped yet "}
                   </time>
                 </div>
               </li>
