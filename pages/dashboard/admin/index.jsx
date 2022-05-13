@@ -78,7 +78,7 @@ function Dashboard() {
                 <UsersCard users={customers.length} />
                 <OrdersCard allorders={orders.length} />
                 <OrdersPendingCard allpending={pending.length} />
-                <OrderCancelCard allreturned={returned.length} />
+                <OrderCancelCard allreturned={pending.length} />
                 <UserRoles />
               </div>
             </div>
