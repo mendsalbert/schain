@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 import "hardhat/console.sol";
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
@@ -118,14 +119,17 @@ contract Schain {
       // require(_roleaddress == role.roleaddress, "Role has been added already");
       rolesCount++;
       role.role = _role;
-      role.roleaddress = address(_roleaddress);
+      role.roleaddress = _roleaddress;
       emit RoleAdded(_role, _roleaddress);
     }
 
     //validate role 
     function validateRole(string memory _role , address _roleaddress) public view returns (bool) {
        UserRole storage role = roles[_role];
+       console.log(role.role);
+       console.log(role.roleaddress);
        if(role.roleaddress == _roleaddress ){
+        //  console.log(role);
          return true;
        }else {
          return false;

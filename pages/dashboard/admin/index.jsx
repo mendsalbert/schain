@@ -38,8 +38,8 @@ function Dashboard() {
         setpending(pending);
 
         const verifyRole = await signer.validateRole(
-          "manager",
-          "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+          "tester",
+          "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266".toLocaleLowerCase()
         );
         console.log(verifyRole);
         // console.log(customers);

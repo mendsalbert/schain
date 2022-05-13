@@ -11,7 +11,8 @@ function UserRoles() {
   const [loading, setloading] = useState(false);
 
   const assignRoleHandler = async () => {
-    const transaction = await signer.addRole(role, address);
+    // console.log(role);
+    const transaction = await signer.addRole(role, address.toLocaleLowerCase());
     setloading(true);
     await transaction.wait();
     setloading(false);
