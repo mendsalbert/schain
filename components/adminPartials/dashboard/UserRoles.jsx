@@ -4,12 +4,18 @@ import Link from "next/link";
 import { AuthContext } from "../../../utils/AuthProvider";
 
 function UserRoles() {
-  const { provider } = useContext(AuthContext);
+  const { contract, signer } = useContext(AuthContext);
+  // console.log(provider);
   const [role, setrole] = useState("");
   const [address, setaddress] = useState("");
-  const [loading, setloading] = useState(second);
+  const [loading, setloading] = useState(false);
   const assignRoleHandler = async () => {
-    const transaction = await provider.addRole(role, address);
+    const transaction = await signer.addRole(
+      role,
+      address
+      // "role",
+      // "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+    );
     setloading(true);
     await transaction.wait();
     setloading(false);

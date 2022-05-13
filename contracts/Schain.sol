@@ -115,13 +115,22 @@ contract Schain {
     //add role
     function addRole(string memory _role, address _roleaddress) public payable {
       UserRole storage role = roles[_role];
-      require(_roleaddress == role.roleaddress, "Role has been added already");
+      // require(_roleaddress == role.roleaddress, "Role has been added already");
       rolesCount++;
       role.role = _role;
-      role.roleaddress = _roleaddress;
+      role.roleaddress = address(_roleaddress);
       emit RoleAdded(_role, _roleaddress);
     }
 
+    //validate role 
+    function validateRole(string memory _role , address _roleaddress) public view returns (bool) {
+       UserRole storage role = roles[_role];
+       if(role.roleaddress == _roleaddress ){
+         return true;
+       }else {
+         return false;
+       }
+    } 
     //add order
     function addOrderItem(
       string memory _product, 
