@@ -23,10 +23,13 @@ function Dashboard() {
     if (address) {
       const loadOrders = async () => {
         const data = await signer.fetchOrderItems();
+        // const pending = data.filter((p) => p.pending === true);
+
+        let customers = data.filter((v, i) => data.indexOf(v) === i);
         const allOrders = await signer.fetchOrderItems();
         setcustomers(data);
         setorders(allOrders);
-        console.log(data);
+        console.log(customers);
         // console.log(items);
       };
       loadOrders();
