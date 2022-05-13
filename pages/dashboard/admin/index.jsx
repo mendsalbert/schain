@@ -19,17 +19,24 @@ function Dashboard() {
   const { address, signer } = useContext(AuthContext);
   const [customers, setcustomers] = useState([]);
   const [orders, setorders] = useState([]);
+  const [pending, setpending] = useState([]);
+  const [returned, setreturned] = useState([]);
+
   useEffect(() => {
     if (address) {
       const loadOrders = async () => {
         const data = await signer.fetchOrderItems();
-        // const pending = data.filter((p) => p.pending === true);
-
-        let customers = data.filter((v, i) => data.indexOf(v) === i);
+        let customers = data.filter(
+          (v, i, a) => a.findIndex((v2) => v2.owner === v.owner) === i
+        );
+        const pending = data.filter((p) => p.pending === true);
+        const returned = data.filter((r) => r.returned === true);
         const allOrders = await signer.fetchOrderItems();
-        setcustomers(data);
+        setcustomers(customers);
         setorders(allOrders);
-        console.log(customers);
+        setreturned(returned);
+        setpending(pending);
+        // console.log(customers);
         // console.log(items);
       };
       loadOrders();
@@ -68,8 +75,8 @@ function Dashboard() {
               <div className="grid grid-cols-12 gap-6">
                 <UsersCard users={customers.length} />
                 <OrdersCard allorders={orders.length} />
-                <OrdersPendingCard />
-                <OrderCancelCard />
+                <OrdersPendingCard allpending={pending.length} />
+                <OrderCancelCard allreturned={returned.length} />
                 <UserRoles />
               </div>
             </div>
