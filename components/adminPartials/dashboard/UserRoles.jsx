@@ -7,6 +7,15 @@ function UserRoles() {
   const { provider } = useContext(AuthContext);
   const [role, setrole] = useState("");
   const [address, setaddress] = useState("");
+  const [loading, setloading] = useState(second);
+  const assignRoleHandler = async () => {
+    const transaction = await provider.addRole(role, address);
+    setloading(true);
+    await transaction.wait();
+    setloading(false);
+    alert("role added succesfully");
+  };
+
   return (
     <div className="col-span-full xl:col-span-12 bg-white shadow-lg w-full rounded-md border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100 flex flex-row items-center space-x-4">
@@ -52,8 +61,13 @@ function UserRoles() {
         </div>
 
         <div className="w-max">
-          <div className="bg-gradient-to-r w-full from-cyan-500 to-blue-500 px-6 py-3 rounded-lg text-center cursor-pointer text-white">
-            Assign Role
+          <div
+            onClick={() => {
+              assignRoleHandler();
+            }}
+            className="bg-gradient-to-r flex flex-row justify-center items-center w-full from-cyan-500 to-blue-500 px-6 py-3 rounded-lg text-center cursor-pointer text-white"
+          >
+            {loading ? <Spinner /> : "Assign Role"}
           </div>
         </div>
         {/* <button>add role</button> */}
