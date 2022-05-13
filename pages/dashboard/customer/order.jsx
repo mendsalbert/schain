@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import Sidebar from "../../../components/adminPartials/Sidebar";
 import Header from "../../../components/adminPartials/Header";
 
-import Orders from "../../../components/Admin/Orders";
+import Orders from "../../../components/Admin/Orders.tsx";
 
 import Modal from "../../../components/Modal";
 import OrderModal from "../../../components/OrderModal";
@@ -33,15 +33,13 @@ function Order() {
     if (address) {
       const loadOrders = async () => {
         const data = await signer.fetchMyOrders();
-        const order = data.filter((ord) => ord.id.toString() === order.id);
         setorders(data);
-        console.log(order);
       };
       loadOrders();
     }
   }, [signer]);
 
-  // const orderFilter = orders.filter((ord) => ord.id.toString() === order.id);
+  const orderFilter = orders.filter((ord) => ord.id.toString() === order.id);
   // console.log(orderFilter);
 
   return (
@@ -81,7 +79,7 @@ function Order() {
                 {/* <OrdersCard /> */}
                 {/* <OrdersPendingCard /> */}
                 {/* <OrderCancelCard /> */}
-                <Orders />
+                <Orders order={orderFilter} />
               </div>
             </div>
           </main>
