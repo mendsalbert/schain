@@ -40,7 +40,7 @@ function Order() {
   }, [signer]);
 
   const orderFilter = orders.filter((ord) => ord.id.toString() === order.id);
-  // console.log(orderFilter);
+  console.log(orderFilter);
 
   return (
     <>

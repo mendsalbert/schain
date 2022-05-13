@@ -1,25 +1,10 @@
 import { EyeIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import { ethers } from "ethers";
-import React, { FC, useContext, useState, useEffect } from "react";
-import { AuthContext } from "../../../utils/AuthProvider";
+import React from "react";
+import { productData } from "../../../utils/sample-data";
 
 function Orders({ orders }) {
-  // const [orders, setorders] = useState([]);
-
-  // const { address, signer } = useContext(AuthContext);
-
-  // useEffect(() => {
-  //   if (address) {
-  //     const loadOrders = async () => {
-  //       const data = await signer.fetchMyOrders();
-
-  //       setorders(data);
-  //     };
-  //     loadOrders();
-  //   }
-  // }, [signer]);
-
   return (
     <div className="col-span-full xl:col-span-12 bg-white shadow-lg w-full rounded-md border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100 flex flex-row items-center space-x-4">
@@ -57,7 +42,9 @@ function Orders({ orders }) {
                 <th className="p-2">
                   <div className="font-semibold text-left">Name</div>
                 </th>
-
+                <th className="p-2">
+                  <div className="font-semibold text-left">IMAGE</div>
+                </th>
                 <th className="p-2">
                   <div className="font-semibold text-center">Order date</div>
                 </th>
@@ -95,6 +82,9 @@ function Orders({ orders }) {
                 const object = {
                   id: order.id.toString(),
                 };
+                const filterImage = productData.filter(
+                  (p) => p.name === order.product
+                );
                 return (
                   <Link
                     href={{
@@ -109,6 +99,11 @@ function Orders({ orders }) {
                         </div>
                       </td>
 
+                      <td className="p-2">
+                        <div className="flex items-center">
+                          <img src={filterImage[0].imageUrl} />
+                        </div>
+                      </td>
                       <td className="p-2">
                         <div className="text-center ">
                           {Number(order.orderdate.toString())}

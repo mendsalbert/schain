@@ -35,6 +35,7 @@ const OrderModal = (props) => {
     await transaction.wait();
     setloading(false);
     alert("Order sent succesfully");
+    window.location.href = "/dashboard/customer";
   };
 
   return (
