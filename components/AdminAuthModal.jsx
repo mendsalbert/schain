@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { productData } from "../utils/sample-data";
+import React, { useState } from "react";
 import { uName, uPassword } from "../auth";
+import { useRouter } from "next/router";
 const AdminAuthModal = (props) => {
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
-
+  const router = useRouter();
   const onAuthenticateHandler = () => {
     if (username === uName && password === uPassword) {
       console.log("authenticated");
       localStorage.setItem("auth", true);
-      window.location.reload();
-      //pop meta mask approval here
+      router.push("/");
     } else {
       alert("wrong password and username combination");
       localStorage.setItem("auth", false);

@@ -3,6 +3,7 @@ import { productData } from "../utils/sample-data";
 import { AuthContext } from "../utils/AuthProvider";
 import { ethers } from "ethers";
 import Spinner from "./spinner";
+
 const OrderModal = (props) => {
   const [quantity, setquantity] = useState(1);
   const [productname, setproductname] = useState("milo");
@@ -35,6 +36,7 @@ const OrderModal = (props) => {
     await transaction.wait();
     setloading(false);
     alert("Order sent succesfully");
+
     window.location.href = "/dashboard/customer";
   };
 

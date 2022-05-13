@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import Transition from "../../../utils/Transition";
 import { AuthContext } from "../../../utils/AuthProvider";
-import { WSAEINVAL } from "constants";
+import { useRouter } from "next/router";
 function UserMenu() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
+  const router = useRouter();
   const trigger = useRef(null);
   const dropdown = useRef(null);
   const { disconnect } = useContext(AuthContext);
@@ -81,11 +81,11 @@ function UserMenu() {
           <ul>
             <li className="p-2">
               <div
-                className="font-medium text-sm bg-blue-600  text-white rounded-full text-center hover:text-indigo-600 flex justify-center w-full  items-center py-1 px-3"
+                className="font-medium text-sm bg-blue-600  text-white rounded-full text-center cursor-pointer flex justify-center w-full  items-center py-1 px-3"
                 to="/"
                 onClick={() => {
                   disconnect();
-                  window.location.href = "/";
+                  router.push("/");
                 }}
               >
                 Disconnect

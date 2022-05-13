@@ -9,7 +9,7 @@ import OrderCancelCard from "../../../components/adminPartials/dashboard/OrderCa
 import Modal from "../../../components/Modal";
 import OrderModal from "../../../components/OrderModal.jsx";
 import { AuthContext } from "../../../utils/AuthProvider";
-
+import { useRouter } from "next/router";
 // import Content from "../../../components/customer/content";
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -18,7 +18,7 @@ function Dashboard() {
   const [orders, setorders] = useState([]);
   const [pending, setpending] = useState([]);
   const [returned, setreturned] = useState([]);
-
+  const router = useRouter();
   const [cancel, setcancel] = useState("");
   const { address, signer } = useContext(AuthContext);
 
@@ -42,7 +42,7 @@ function Dashboard() {
     if (typeof window !== "undefined") {
       let customerAddress = localStorage.getItem("customerAddr");
       if (customerAddress !== address) {
-        window.location.href = "/";
+        router.push("/");
       } else {
       }
     }
