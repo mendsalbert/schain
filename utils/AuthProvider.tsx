@@ -14,6 +14,7 @@ import WalletLink from "walletlink";
 import schainContract from "../artifacts/contracts/Schain.sol/Schain.json";
 import Web3Modal from "web3modal";
 import { ellipseAddress, getChainData } from "../lib/utilities";
+import { verify } from "crypto";
 
 //write a type for status and user
 type authContextType = {
@@ -222,7 +223,9 @@ const AuthProvider = ({ children }) => {
     });
 
     //auth users page
-    console.log(role);
+    // console.log(role);
+    const verifyRole = await signer.validateRole(role, address);
+    console.log(verifyRole);
     switch (role) {
       case "customer":
         if (address) {
@@ -234,18 +237,19 @@ const AuthProvider = ({ children }) => {
         router.push("/dashboard/admin/");
         break;
       case "manager":
-        // if (address === "address from smart contract") window.location.href = "/dashboard/customer/";
-        if (address) {
+        if (verify) {
           localStorage.setItem("managerAddr", address);
           router.push("/dashboard/manager/");
+        } else {
+          router.push("/");
         }
         break;
       case "manufacturer":
-        // if (address === "address from smart contract") window.location.href = "/dashboard/customer/";
-        if (address) {
+        if (verify) {
           localStorage.setItem("manufactureAddr", address);
           router.push("/dashboard/manufacture/");
-          // window.location.href = "/dashboard/manufacture/";
+        } else {
+          router.push("/");
         }
         break;
       case "tester":
