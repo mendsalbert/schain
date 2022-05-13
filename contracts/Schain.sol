@@ -120,15 +120,20 @@ contract Schain {
       rolesCount++;
       role.role = _role;
       role.roleaddress = _roleaddress;
+      // console.log(role.role);
+      // console.log(role.roleaddress);
+      // console.log(_role);
+      // console.log(_roleaddress);
       emit RoleAdded(_role, _roleaddress);
     }
 
     //validate role 
     function validateRole(string memory _role , address _roleaddress) public view returns (bool) {
-       UserRole storage role = roles[_role];
-       console.log(role.role);
-       console.log(role.roleaddress);
-       if(role.roleaddress == _roleaddress ){
+      //  UserRole storage role = roles[_role];
+       
+      //  console.log(role.role);
+      //  console.log(role.roleaddress);
+       if(roles[_role].roleaddress == _roleaddress ){
         //  console.log(role);
          return true;
        }else {
