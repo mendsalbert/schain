@@ -288,7 +288,7 @@ contract Schain {
     }
 
     //fetch all customers
-    function fetchMyCustomers() public view returns (OrderItem[] memory) {
+    function fetchCustomers() public view returns (OrderItem[] memory) {
       uint totalItemCount = ordersCount;
       uint itemCount = 0;
       uint currentIndex = 0;

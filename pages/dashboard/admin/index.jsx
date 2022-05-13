@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 
 import Sidebar from "../../../components/adminPartials/Sidebar";
 import Header from "../../../components/adminPartials/Header";
@@ -8,7 +8,7 @@ import OrdersCard from "../../../components/adminPartials/dashboard/OdersCards";
 import OrdersPendingCard from "../../../components/adminPartials/dashboard/OrdersPendingCard";
 import OrderCancelCard from "../../../components/adminPartials/dashboard/OrderCancelCard";
 import Modal from "../../../components/Modal";
-import OrderModal from "../../../components/OrderModal.jsx";
+import { AuthContext } from "../../../utils/AuthProvider";
 import AdminAuthModal from "../../../components/AdminAuthModal.jsx";
 import UsersCard from "../../../components/adminPartials/dashboard/UsersCard";
 import UserRoles from "../../../components/adminPartials/dashboard/UserRoles";
@@ -16,7 +16,19 @@ function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
-  const tablesection = useRef(null);
+  const { address, signer } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (address) {
+      const loadOrders = async () => {
+        const data = await signer.fetchCustomers();
+        console.log(data);
+        // console.log(items);
+      };
+      loadOrders();
+    }
+  }, [signer]);
+
   useEffect(() => {
     let auth = localStorage.getItem("auth");
     console.log(auth);
