@@ -223,12 +223,17 @@ contract Schain {
       order.review = _review;
       orders[_id] = order;
     }
+
     ///work on this......
     //return order
      function returnOrder(uint _id, string memory _review) public{
       require(_id > 0 && _id <= ordersCount,"order id not valid");
       OrderItem storage order = orders[_id];
-      order.review = _review;
+      order.returned = true;
+      order.confirmed = false;
+      order.produced = false;
+      order.tested = false;
+      order.transported = false;
       orders[_id] = order;
     }
       
@@ -278,6 +283,30 @@ contract Schain {
           OrderItem storage currentItem = orders[currentId];
           items[currentIndex] = currentItem;
           currentIndex += 1;
+      }
+      return items;
+    }
+
+    //fetch all customers
+    function fetchMyCustomers() public view returns (OrderItem[] memory) {
+      uint totalItemCount = ordersCount;
+      uint itemCount = 0;
+      uint currentIndex = 0;
+
+      for (uint i = 0; i < totalItemCount; i++) {
+        if (orders[i + 1].owner != orders[i+1].owner) {
+          itemCount += 1;
+        }
+      }
+
+      OrderItem[] memory items = new OrderItem[](itemCount);
+      for (uint i = 0; i < totalItemCount; i++) {
+        if (orders[i + 1].owner != orders[i+1].owner) {
+          uint currentId = i + 1;
+          OrderItem storage order = orders[currentId];
+          items[currentIndex] = order;
+          currentIndex += 1;
+        }
       }
       return items;
     }

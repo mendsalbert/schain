@@ -173,6 +173,7 @@ function reducer(state: StateType, action: ActionType): StateType {
 const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { provider, web3Provider, contract, signer, address, chainId } = state;
+  const router = useRouter();
 
   async function loadContracts() {
     /* create a generic provider and query for unsold market items */
@@ -226,24 +227,25 @@ const AuthProvider = ({ children }) => {
       case "customer":
         if (address) {
           localStorage.setItem("customerAddr", address);
-          window.location.href = "/dashboard/customer/";
+          router.push("/dashboard/customer/");
         }
         break;
       case "adminstrator":
-        window.location.href = "/dashboard/admin/";
+        router.push("/dashboard/admin/");
         break;
       case "manager":
         // if (address === "address from smart contract") window.location.href = "/dashboard/customer/";
         if (address) {
           localStorage.setItem("managerAddr", address);
-          window.location.href = "/dashboard/manager/";
+          router.push("/dashboard/manager/");
         }
         break;
       case "manufacturer":
         // if (address === "address from smart contract") window.location.href = "/dashboard/customer/";
         if (address) {
           localStorage.setItem("manufactureAddr", address);
-          window.location.href = "/dashboard/manufacture/";
+          router.push("/dashboard/manufacture/");
+          // window.location.href = "/dashboard/manufacture/";
         }
         break;
       case "tester":

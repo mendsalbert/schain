@@ -6,17 +6,18 @@ import WelcomeBanner from "../../../components/adminPartials/dashboard/WelcomeBa
 import Modal from "../../../components/Modal";
 import OrdersProduced from "../../../components/adminPartials/dashboard/OrdersProduced";
 import { AuthContext } from "../../../utils/AuthProvider";
+import { useRouter } from "next/router";
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
-
+  const router = useRouter();
   const { address } = useContext(AuthContext);
   if (address) {
     if (typeof window !== "undefined") {
       let manufactureAddr = localStorage.getItem("manufactureAddr");
       if (manufactureAddr !== address) {
-        window.location.href = "/";
+        router.push("/");
       } else {
       }
     }

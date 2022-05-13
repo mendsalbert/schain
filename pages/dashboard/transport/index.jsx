@@ -17,15 +17,18 @@ import ConfrimOrders from "../../../components/adminPartials/dashboard/ConfirmOr
 import OrdersProduced from "../../../components/adminPartials/dashboard/OrdersProduced";
 import OrdersToTest from "../../../components/adminPartials/dashboard/OrdersToTest";
 import OrderToTransport from "../../../components/adminPartials/dashboard/OrderToTransport";
+import { useRouter } from "next/router";
+
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     let manufactureAddr = localStorage.getItem("manufactureAddr");
     if (manufactureAddr !== "0x0") {
-      window.location.href = "/";
+      router.push("/");
     }
   }, []);
 
