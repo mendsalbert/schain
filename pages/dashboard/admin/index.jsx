@@ -22,7 +22,7 @@ function Dashboard() {
   useEffect(() => {
     if (address) {
       const loadOrders = async () => {
-        const data = await signer.fetchCustomers();
+        const data = await signer.fetchOrderItems();
         const allOrders = await signer.fetchOrderItems();
         setcustomers(data);
         setorders(allOrders);

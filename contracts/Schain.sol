@@ -294,9 +294,9 @@ contract Schain {
       uint currentIndex = 0;
 
       for (uint i = 0; i < totalItemCount; i++) {
-        if (orders[i + 1].owner != orders[i+1].owner) {
+        // if (orders[i + 1].owner != orders[i+1].owner) {
           itemCount += 1;
-        }
+        // }
       }
 
       OrderItem[] memory items = new OrderItem[](itemCount);
