@@ -1,10 +1,13 @@
 import { EyeIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import { ethers } from "ethers";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { productData } from "../../../utils/sample-data";
 
 function Orders({ orders }) {
+  let orders_ = orders;
+  const [type, settype] = useState("");
+
   return (
     <div className="col-span-full xl:col-span-12 bg-white shadow-lg w-full rounded-md border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100 flex flex-row items-center space-x-4">
@@ -13,12 +16,15 @@ function Orders({ orders }) {
         <div className="w-max md:w-max px-3">
           <div className="relative">
             <select
+              onChange={(e) => {
+                settype(e.target.value);
+              }}
               className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-state"
             >
-              <option>All</option>
-              <option>Pending</option>
-              <option>Returned</option>
+              <option value="all">All</option>
+              <option value="pending">Pending</option>
+              <option value="returned">Returned</option>
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
               <svg
@@ -78,93 +84,105 @@ function Orders({ orders }) {
             </thead>
             {/* Table body */}
             <tbody className="text-sm  font-medium divide-y divide-slate-100">
-              {orders.map((order) => {
-                const object = {
-                  id: order.id.toString(),
-                };
-                const filterImage = productData.filter(
-                  (p) => p.name === order.product
-                );
-                return (
-                  <Link
-                    href={{
-                      pathname: "/dashboard/customer/order",
-                      query: { object: JSON.stringify(object) }, // the data
-                    }}
-                  >
-                    <tr>
-                      <td className="p-2">
-                        <div className="flex items-center">
-                          <div className="text-slate-800">{order.product}</div>
-                        </div>
-                      </td>
-
-                      <td className="p-2">
-                        <div className="flex items-center">
-                          <img src={filterImage[0].imageUrl} />
-                        </div>
-                      </td>
-                      <td className="p-2">
-                        <div className="text-center ">
-                          {Number(order.orderdate.toString())}
-                        </div>
-                      </td>
-                      <td className="p-2">
-                        <div className="text-center">
-                          {order.quantity.toString()}
-                        </div>
-                      </td>
-                      <td className="p-2">
-                        <div className="text-center text-sky-500">
-                          {Number(
-                            ethers.utils.formatEther(order.price.toString())
-                          )}
-                        </div>
-                      </td>
-                      <td className="p-2">
-                        <div className="text-center ">{order.addressLine}</div>
-                      </td>
-
-                      <td className="p-2">
-                        <div className="text-center ">{order.state}</div>
-                      </td>
-                      <td className="p-2">
-                        <div className="text-center ">{order.city}</div>
-                      </td>
-                      <td className="p-2">
-                        <div className="text-center ">{order.contact}</div>
-                      </td>
-                      <td className="p-2">
-                        <div className="text-center ">{order.zipcode}</div>
-                      </td>
-
-                      <td className="p-2">
-                        <div className="text-center text-sky-500">
-                          <EyeIcon className="h-5 text-gray-600" />
-                        </div>
-                      </td>
-                      {order.recieved ? (
+              {orders_
+                .filter((p) =>
+                  type === "pending"
+                    ? p.pending === true
+                    : type === "returned"
+                    ? p.returned === true
+                    : orders_
+                )
+                .map((order) => {
+                  const object = {
+                    id: order.id.toString(),
+                  };
+                  const filterImage = productData.filter(
+                    (p) => p.name === order.product
+                  );
+                  return (
+                    <Link
+                      href={{
+                        pathname: "/dashboard/customer/order",
+                        query: { object: JSON.stringify(object) }, // the data
+                      }}
+                    >
+                      <tr>
                         <td className="p-2">
-                          <span className=" px-2 py-2 rounded-full text-green-700 bg-green-100">
-                            Recieved
-                          </span>
+                          <div className="flex items-center">
+                            <div className="text-slate-800">
+                              {order.product}
+                            </div>
+                          </div>
                         </td>
-                      ) : (
-                        ""
-                      )}
-                      {order.pending ? (
+
                         <td className="p-2">
-                          <span className=" px-3 py-2 rounded-full text-yellow-700 bg-yellow-100">
-                            Pending
-                          </span>
+                          <div className="flex items-center">
+                            <img src={filterImage[0].imageUrl} />
+                          </div>
                         </td>
-                      ) : (
-                        ""
-                      )}
-                    </tr>
-                  </Link>
-                );
-              })}
+                        <td className="p-2">
+                          <div className="text-center ">
+                            {Number(order.orderdate.toString())}
+                          </div>
+                        </td>
+                        <td className="p-2">
+                          <div className="text-center">
+                            {order.quantity.toString()}
+                          </div>
+                        </td>
+                        <td className="p-2">
+                          <div className="text-center text-sky-500">
+                            {Number(
+                              ethers.utils.formatEther(order.price.toString())
+                            )}
+                          </div>
+                        </td>
+                        <td className="p-2">
+                          <div className="text-center ">
+                            {order.addressLine}
+                          </div>
+                        </td>
+
+                        <td className="p-2">
+                          <div className="text-center ">{order.state}</div>
+                        </td>
+                        <td className="p-2">
+                          <div className="text-center ">{order.city}</div>
+                        </td>
+                        <td className="p-2">
+                          <div className="text-center ">{order.contact}</div>
+                        </td>
+                        <td className="p-2">
+                          <div className="text-center ">{order.zipcode}</div>
+                        </td>
+
+                        <td className="p-2">
+                          <div className="text-center text-sky-500">
+                            <EyeIcon className="h-5 text-gray-600" />
+                          </div>
+                        </td>
+                        {order.recieved ? (
+                          <td className="p-2">
+                            <span className=" px-2 py-2 rounded-full text-green-700 bg-green-100">
+                              Recieved
+                            </span>
+                          </td>
+                        ) : (
+                          ""
+                        )}
+                        {order.pending ? (
+                          <td className="p-2">
+                            <span className=" px-3 py-2 rounded-full text-yellow-700 bg-yellow-100">
+                              Pending
+                            </span>
+                          </td>
+                        ) : (
+                          ""
+                        )}
+                      </tr>
+                    </Link>
+                  );
+                })}
             </tbody>
           </table>
         </div>

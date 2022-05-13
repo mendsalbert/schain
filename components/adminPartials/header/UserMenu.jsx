@@ -1,12 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import Transition from "../../../utils/Transition";
-
+import { AuthContext } from "../../../utils/AuthProvider";
+import { WSAEINVAL } from "constants";
 function UserMenu() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef(null);
   const dropdown = useRef(null);
-
+  const { disconnect } = useContext(AuthContext);
   // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }) => {
@@ -82,7 +83,10 @@ function UserMenu() {
               <div
                 className="font-medium text-sm bg-blue-600  text-white rounded-full text-center hover:text-indigo-600 flex justify-center w-full  items-center py-1 px-3"
                 to="/"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
+                onClick={() => {
+                  disconnect();
+                  window.location.href = "/";
+                }}
               >
                 Disconnect
               </div>
