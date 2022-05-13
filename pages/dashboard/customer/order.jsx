@@ -1,19 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import Sidebar from "../../../components/adminPartials/Sidebar";
 import Header from "../../../components/adminPartials/Header";
-import WelcomeBanner from "../../../components/adminPartials/dashboard/WelcomeBanner";
+
 import Orders from "../../../components/Admin/Orders";
-import OrdersCard from "../../../components/adminPartials/dashboard/OdersCards";
-import OrdersPendingCard from "../../../components/adminPartials/dashboard/OrdersPendingCard";
-import OrderCancelCard from "../../../components/adminPartials/dashboard/OrderCancelCard";
+
 import Modal from "../../../components/Modal";
 import OrderModal from "../../../components/OrderModal";
+import { useRouter } from "next/router";
+import { AuthContext } from "../../../utils/AuthProvider";
 
 function Order() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
+  const router = useRouter();
+  const data = router.query;
+  let order = {
+    id: "",
+  };
+  if (data.object) {
+    order = JSON.parse(data.object);
+  }
+
+  const [orders, setorders] = useState([]);
+
+  const { address, signer } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (address) {
+      const loadOrders = async () => {
+        const data = await signer.fetchMyOrders();
+        const order = data.filter((order) => order.id === order.id);
+        setorders(order);
+      };
+      loadOrders();
+    }
+  }, [signer]);
+  console.log(orders);
+
   return (
     <>
       <div className="flex h-screen overflow-hidden font-Montserrat">

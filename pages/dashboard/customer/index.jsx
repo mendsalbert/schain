@@ -90,7 +90,7 @@ function Dashboard() {
                 <OrdersCard length={orders.length} />
                 <OrdersPendingCard length={pending.length} />
                 <OrderCancelCard length={returned.length} />
-                <Orders />
+                <Orders orders={orders} />
               </div>
             </div>
           </main>

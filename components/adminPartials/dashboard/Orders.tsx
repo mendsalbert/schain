@@ -4,21 +4,21 @@ import { ethers } from "ethers";
 import React, { FC, useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../../utils/AuthProvider";
 
-function Orders() {
-  const [orders, setorders] = useState([]);
+function Orders({ orders }) {
+  // const [orders, setorders] = useState([]);
 
-  const { address, signer } = useContext(AuthContext);
+  // const { address, signer } = useContext(AuthContext);
 
-  useEffect(() => {
-    if (address) {
-      const loadOrders = async () => {
-        const data = await signer.fetchMyOrders();
+  // useEffect(() => {
+  //   if (address) {
+  //     const loadOrders = async () => {
+  //       const data = await signer.fetchMyOrders();
 
-        setorders(data);
-      };
-      loadOrders();
-    }
-  }, [signer]);
+  //       setorders(data);
+  //     };
+  //     loadOrders();
+  //   }
+  // }, [signer]);
 
   return (
     <div className="col-span-full xl:col-span-12 bg-white shadow-lg w-full rounded-md border border-slate-200">
@@ -72,67 +72,104 @@ function Orders() {
                 <th className="p-2">
                   <div className="font-semibold text-center">Address</div>
                 </th>
+                <th className="p-2">
+                  <div className="font-semibold text-center">State</div>
+                </th>
+                <th className="p-2">
+                  <div className="font-semibold text-center">City</div>
+                </th>
+                <th className="p-2">
+                  <div className="font-semibold text-center">Contact</div>
+                </th>
+                <th className="p-2">
+                  <div className="font-semibold text-center">zipcode</div>
+                </th>
+
                 <th className="p-2"></th>
                 <th className="p-2"></th>
               </tr>
             </thead>
             {/* Table body */}
             <tbody className="text-sm  font-medium divide-y divide-slate-100">
-              {orders.map((order) => (
-                <Link href={"/dashboard/customer/order"}>
-                  <tr>
-                    <td className="p-2">
-                      <div className="flex items-center">
-                        <div className="text-slate-800">{order.product}</div>
-                      </div>
-                    </td>
+              {orders.map((order) => {
+                const object = {
+                  id: order.id.toString(),
+                };
+                return (
+                  <Link
+                    href={{
+                      pathname: "/dashboard/customer/order",
+                      query: { object: JSON.stringify(object) }, // the data
+                    }}
+                  >
+                    <tr>
+                      <td className="p-2">
+                        <div className="flex items-center">
+                          <div className="text-slate-800">{order.product}</div>
+                        </div>
+                      </td>
 
-                    <td className="p-2">
-                      <div className="text-center ">
-                        {Number(order.orderdate.toString())}
-                      </div>
-                    </td>
-                    <td className="p-2">
-                      <div className="text-center">
-                        {order.quantity.toString()}
-                      </div>
-                    </td>
-                    <td className="p-2">
-                      <div className="text-center text-sky-500">
-                        {Number(
-                          ethers.utils.formatEther(order.price.toString())
-                        )}
-                      </div>
-                    </td>
-                    <td className="p-2">
-                      <div className="text-center ">{order.addressLine}</div>
-                    </td>
-                    <td className="p-2">
-                      <div className="text-center text-sky-500">
-                        <EyeIcon className="h-5 text-gray-600" />
-                      </div>
-                    </td>
-                    {order.recieved ? (
                       <td className="p-2">
-                        <span className=" px-2 py-2 rounded-full text-green-700 bg-green-100">
-                          Recieved
-                        </span>
+                        <div className="text-center ">
+                          {Number(order.orderdate.toString())}
+                        </div>
                       </td>
-                    ) : (
-                      ""
-                    )}
-                    {order.pending ? (
                       <td className="p-2">
-                        <span className=" px-3 py-2 rounded-full text-yellow-700 bg-yellow-100">
-                          Pending
-                        </span>
+                        <div className="text-center">
+                          {order.quantity.toString()}
+                        </div>
                       </td>
-                    ) : (
-                      ""
-                    )}
-                  </tr>
-                </Link>
-              ))}
+                      <td className="p-2">
+                        <div className="text-center text-sky-500">
+                          {Number(
+                            ethers.utils.formatEther(order.price.toString())
+                          )}
+                        </div>
+                      </td>
+                      <td className="p-2">
+                        <div className="text-center ">{order.addressLine}</div>
+                      </td>
+
+                      <td className="p-2">
+                        <div className="text-center ">{order.state}</div>
+                      </td>
+                      <td className="p-2">
+                        <div className="text-center ">{order.city}</div>
+                      </td>
+                      <td className="p-2">
+                        <div className="text-center ">{order.contact}</div>
+                      </td>
+                      <td className="p-2">
+                        <div className="text-center ">{order.zipcode}</div>
+                      </td>
+
+                      <td className="p-2">
+                        <div className="text-center text-sky-500">
+                          <EyeIcon className="h-5 text-gray-600" />
+                        </div>
+                      </td>
+                      {order.recieved ? (
+                        <td className="p-2">
+                          <span className=" px-2 py-2 rounded-full text-green-700 bg-green-100">
+                            Recieved
+                          </span>
+                        </td>
+                      ) : (
+                        ""
+                      )}
+                      {order.pending ? (
+                        <td className="p-2">
+                          <span className=" px-3 py-2 rounded-full text-yellow-700 bg-yellow-100">
+                            Pending
+                          </span>
+                        </td>
+                      ) : (
+                        ""
+                      )}
+                    </tr>
+                  </Link>
+                );
+              })}
             </tbody>
           </table>
         </div>
