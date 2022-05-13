@@ -36,6 +36,7 @@ function Dashboard() {
         setorders(allOrders);
         setreturned(returned);
         setpending(pending);
+
         // console.log(customers);
         // console.log(items);
       };
@@ -43,6 +44,7 @@ function Dashboard() {
     }
   }, [signer]);
 
+  console.log(returned.length);
   useEffect(() => {
     let auth = localStorage.getItem("auth");
     console.log(auth);
