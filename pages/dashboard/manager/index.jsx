@@ -8,10 +8,7 @@ import OrdersCard from "../../../components/adminPartials/dashboard/OdersCards";
 import OrdersPendingCard from "../../../components/adminPartials/dashboard/OrdersPendingCard";
 import OrderCancelCard from "../../../components/adminPartials/dashboard/OrderCancelCard";
 import Modal from "../../../components/Modal";
-import OrderModal from "../../../components/OrderModal.jsx";
-import AdminAuthModal from "../../../components/AdminAuthModal.jsx";
-import UsersCard from "../../../components/adminPartials/dashboard/UsersCard";
-import UserRoles from "../../../components/adminPartials/dashboard/UserRoles";
+import { useRouter } from "next/router";
 import ApproveOrder from "../../../components/adminPartials/dashboard/ApproveOrder";
 import ConfrimOrders from "../../../components/adminPartials/dashboard/ConfirmOrders";
 import { AuthContext } from "../../../utils/AuthProvider";
@@ -20,13 +17,13 @@ function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
-
+  const router = useRouter();
   const { address } = useContext(AuthContext);
   if (address) {
     if (typeof window !== "undefined") {
       let managerAddr = localStorage.getItem("managerAddr");
       if (managerAddr !== address) {
-        window.location.href = "/";
+        router.push("/");
       } else {
       }
     }
