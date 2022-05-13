@@ -22,15 +22,13 @@ function Dashboard() {
   const [cancel, setcancel] = useState("");
   const { address, signer } = useContext(AuthContext);
 
-  console.log(signer);
-  console.log(address);
-
   useEffect(() => {
     if (address) {
       const loadOrders = async () => {
         const data = await signer.fetchMyOrders();
         const pending = data.filter((p) => p.pending === true);
         const returned = data.filter((r) => r.returned === true);
+        console.log(data);
         setreturned(returned);
         setpending(pending);
         setorders(data);

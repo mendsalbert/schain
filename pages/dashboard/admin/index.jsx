@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Sidebar from "../../../components/adminPartials/Sidebar";
 import Header from "../../../components/adminPartials/Header";
 import WelcomeBanner from "../../../components/adminPartials/dashboard/WelcomeBanner";
-import Orders from "../../../components/adminPartials/dashboard/Orders";
+import Orders from "../../../components/adminPartials/dashboard/Orders.tsx";
 import OrdersCard from "../../../components/adminPartials/dashboard/OdersCards";
 import OrdersPendingCard from "../../../components/adminPartials/dashboard/OrdersPendingCard";
 import OrderCancelCard from "../../../components/adminPartials/dashboard/OrderCancelCard";
