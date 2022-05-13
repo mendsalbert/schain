@@ -23,6 +23,8 @@ function Order() {
     order = JSON.parse(data.object);
   }
 
+  console.log(order.id);
+
   const [orders, setorders] = useState([]);
 
   const { address, signer } = useContext(AuthContext);
@@ -31,13 +33,16 @@ function Order() {
     if (address) {
       const loadOrders = async () => {
         const data = await signer.fetchMyOrders();
-        const order = data.filter((order) => order.id === order.id);
-        setorders(order);
+        const order = data.filter((ord) => ord.id.toString() === order.id);
+        setorders(data);
+        console.log(order);
       };
       loadOrders();
     }
   }, [signer]);
-  console.log(orders);
+
+  // const orderFilter = orders.filter((ord) => ord.id.toString() === order.id);
+  // console.log(orderFilter);
 
   return (
     <>
