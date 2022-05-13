@@ -17,12 +17,13 @@ function Dashboard() {
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
   const { address, signer } = useContext(AuthContext);
-
+  const [customers, setcustomers] = useState([]);
   useEffect(() => {
     if (address) {
       const loadOrders = async () => {
-        const data = await signer.fetchCustomers();
-        console.log(data);
+        const data = await signer.fetchMyOrders();
+        setcustomers(data);
+        // console.log(data);
         // console.log(items);
       };
       loadOrders();
@@ -59,7 +60,7 @@ function Dashboard() {
               {/* Cards */}
 
               <div className="grid grid-cols-12 gap-6">
-                <UsersCard />
+                <UsersCard users={customers.length} />
                 <OrdersCard />
                 <OrdersPendingCard />
                 <OrderCancelCard />
