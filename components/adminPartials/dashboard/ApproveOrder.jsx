@@ -2,6 +2,7 @@ import { EyeIcon } from "@heroicons/react/outline";
 import React, { useContext, useState } from "react";
 import Link from "next/link";
 import { productData } from "../../../utils/sample-data";
+import { ethers } from "ethers";
 
 function ApproveOrder({ orders }) {
   let orders_ = orders;
