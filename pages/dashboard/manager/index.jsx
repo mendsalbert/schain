@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import ApproveOrder from "../../../components/adminPartials/dashboard/ApproveOrder";
 import ConfrimOrders from "../../../components/adminPartials/dashboard/ConfirmOrders";
 import { AuthContext } from "../../../utils/AuthProvider";
+import { ethers } from "ethers";
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -22,6 +23,7 @@ function Dashboard() {
   const [confirmed, setconfirmed] = useState([]);
   const [pending, setpending] = useState([]);
   const router = useRouter();
+  const [ethprice, setethprice] = useState(0);
 
   const { address, signer } = useContext(AuthContext);
 
@@ -32,7 +34,10 @@ function Dashboard() {
         const pending = data.filter((p) => p.confirmed === false);
         const confirm = data.filter((p) => p.confirmed === true);
         const orders = await signer.fetchOrdersConfirm();
-
+        const getUsd = await signer.getEthUsd();
+        let number = Number(getUsd.toString());
+        let ethUSDPrice = ethers.utils.formatUnits(number, 8);
+        setethprice(ethUSDPrice);
         setpending(pending);
         setconfirmed(confirm);
         setorders(orders);
@@ -76,7 +81,11 @@ function Dashboard() {
               <div className="grid grid-cols-12 gap-6">
                 <OrdersPendingCard pendingorders={pending.length} />
                 <ConfrimOrders confirmed={confirmed.length} />
-                <ApproveOrder orders={orders} confirmedorders={confirmed} />
+                <ApproveOrder
+                  orders={orders}
+                  confirmedorders={confirmed}
+                  ethprice={ethprice}
+                />
               </div>
             </div>
           </main>

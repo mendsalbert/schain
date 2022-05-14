@@ -14,6 +14,7 @@ import { useRouter } from "next/router";
 import ApproveOrder from "../../../components/adminPartials/dashboard/ApproveOrder";
 import ConfrimOrders from "../../../components/adminPartials/dashboard/ConfirmOrders";
 import { AuthContext } from "../../../utils/AuthProvider";
+import { ethers } from "ethers";
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -24,6 +25,7 @@ function Dashboard() {
   const [transported, settransported] = useState([]);
   const [pending, setpending] = useState([]);
   const router = useRouter();
+  const [ethprice, setethprice] = useState(0);
 
   const { address, signer } = useContext(AuthContext);
 
@@ -34,6 +36,11 @@ function Dashboard() {
         const pending = data.filter((p) => p.transported === false);
         const transported = data.filter((p) => p.transported === true);
         const orders = await signer.fetchOrdersTransported();
+
+        const getUsd = await signer.getEthUsd();
+        let number = Number(getUsd.toString());
+        let ethUSDPrice = ethers.utils.formatUnits(number, 8);
+        setethprice(ethUSDPrice);
 
         setpending(pending);
         settransported(transported);
@@ -84,6 +91,7 @@ function Dashboard() {
                 <OrderToTransport
                   orders={orders}
                   transportedorders={transported}
+                  ethprice={ethprice}
                 />
               </div>
             </div>

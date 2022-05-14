@@ -3,23 +3,34 @@ import { productData } from "../utils/sample-data";
 import { AuthContext } from "../utils/AuthProvider";
 import { ethers } from "ethers";
 import Spinner from "./spinner";
+import { SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG } from "constants";
 
 const OrderModal = (props) => {
   const [quantity, setquantity] = useState(1);
-  const [productname, setproductname] = useState("milo");
-  const [address, setaddress] = useState("addresse");
-  const [phonenumber, setphonenumber] = useState("0249107812");
-  const [city, setcity] = useState("accra");
-  const [state, setstate] = useState("tema");
-  const [zip, setzip] = useState("233");
+  const [productname, setproductname] = useState("");
+  const [address, setaddress] = useState("");
+  const [phonenumber, setphonenumber] = useState("");
+  const [city, setcity] = useState("");
+  const [state, setstate] = useState("");
+  const [zip, setzip] = useState("");
   const [loading, setloading] = useState(false);
   const [orders, setorders] = useState([]);
+  const [price, setprice] = useState(0);
+  const [_price, _setprice] = useState(0);
+  // let filterImage =
+  let filterImage = productname.length
+    ? productData.filter((p) => p.name === productname)
+    : [
+        {
+          price: 0,
+          imageUrl: "",
+        },
+      ];
 
-  const filterImage = productData.filter((p) => p.name === productname);
-
+  console.log(filterImage);
   const { signer, contract } = useContext(AuthContext);
   const onsubmitOrderHandler = async () => {
-    const amount_ = ethers.utils.parseUnits("1", "ether");
+    const amount_ = ethers.utils.parseUnits(price, "ether");
     let transaction = await signer.addOrderItem(
       productname,
       quantity,
@@ -39,6 +50,24 @@ const OrderModal = (props) => {
 
     window.location.href = "/dashboard/customer";
   };
+
+  const convertEthusd = async (usd) => {
+    const data = await signer.getEthUsd();
+    let number = Number(data.toString());
+    let ethUSDPrice = ethers.utils.formatUnits(number, 8);
+    // console.log(res);
+    let res = Number(usd / ethUSDPrice).toFixed(5);
+
+    setprice(res);
+
+    // const getUsd = await contract.getEthUsd();
+    // let number = Number(getUsd.toString()) as any;
+    // let ethUSDPrice = ethers.utils.formatUnits(number, 8) as any;
+
+    // setethprice(ethUSDPrice);
+    // return res;
+  };
+  convertEthusd(Math.floor(filterImage[0].price * quantity));
 
   return (
     <>
@@ -190,9 +219,7 @@ const OrderModal = (props) => {
         </div>
         <div className="flex items-start">
           <div className="text-xl font-bold text-slate-800 mr-2">
-            Total cost : $
-            {filterImage.length > 0 ? filterImage[0].price * quantity : 0}
-            {/* 0.00041ETH */}
+            Total cost : ${filterImage[0].price * quantity} - ETH {price}
           </div>
         </div>
         <div className="flex flex-wrap -mx-3 mb-6 mt-4">

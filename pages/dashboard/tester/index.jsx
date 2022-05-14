@@ -8,11 +8,12 @@ import Orders from "../../../components/adminPartials/dashboard/Orders";
 import OrdersCard from "../../../components/adminPartials/dashboard/OdersCards";
 import OrdersPendingCard from "../../../components/adminPartials/dashboard/OrdersPendingCard";
 import OrderCancelCard from "../../../components/adminPartials/dashboard/OrderCancelCard";
-import Modal from "../../../components/Modal"; 
+import Modal from "../../../components/Modal";
 import { useRouter } from "next/router";
 import ApproveOrder from "../../../components/adminPartials/dashboard/ApproveOrder";
 import ConfrimOrders from "../../../components/adminPartials/dashboard/ConfirmOrders";
 import { AuthContext } from "../../../utils/AuthProvider";
+import { ethers } from "ethers";
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -23,6 +24,7 @@ function Dashboard() {
   const [tested, settested] = useState([]);
   const [pending, setpending] = useState([]);
   const router = useRouter();
+  const [ethprice, setethprice] = useState(0);
 
   const { address, signer } = useContext(AuthContext);
 
@@ -33,6 +35,11 @@ function Dashboard() {
         const pending = data.filter((p) => p.tested === false);
         const tested = data.filter((p) => p.tested === true);
         const orders = await signer.fetchOrdersTested();
+
+        const getUsd = await signer.getEthUsd();
+        let number = Number(getUsd.toString());
+        let ethUSDPrice = ethers.utils.formatUnits(number, 8);
+        setethprice(ethUSDPrice);
 
         setpending(pending);
         settested(tested);
@@ -80,7 +87,11 @@ function Dashboard() {
                   desc={"Needed to be worked on by authorised user first"}
                 />
                 <ConfrimOrders tested={tested.length} />
-                <OrdersToTest orders={orders} testedorders={tested} />
+                <OrdersToTest
+                  orders={orders}
+                  testedorders={tested}
+                  ethprice={ethprice}
+                />
               </div>
             </div>
           </main>

@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import ApproveOrder from "../../../components/adminPartials/dashboard/ApproveOrder";
 import ConfrimOrders from "../../../components/adminPartials/dashboard/ConfirmOrders";
 import { AuthContext } from "../../../utils/AuthProvider";
+import { ethers } from "ethers";
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -23,6 +24,7 @@ function Dashboard() {
   const [produced, setproducedorder] = useState([]);
   const [pending, setpending] = useState([]);
   const router = useRouter();
+  const [ethprice, setethprice] = useState(0);
 
   const { address, signer } = useContext(AuthContext);
 
@@ -33,6 +35,11 @@ function Dashboard() {
         const pending = data.filter((p) => p.produced === false);
         const confirm = data.filter((p) => p.produced === true);
         const orders = await signer.fetchOrdersProduced();
+
+        const getUsd = await signer.getEthUsd();
+        let number = Number(getUsd.toString());
+        let ethUSDPrice = ethers.utils.formatUnits(number, 8);
+        setethprice(ethUSDPrice);
 
         setpending(pending);
         setproducedorder(confirm);
@@ -80,7 +87,11 @@ function Dashboard() {
                   pendingProduced={pending.length}
                 />
                 <ConfrimOrders produced={produced.length} />
-                <OrdersProduced orders={orders} producedOrders={produced} />
+                <OrdersProduced
+                  orders={orders}
+                  producedOrders={produced}
+                  ethprice={ethprice}
+                />
               </div>
             </div>
           </main>

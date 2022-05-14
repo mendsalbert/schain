@@ -10,6 +10,8 @@ import Modal from "../../../components/Modal";
 import OrderModal from "../../../components/OrderModal.jsx";
 import { AuthContext } from "../../../utils/AuthProvider";
 import { useRouter } from "next/router";
+import { ethers } from "ethers";
+
 // import Content from "../../../components/customer/content";
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -21,11 +23,15 @@ function Dashboard() {
   const router = useRouter();
   const [cancel, setcancel] = useState("");
   const { address, signer } = useContext(AuthContext);
-
+  const [ethprice, setethprice] = useState(0);
   useEffect(() => {
     if (address) {
       const loadOrders = async () => {
         const data = await signer.fetchMyOrders();
+        const getUsd = await signer.getEthUsd();
+        let number = Number(getUsd.toString());
+        let ethUSDPrice = ethers.utils.formatUnits(number, 8);
+        setethprice(ethUSDPrice);
         const pending = data.filter((p) => p.pending === true);
         const returned = data.filter((r) => r.returned === true);
         console.log(data);
@@ -90,7 +96,7 @@ function Dashboard() {
                 <OrdersCard length={orders.length} />
                 <OrdersPendingCard length={pending.length} />
                 <OrderCancelCard length={returned.length} />
-                <Orders orders={orders} />
+                <Orders orders={orders} ethprice={ethprice} />
               </div>
             </div>
           </main>

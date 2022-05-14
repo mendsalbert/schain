@@ -5,7 +5,8 @@ import React, { useEffect, useState } from "react";
 import { productData } from "../../../utils/sample-data";
 import { timeConverter } from "../../../lib/utilities";
 
-function AllOrders({ orders }) {
+function AllOrders({ orders, ethprice }) {
+  console.log(ethprice);
   let orders_ = orders;
   const [type, settype] = useState("");
 
@@ -127,9 +128,12 @@ function AllOrders({ orders }) {
                       </td>
                       <td className="p-2">
                         <div className="text-center text-sky-500">
-                          {Number(
-                            ethers.utils.formatEther(order.price.toString())
-                          )}
+                          $
+                          {(
+                            Number(
+                              ethers.utils.formatEther(order.price.toString())
+                            ) * ethprice
+                          ).toFixed(2)}
                         </div>
                       </td>
                       <td className="p-2">

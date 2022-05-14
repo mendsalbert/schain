@@ -14,22 +14,26 @@ import UsersCard from "../../../components/adminPartials/dashboard/UsersCard";
 import UserRoles from "../../../components/adminPartials/dashboard/UserRoles";
 import AllOrders from "../../../components/adminPartials/dashboard/AllOrders";
 import AllCustomers from "../../../components/adminPartials/dashboard/AllCustomers";
+import { ethers } from "ethers";
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
-  const { address, signer } = useContext(AuthContext);
+  const { address, signer, contract } = useContext(AuthContext);
   const [customers, setcustomers] = useState([]);
   const [orders, setorders] = useState([]);
   const [pending, setpending] = useState([]);
   const [returned, setreturned] = useState([]);
-
+  const [ethprice, setethprice] = useState(0);
   useEffect(() => {
     if (address) {
       const loadOrders = async () => {
         const data = await signer.fetchOrderItems();
-
+        const getUsd = await signer.getEthUsd();
+        let number = Number(getUsd.toString());
+        let ethUSDPrice = ethers.utils.formatUnits(number, 8);
+        setethprice(ethUSDPrice);
         let customers = data.filter(
           (v, i, a) => a.findIndex((v2) => v2.owner === v.owner) === i
         );
@@ -82,7 +86,7 @@ function Dashboard() {
                 <OrdersPendingCard allpending={pending.length} />
                 <OrderCancelCard allreturned={returned.length} />
                 <UserRoles />
-                <AllOrders orders={orders} />
+                <AllOrders orders={orders} ethprice={ethprice} />
                 <AllCustomers customer={customers} />
               </div>
             </div>

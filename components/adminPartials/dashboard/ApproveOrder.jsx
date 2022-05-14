@@ -7,7 +7,7 @@ import { timeConverter } from "../../../lib/utilities";
 import { AuthContext } from "../../../utils/AuthProvider";
 import Spinner from "../../spinner";
 
-function ApproveOrder({ orders, confirmedorders }) {
+function ApproveOrder({ orders, confirmedorders, ethprice }) {
   const { address, signer, provider } = useContext(AuthContext);
   let orders_ = orders;
   const [type, settype] = useState("");
@@ -149,9 +149,12 @@ function ApproveOrder({ orders, confirmedorders }) {
                       </td>
                       <td className="p-2">
                         <div className="text-center text-sky-500">
-                          {Number(
-                            ethers.utils.formatEther(order.price.toString())
-                          )}
+                          $
+                          {(
+                            Number(
+                              ethers.utils.formatEther(order.price.toString())
+                            ) * ethprice
+                          ).toFixed(2)}
                         </div>
                       </td>
                       <td className="p-2">
