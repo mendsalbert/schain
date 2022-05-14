@@ -185,7 +185,7 @@ contract Schain {
     function confrimOrder(uint _id, string memory _role) public{
       require(_id > 0 && _id <= ordersCount,"order id not valid");
      
-      require(roles[_role].roleaddress == address(0x0000000000000000000000000000000000000000) , 'You dont have permission to confirm order');
+      require(roles[_role].roleaddress == address(0) , 'You dont have permission to confirm order');
       require(roles[_role].roleaddress != msg.sender , 'You dont have permission to confirm order');
      
       console.log(roles[_role].roleaddress);
