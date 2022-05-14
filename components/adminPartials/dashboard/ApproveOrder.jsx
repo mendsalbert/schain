@@ -8,6 +8,11 @@ import { timeConverter } from "../../../lib/utilities";
 function ApproveOrder({ orders }) {
   let orders_ = orders;
   const [type, settype] = useState("");
+
+  const confirmOrder = async (id) => {
+    console.log(id);
+  };
+
   return (
     <div className="col-span-full xl:col-span-12 bg-white shadow-lg w-full rounded-md border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100 flex flex-row items-center space-x-4">
@@ -143,7 +148,12 @@ function ApproveOrder({ orders }) {
                       </td>
 
                       {!order.confirmed ? (
-                        <td className="p-2">
+                        <td
+                          onClick={() => {
+                            confirmOrder(order.id.toString());
+                          }}
+                          className="p-2"
+                        >
                           <span className=" px-2 py-2 rounded-full text-yellow-700 bg-yellow-100">
                             Confirm order
                           </span>

@@ -129,12 +129,7 @@ contract Schain {
 
     //validate role 
     function validateRole(string memory _role , address _roleaddress) public view returns (bool) {
-      //  UserRole storage role = roles[_role];
-       
-      //  console.log(role.role);
-      //  console.log(role.roleaddress);
        if(roles[_role].roleaddress == _roleaddress ){
-        //  console.log(role);
          return true;
        }else {
          return false;
@@ -189,8 +184,7 @@ contract Schain {
     //confirm order
     function confrimOrder(uint _id, string memory _role) public{
       require(_id > 0 && _id <= ordersCount,"order id not valid");
-      UserRole storage role = roles[_role];
-      require(role.roleaddress != msg.sender , 'You dont have permission to confirm order');
+      require(roles[_role].roleaddress != msg.sender , 'You dont have permission to confirm order');
       OrderItem storage order = orders[_id];
       require(order.confirmed == false);
       order.confirmed = true;
@@ -201,8 +195,7 @@ contract Schain {
     //produced order
      function produceOrder(uint _id, string memory _role) public{
       require(_id > 0 && _id <= ordersCount,"order id not valid");
-      UserRole storage role = roles[_role];
-      require(role.roleaddress != msg.sender , 'You dont have permission to produce order');
+        require(roles[_role].roleaddress != msg.sender , 'You dont have permission to produce order');
       OrderItem storage order = orders[_id];
       require(order.produced == false);
       order.produced = true;
@@ -213,8 +206,7 @@ contract Schain {
     //test order
      function testOrder(uint _id, string memory _role) public{
       require(_id > 0 && _id <= ordersCount,"order id not valid");
-      UserRole storage role = roles[_role];
-      require(role.roleaddress != msg.sender , 'You dont have permission to test order');
+      require(roles[_role].roleaddress != msg.sender , 'You dont have permission to test order');
       OrderItem storage order = orders[_id];
       require(order.tested == false);
       order.tested = true;
@@ -225,8 +217,7 @@ contract Schain {
     //transported order
      function transportOrder(uint _id, string memory _role) public{
       require(_id > 0 && _id <= ordersCount,"order id not valid");
-      UserRole storage role = roles[_role];
-      require(role.roleaddress != msg.sender , 'You dont have permission to transport order');
+      require(roles[_role].roleaddress != msg.sender , 'You dont have permission to transport order');
       OrderItem storage order = orders[_id];
       require(order.transported == false);
       order.transported = true;
