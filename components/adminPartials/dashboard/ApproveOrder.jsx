@@ -2,7 +2,9 @@ import { EyeIcon } from "@heroicons/react/outline";
 import React from "react";
 import Link from "next/link";
 
-function ApproveOrder() {
+function ApproveOrder({ orders }) {
+  let orders_ = orders;
+  const [type, settype] = useState("");
   return (
     <div className="col-span-full xl:col-span-12 bg-white shadow-lg w-full rounded-md border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100 flex flex-row items-center space-x-4">
@@ -11,12 +13,15 @@ function ApproveOrder() {
         <div className="w-max md:w-max px-3">
           <div className="relative">
             <select
+              onChange={(e) => {
+                settype(e.target.value);
+              }}
               className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-state"
             >
-              {/* <option>All</option> */}
-              <option>Pending</option>
-              <option>Approved</option>
+              <option>All</option>
+              <option value="pending">Pending</option>
+              <option value="confirmed">Confirmed</option>
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
               <svg
