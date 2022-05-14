@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import Link from "next/link";
 import { productData } from "../../../utils/sample-data";
 import { ethers } from "ethers";
+import { timeConverter } from "../../../lib/utilities";
 
 function ApproveOrder({ orders }) {
   let orders_ = orders;
@@ -95,87 +96,76 @@ function ApproveOrder({ orders }) {
                     (p) => p.name === order.product
                   );
                   return (
-                    <Link
-                      href={{
-                        pathname: "/dashboard/customer/order",
-                        query: { object: JSON.stringify(object) }, // the data
-                      }}
-                    >
-                      <tr>
-                        <td className="p-2">
-                          <div className="flex items-center">
-                            <div className="text-slate-800">
-                              {order.product}
-                            </div>
-                          </div>
-                        </td>
+                    <tr>
+                      <td className="p-2">
+                        <div className="flex items-center">
+                          <div className="text-slate-800">{order.product}</div>
+                        </div>
+                      </td>
 
-                        <td className="p-2">
-                          <div className="flex items-center">
-                            <img src={filterImage[0].imageUrl} />
-                          </div>
-                        </td>
-                        <td className="p-2">
-                          <div className="text-center ">
-                            {Number(order.orderdate.toString())}
-                          </div>
-                        </td>
-                        <td className="p-2">
-                          <div className="text-center">
-                            {order.quantity.toString()}
-                          </div>
-                        </td>
-                        <td className="p-2">
-                          <div className="text-center text-sky-500">
-                            {Number(
-                              ethers.utils.formatEther(order.price.toString())
-                            )}
-                          </div>
-                        </td>
-                        <td className="p-2">
-                          <div className="text-center ">
-                            {order.addressLine}
-                          </div>
-                        </td>
+                      <td className="p-2">
+                        <div className="flex items-center">
+                          <img src={filterImage[0].imageUrl} />
+                        </div>
+                      </td>
+                      <td className="p-2">
+                        <div className="text-center ">
+                          {timeConverter(order.orderdate.toString())}
+                        </div>
+                      </td>
+                      <td className="p-2">
+                        <div className="text-center">
+                          {order.quantity.toString()}
+                        </div>
+                      </td>
+                      <td className="p-2">
+                        <div className="text-center text-sky-500">
+                          {Number(
+                            ethers.utils.formatEther(order.price.toString())
+                          )}
+                        </div>
+                      </td>
+                      <td className="p-2">
+                        <div className="text-center ">{order.addressLine}</div>
+                      </td>
 
-                        <td className="p-2">
-                          <div className="text-center ">{order.state}</div>
-                        </td>
-                        <td className="p-2">
-                          <div className="text-center ">{order.city}</div>
-                        </td>
-                        <td className="p-2">
-                          <div className="text-center ">{order.contact}</div>
-                        </td>
-                        <td className="p-2">
-                          <div className="text-center ">{order.zipcode}</div>
-                        </td>
+                      <td className="p-2">
+                        <div className="text-center ">{order.state}</div>
+                      </td>
+                      <td className="p-2">
+                        <div className="text-center ">{order.city}</div>
+                      </td>
+                      <td className="p-2">
+                        <div className="text-center ">{order.contact}</div>
+                      </td>
+                      <td className="p-2">
+                        <div className="text-center ">{order.zipcode}</div>
+                      </td>
 
+                      <td className="p-2">
+                        <div className="text-center text-sky-500">
+                          <EyeIcon className="h-5 text-gray-600" />
+                        </div>
+                      </td>
+                      {!order.confirmed ? (
                         <td className="p-2">
-                          <div className="text-center text-sky-500">
-                            <EyeIcon className="h-5 text-gray-600" />
-                          </div>
+                          <span className=" px-2 py-2 rounded-full text-yellow-700 bg-yellow-100">
+                            Confirm order
+                          </span>
                         </td>
-                        {order.recieved ? (
-                          <td className="p-2">
-                            <span className=" px-2 py-2 rounded-full text-green-700 bg-green-100">
-                              Recieved
-                            </span>
-                          </td>
-                        ) : (
-                          ""
-                        )}
-                        {order.pending ? (
-                          <td className="p-2">
-                            <span className=" px-3 py-2 rounded-full text-yellow-700 bg-yellow-100">
-                              Pending
-                            </span>
-                          </td>
-                        ) : (
-                          ""
-                        )}
-                      </tr>
-                    </Link>
+                      ) : (
+                        ""
+                      )}
+                      {order.confrimed ? (
+                        <td className="p-2">
+                          <span className=" px-3 py-2 rounded-full text-green-700 bg-green-100">
+                            Confirmed
+                          </span>
+                        </td>
+                      ) : (
+                        ""
+                      )}
+                    </tr>
                   );
                 })}
             </tbody>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ethers } from "ethers";
 import React, { useEffect, useState } from "react";
 import { productData } from "../../../utils/sample-data";
+import { timeConverter } from "../../../lib/utilities";
 
 function Orders({ orders }) {
   let orders_ = orders;
@@ -122,7 +123,7 @@ function Orders({ orders }) {
                         </td>
                         <td className="p-2">
                           <div className="text-center ">
-                            {Number(order.orderdate.toString())}
+                            {timeConverter(order.orderdate.toString())}
                           </div>
                         </td>
                         <td className="p-2">
