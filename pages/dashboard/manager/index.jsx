@@ -32,7 +32,7 @@ function Dashboard() {
         const orders = await signer.fetchOrdersConfirm();
 
         setpending(pending);
-        setconfirmed(returned);
+
         console.log(orders);
       };
       loadOrders();
