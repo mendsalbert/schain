@@ -14,10 +14,18 @@ function ApproveOrder({ orders }) {
 
   const confirmOrder = async (id) => {
     const transaction = await signer.confrimOrder(id, "manager");
-    await transaction.wait();
-    alert("order confirmed succesfully");
-    window.location.reload();
-    console.log(id);
+    try {
+      await transaction.wait();
+      alert("order confirmed succesfully");
+      window.location.reload();
+
+      console.log(id);
+    } catch (err) {
+      const code = err.data.replace("Reverted ", "");
+      console.log({ err });
+      let reason = ethers.utils.toUtf8String("0x" + code.substr(138));
+      console.log("revert reason:", reason);
+    }
   };
 
   return (
