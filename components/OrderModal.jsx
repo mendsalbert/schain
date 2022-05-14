@@ -40,7 +40,7 @@ const OrderModal = (props) => {
       zip,
       state,
       {
-        value: amount_,
+        value: price,
       }
     );
     setloading(true);
