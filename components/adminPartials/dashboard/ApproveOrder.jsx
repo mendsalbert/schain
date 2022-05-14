@@ -1,6 +1,7 @@
 import { EyeIcon } from "@heroicons/react/outline";
-import React from "react";
+import React, { useContext, useState } from "react";
 import Link from "next/link";
+import { productData } from "../../../utils/sample-data";
 
 function ApproveOrder({ orders }) {
   let orders_ = orders;
@@ -45,104 +46,137 @@ function ApproveOrder({ orders }) {
                 <th className="p-2">
                   <div className="font-semibold text-left">Name</div>
                 </th>
-
+                <th className="p-2">
+                  <div className="font-semibold text-left">IMAGE</div>
+                </th>
                 <th className="p-2">
                   <div className="font-semibold text-center">Order date</div>
                 </th>
                 <th className="p-2">
                   <div className="font-semibold text-center">Quantity</div>
                 </th>
+
                 <th className="p-2">
                   <div className="font-semibold text-center">Price</div>
                 </th>
+
                 <th className="p-2">
                   <div className="font-semibold text-center">Address</div>
                 </th>
+                <th className="p-2">
+                  <div className="font-semibold text-center">State</div>
+                </th>
+                <th className="p-2">
+                  <div className="font-semibold text-center">City</div>
+                </th>
+                <th className="p-2">
+                  <div className="font-semibold text-center">Contact</div>
+                </th>
+                <th className="p-2">
+                  <div className="font-semibold text-center">zipcode</div>
+                </th>
+
                 <th className="p-2"></th>
                 <th className="p-2"></th>
               </tr>
             </thead>
             {/* Table body */}
             <tbody className="text-sm  font-medium divide-y divide-slate-100">
-              {/* Row */}
-              <Link href={"/dashboard/customer/order"}>
-                <tr>
-                  <td className="p-2">
-                    <div className="flex items-center">
-                      <div className="text-slate-800">Milo</div>
-                    </div>
-                  </td>
+              {orders_
+                .filter((p) =>
+                  type === "confirmed" ? p.confirmed === true : orders_
+                )
+                .map((order) => {
+                  const object = {
+                    id: order.id.toString(),
+                  };
+                  const filterImage = productData.filter(
+                    (p) => p.name === order.product
+                  );
+                  return (
+                    <Link
+                      href={{
+                        pathname: "/dashboard/customer/order",
+                        query: { object: JSON.stringify(object) }, // the data
+                      }}
+                    >
+                      <tr>
+                        <td className="p-2">
+                          <div className="flex items-center">
+                            <div className="text-slate-800">
+                              {order.product}
+                            </div>
+                          </div>
+                        </td>
 
-                  <td className="p-2">
-                    <div className="text-center ">22/05/22</div>
-                  </td>
-                  <td className="p-2">
-                    <div className="text-center">57</div>
-                  </td>
-                  <td className="p-2">
-                    <div className="text-center text-sky-500">$3,877</div>
-                  </td>
+                        <td className="p-2">
+                          <div className="flex items-center">
+                            <img src={filterImage[0].imageUrl} />
+                          </div>
+                        </td>
+                        <td className="p-2">
+                          <div className="text-center ">
+                            {Number(order.orderdate.toString())}
+                          </div>
+                        </td>
+                        <td className="p-2">
+                          <div className="text-center">
+                            {order.quantity.toString()}
+                          </div>
+                        </td>
+                        <td className="p-2">
+                          <div className="text-center text-sky-500">
+                            {Number(
+                              ethers.utils.formatEther(order.price.toString())
+                            )}
+                          </div>
+                        </td>
+                        <td className="p-2">
+                          <div className="text-center ">
+                            {order.addressLine}
+                          </div>
+                        </td>
 
-                  <td className="p-2">
-                    <div className="text-center">Addrese</div>
-                  </td>
-                  <td className="p-2">
-                    <span className=" px-2 py-2 rounded-full text-green-700 bg-green-100">
-                      Approve
-                    </span>
-                  </td>
-                </tr>
-              </Link>
-              <tr>
-                <td className="p-2">
-                  <div className="flex items-center">
-                    <div className="text-slate-800">Milo</div>
-                  </div>
-                </td>
+                        <td className="p-2">
+                          <div className="text-center ">{order.state}</div>
+                        </td>
+                        <td className="p-2">
+                          <div className="text-center ">{order.city}</div>
+                        </td>
+                        <td className="p-2">
+                          <div className="text-center ">{order.contact}</div>
+                        </td>
+                        <td className="p-2">
+                          <div className="text-center ">{order.zipcode}</div>
+                        </td>
 
-                <td className="p-2">
-                  <div className="text-center ">22/05/22</div>
-                </td>
-                <td className="p-2">
-                  <div className="text-center">57</div>
-                </td>
-                <td className="p-2">
-                  <div className="text-center text-sky-500">$3,877</div>
-                </td>
-                <td className="p-2">
-                  <div className="text-center">Addrese</div>
-                </td>
-                <td className="p-2">
-                  <span className=" px-2 py-2 rounded-full text-red-700 bg-red-100">
-                    Approved{" "}
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">
-                  <div className="flex items-center">
-                    <div className="text-slate-800">Milo</div>
-                  </div>
-                </td>
-
-                <td className="p-2">
-                  <div className="text-center ">22/05/22</div>
-                </td>
-                <td className="p-2">
-                  <div className="text-center">57</div>
-                </td>
-                <td className="p-2">
-                  <div className="text-center text-sky-500">$3,877</div>
-                </td>
-                <td className="p-2">
-                  <div className="text-center">Addrese</div>
-                </td>
-                <td className="p-2">
-                  <span className=" px-2 py-2 rounded-full text-green-700 bg-green-100">
-                    Approved{" "}
-                  </span>
-                </td>
-              </tr>
+                        <td className="p-2">
+                          <div className="text-center text-sky-500">
+                            <EyeIcon className="h-5 text-gray-600" />
+                          </div>
+                        </td>
+                        {order.recieved ? (
+                          <td className="p-2">
+                            <span className=" px-2 py-2 rounded-full text-green-700 bg-green-100">
+                              Recieved
+                            </span>
+                          </td>
+                        ) : (
+                          ""
+                        )}
+                        {order.pending ? (
+                          <td className="p-2">
+                            <span className=" px-3 py-2 rounded-full text-yellow-700 bg-yellow-100">
+                              Pending
+                            </span>
+                          </td>
+                        ) : (
+                          ""
+                        )}
+                      </tr>
+                    </Link>
+                  );
+                })}
             </tbody>
           </table>
         </div>
