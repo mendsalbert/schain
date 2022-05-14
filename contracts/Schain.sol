@@ -183,11 +183,9 @@ contract Schain {
 
     //confirm order
     function confrimOrder(uint _id, string memory _role) public{
+      console.log('confirming................');
       require(_id > 0 && _id <= ordersCount,"order id not valid");
-     
-      // require(roles[_role].roleaddress == address(0) , 'You dont have permission to confirm order');
       require(roles[_role].roleaddress != msg.sender , 'You dont have permission to confirm order');
-     
       console.log(roles[_role].roleaddress);
       console.log(msg.sender);
       OrderItem storage order = orders[_id];
@@ -198,7 +196,7 @@ contract Schain {
     }
 
     //produced order
-     function produceOrder(uint _id, string memory _role) public{
+    function produceOrder(uint _id, string memory _role) public{
       require(_id > 0 && _id <= ordersCount,"order id not valid");
       require(roles[_role].roleaddress != msg.sender , 'You dont have permission to produce order');
       OrderItem storage order = orders[_id];

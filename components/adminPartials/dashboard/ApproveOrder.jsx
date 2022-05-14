@@ -8,24 +8,26 @@ import { AuthContext } from "../../../utils/AuthProvider";
 import Spinner from "../../spinner";
 
 function ApproveOrder({ orders }) {
-  const { address, signer } = useContext(AuthContext);
+  const { address, signer, provider } = useContext(AuthContext);
   let orders_ = orders;
   const [type, settype] = useState("");
 
   const confirmOrder = async (id) => {
     let validate = await signer.validateRole("manager", address);
     if (validate) {
-      const transaction = await signer.confrimOrder(id, "manager");
       try {
+        const transaction = await signer.confrimOrder(id, "manager");
+        console.log(id);
+
         await transaction.wait();
         alert("order confirmed succesfully");
         window.location.reload();
 
         console.log(id);
       } catch (err) {
-        const code = err.data.replace("Reverted ", "");
-        console.log({ err });
-        let reason = ethers.utils.toUtf8String("0x" + code.substr(138));
+        // const code = err.data.replace("Reverted ", "");
+        console.log(err);
+        // let reason = ethers.utils.toUtf8String("0x" + code.substr(138));
         console.log("revert reason:", reason);
       }
     } else {
