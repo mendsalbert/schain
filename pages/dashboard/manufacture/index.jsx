@@ -69,14 +69,14 @@ function Dashboard() {
             <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
               {/* Welcome banner */}
               <WelcomeBanner
-                type="Manager"
+                type="Manufacturer"
                 message="Here are some orders to confirm"
               />
               {/* Cards */}
 
               <div className="grid grid-cols-12 gap-6">
                 <OrdersPendingCard
-                  desc={"Need to be worked on by authorised user first"}
+                  desc={"Needed to be worked on by authorised user first"}
                   pendingProduced={pending.length}
                 />
                 <ConfrimOrders produced={produced.length} />

@@ -8,7 +8,7 @@ import Orders from "../../../components/adminPartials/dashboard/Orders";
 import OrdersCard from "../../../components/adminPartials/dashboard/OdersCards";
 import OrdersPendingCard from "../../../components/adminPartials/dashboard/OrdersPendingCard";
 import OrderCancelCard from "../../../components/adminPartials/dashboard/OrderCancelCard";
-import Modal from "../../../components/Modal";
+import Modal from "../../../components/Modal"; 
 import { useRouter } from "next/router";
 import ApproveOrder from "../../../components/adminPartials/dashboard/ApproveOrder";
 import ConfrimOrders from "../../../components/adminPartials/dashboard/ConfirmOrders";
@@ -69,14 +69,17 @@ function Dashboard() {
             <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
               {/* Welcome banner */}
               <WelcomeBanner
-                type="Manager"
+                type="Tester"
                 message="Here are some orders to confirm"
               />
               {/* Cards */}
 
               <div className="grid grid-cols-12 gap-6">
-                {/* <OrdersPendingCard pendingorders={pending.length} />
-                <ConfrimOrders confirmed={confirmed.length} /> */}
+                <OrdersPendingCard
+                  pendingtest={pending.length}
+                  desc={"Needed to be worked on by authorised user first"}
+                />
+                <ConfrimOrders tested={tested.length} />
                 <OrdersToTest orders={orders} testedorders={tested} />
               </div>
             </div>

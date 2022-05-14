@@ -1,4 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
+import OrderToTransport from "../../../components/adminPartials/dashboard/OrderToTransport";
+import OrdersToTest from "../../../components/adminPartials/dashboard/OrdersToTest";
+import React, { useState, useRef, useEffect, useContext } from "react";
 
 import Sidebar from "../../../components/adminPartials/Sidebar";
 import Header from "../../../components/adminPartials/Header";
@@ -8,29 +10,49 @@ import OrdersCard from "../../../components/adminPartials/dashboard/OdersCards";
 import OrdersPendingCard from "../../../components/adminPartials/dashboard/OrdersPendingCard";
 import OrderCancelCard from "../../../components/adminPartials/dashboard/OrderCancelCard";
 import Modal from "../../../components/Modal";
-import OrderModal from "../../../components/OrderModal.jsx";
-import AdminAuthModal from "../../../components/AdminAuthModal.jsx";
-import UsersCard from "../../../components/adminPartials/dashboard/UsersCard";
-import UserRoles from "../../../components/adminPartials/dashboard/UserRoles";
+import { useRouter } from "next/router";
 import ApproveOrder from "../../../components/adminPartials/dashboard/ApproveOrder";
 import ConfrimOrders from "../../../components/adminPartials/dashboard/ConfirmOrders";
-import OrdersProduced from "../../../components/adminPartials/dashboard/OrdersProduced";
-import OrdersToTest from "../../../components/adminPartials/dashboard/OrdersToTest";
-import OrderToTransport from "../../../components/adminPartials/dashboard/OrderToTransport";
-import { useRouter } from "next/router";
+import { AuthContext } from "../../../utils/AuthProvider";
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
+  const [orders, setorders] = useState([]);
+  const [_orders, _setorders] = useState([]);
+  const [transported, settransported] = useState([]);
+  const [pending, setpending] = useState([]);
   const router = useRouter();
 
+  const { address, signer } = useContext(AuthContext);
+
   useEffect(() => {
-    let manufactureAddr = localStorage.getItem("manufactureAddr");
-    if (manufactureAddr !== "0x0") {
-      router.push("/");
+    if (address) {
+      const loadOrders = async () => {
+        const data = await signer.fetchOrderItems();
+        const pending = data.filter((p) => p.transported === false);
+        const transported = data.filter((p) => p.transported === true);
+        const orders = await signer.fetchOrdersTransported();
+
+        setpending(pending);
+        settransported(transported);
+        setorders(orders);
+      };
+      loadOrders();
     }
-  }, []);
+  }, [signer]);
+
+  if (address) {
+    if (typeof window !== "undefined") {
+      let managerAddr = localStorage.getItem("managerAddr");
+      if (managerAddr !== address) {
+        router.push("/");
+      } else {
+      }
+    }
+  } else {
+  }
 
   return (
     <>
@@ -48,19 +70,21 @@ function Dashboard() {
             <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
               {/* Welcome banner */}
               <WelcomeBanner
-                type="Transpoter"
-                message="Here are some order to transport"
+                type="Transporter"
+                message="Here are some orders to confirm"
               />
               {/* Cards */}
 
               <div className="grid grid-cols-12 gap-6">
-                {/* <O /> */}
-                {/* <OrdersPendingCard /> */}
-                {/* <ConfrimOrders /> */}
-                {/* <ApproveOrder /> */}
-                {/* <OrdersProduced /> */}
-                {/* <OrdersToTest /> */}
-                <OrderToTransport />
+                <OrdersPendingCard
+                  pendingtransport={pending.length}
+                  desc={"Needed to be worked on by authorised user first"}
+                />
+                <ConfrimOrders transported={transported.length} />
+                <OrderToTransport
+                  orders={orders}
+                  transportedorders={transported}
+                />
               </div>
             </div>
           </main>

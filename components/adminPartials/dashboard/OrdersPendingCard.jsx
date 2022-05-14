@@ -6,6 +6,8 @@ function OrdersPendingCard({
   allpending,
   pendingorders,
   pendingProduced,
+  pendingtest,
+  pendingtransport,
   desc,
 }) {
   return (
@@ -22,7 +24,13 @@ function OrdersPendingCard({
         </div>
         <div className="flex items-start">
           <div className="text-3xl font-bold text-slate-800 mr-2">
-            {allpending || length || pendingorders || pendingProduced || 0}
+            {allpending ||
+              length ||
+              pendingorders ||
+              pendingProduced ||
+              pendingtest ||
+              pendingtransport ||
+              0}
           </div>
         </div>
       </div>
