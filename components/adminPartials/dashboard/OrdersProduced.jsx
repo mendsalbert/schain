@@ -12,7 +12,7 @@ function OrdersProduced({ orders, producedOrders }) {
   let orders_ = orders;
   const [type, settype] = useState("");
   // console.log(type);
-  if (type == "confirmed") {
+  if (type == "produced") {
     orders_ = producedOrders;
   }
   const produceOrder = async (id) => {
@@ -22,7 +22,7 @@ function OrdersProduced({ orders, producedOrders }) {
         const transaction = await signer.produceOrder(id, "manufacturer");
         console.log(id);
         await transaction.wait();
-        alert("order confirmed succesfully");
+        alert("order produced succesfully");
         window.location.reload();
 
         console.log(id);
@@ -180,7 +180,7 @@ function OrdersProduced({ orders, producedOrders }) {
                           className="p-2"
                         >
                           <span className="cursor-pointer px-2 py-2 rounded-full text-yellow-700 bg-yellow-100">
-                            Producing
+                            Produce
                           </span>
                         </td>
                       ) : (

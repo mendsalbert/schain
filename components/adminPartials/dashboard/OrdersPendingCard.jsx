@@ -1,7 +1,12 @@
 import { ExclamationCircleIcon } from "@heroicons/react/outline";
 import React from "react";
 
-function OrdersPendingCard({ length, allpending, pendingorders }) {
+function OrdersPendingCard({
+  length,
+  allpending,
+  pendingorders,
+  pendingProduced,
+}) {
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white shadow-lg rounded-md border border-slate-200">
       <div className="px-5 pt-5">
@@ -16,7 +21,7 @@ function OrdersPendingCard({ length, allpending, pendingorders }) {
         </div>
         <div className="flex items-start">
           <div className="text-3xl font-bold text-slate-800 mr-2">
-            {allpending || length || pendingorders || 0}
+            {allpending || length || pendingorders || pendingProduced || 0}
           </div>
         </div>
       </div>
