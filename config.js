@@ -1,2 +1,2 @@
 //contract address
-export const schainAddress = "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82";
+export const schainAddress = "0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1";
