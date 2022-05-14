@@ -12,6 +12,7 @@ import { AuthContext } from "../../../utils/AuthProvider";
 import AdminAuthModal from "../../../components/AdminAuthModal.jsx";
 import UsersCard from "../../../components/adminPartials/dashboard/UsersCard";
 import UserRoles from "../../../components/adminPartials/dashboard/UserRoles";
+
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
@@ -26,6 +27,7 @@ function Dashboard() {
     if (address) {
       const loadOrders = async () => {
         const data = await signer.fetchOrderItems();
+
         let customers = data.filter(
           (v, i, a) => a.findIndex((v2) => v2.owner === v.owner) === i
         );

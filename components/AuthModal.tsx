@@ -3,9 +3,10 @@ import { useContext } from "react";
 import { AuthContext } from "../utils/AuthProvider";
 
 const AuthModal = (props) => {
-  const { connect } = useContext(AuthContext);
+  const { connect, address, signer } = useContext(AuthContext);
   const [role, setrole] = useState("customer");
 
+  // let verify = await signer.validateRole(role, address);
   return (
     <>
       <div className="relative">

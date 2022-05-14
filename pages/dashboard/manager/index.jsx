@@ -52,7 +52,6 @@ function Dashboard() {
               {/* Cards */}
 
               <div className="grid grid-cols-12 gap-6">
-                {/* <O /> */}
                 <OrdersPendingCard />
                 <ConfrimOrders />
                 <ApproveOrder />

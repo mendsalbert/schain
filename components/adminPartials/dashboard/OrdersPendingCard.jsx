@@ -16,7 +16,7 @@ function OrdersPendingCard({ length, allpending }) {
         </div>
         <div className="flex items-start">
           <div className="text-3xl font-bold text-slate-800 mr-2">
-            {allpending ? allpending : length}
+            {allpending || length}
           </div>
         </div>
       </div>

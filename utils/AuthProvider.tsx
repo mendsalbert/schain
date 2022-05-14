@@ -14,7 +14,7 @@ import WalletLink from "walletlink";
 import schainContract from "../artifacts/contracts/Schain.sol/Schain.json";
 import Web3Modal from "web3modal";
 import { ellipseAddress, getChainData } from "../lib/utilities";
-import { verify } from "crypto";
+import { sign, verify } from "crypto";
 
 //write a type for status and user
 type authContextType = {
@@ -208,6 +208,7 @@ const AuthProvider = ({ children }) => {
     // We plug the initial `provider` into ethers.js and get back
     // a Web3Provider. This will add on methods from ethers.js and
     // event listeners such as `.on()` will be different.
+
     const web3Provider = new providers.Web3Provider(provider);
     const signer = web3Provider.getSigner() as any;
     const address = await signer.getAddress();
@@ -224,8 +225,15 @@ const AuthProvider = ({ children }) => {
 
     //auth users page
     // console.log(role);
-    const verifyRole = await signer.validateRole(role, address);
-    console.log(verifyRole);
+
+    // console.log(verifyRole);
+    // if (signer) {
+    // let verify = false;
+    // if (signer) {
+    // let verify = await signer.validateRole(role, address);
+    // }
+    // if (typeof signer.validateRole === "function") {
+    // let validate = await signer.validateRole(role, address);
     switch (role) {
       case "customer":
         if (address) {
@@ -237,7 +245,7 @@ const AuthProvider = ({ children }) => {
         router.push("/dashboard/admin/");
         break;
       case "manager":
-        if (verify) {
+        if (address) {
           localStorage.setItem("managerAddr", address);
           router.push("/dashboard/manager/");
         } else {
@@ -245,7 +253,7 @@ const AuthProvider = ({ children }) => {
         }
         break;
       case "manufacturer":
-        if (verify) {
+        if (address) {
           localStorage.setItem("manufactureAddr", address);
           router.push("/dashboard/manufacture/");
         } else {
@@ -253,19 +261,26 @@ const AuthProvider = ({ children }) => {
         }
         break;
       case "tester":
-        if (address === "0x0") window.location.href = "/dashboard/tester/";
-        //web3modal here
-        localStorage.setItem("testerAddr", address);
+        if (address) {
+          localStorage.setItem("testerAddr", address);
+          router.push("/dashboard/tester/");
+        } else {
+          router.push("/");
+        }
         break;
-
       case "transporter":
-        if (address === "0x0") window.location.href = "/dashboard/transport/";
-        //web3modal here
-        localStorage.setItem("transportAddr", address);
+        if (address) {
+          localStorage.setItem("transportAddr", address);
+          router.push("/dashboard/transport/");
+        } else {
+          router.push("/");
+        }
         break;
 
       default:
+        // router.push("/");
         break;
+      // }
     }
   }, []);
 

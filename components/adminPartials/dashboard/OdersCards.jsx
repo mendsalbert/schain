@@ -16,7 +16,7 @@ function OrdersCard({ length, allorders }) {
         </div>
         <div className="flex items-start">
           <div className="text-3xl font-bold text-slate-800 mr-2">
-            {allorders ? allorders : length}
+            {allorders || length}
           </div>
         </div>
       </div>
