@@ -12,6 +12,8 @@ import { AuthContext } from "../../../utils/AuthProvider";
 import AdminAuthModal from "../../../components/AdminAuthModal.jsx";
 import UsersCard from "../../../components/adminPartials/dashboard/UsersCard";
 import UserRoles from "../../../components/adminPartials/dashboard/UserRoles";
+import AllOrders from "../../../components/adminPartials/dashboard/AllOrders";
+import AllCustomers from "../../../components/adminPartials/dashboard/AllCustomers";
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -31,18 +33,14 @@ function Dashboard() {
         let customers = data.filter(
           (v, i, a) => a.findIndex((v2) => v2.owner === v.owner) === i
         );
-        const pending = data.filter((p) => p.confirmed === false);
+        const pending = data.filter((p) => p.pending === false);
         const returned = data.filter((r) => r.returned === true);
-        const allOrders = await signer.fetchOrderItems();
+        // const allOrders = await signer.fetchOrderItems();
         setcustomers(customers);
-        setorders(allOrders);
+        setorders(data);
         setreturned(returned);
         setpending(pending);
-
-        const verifyRole = await signer.validateRole(
-          "manager",
-          "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
-        );
+        console.log(customers);
       };
       loadOrders();
     }
@@ -75,7 +73,7 @@ function Dashboard() {
           <main>
             <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
               {/* Welcome banner */}
-              <WelcomeBanner />
+              <WelcomeBanner type="Admin" />
               {/* Cards */}
 
               <div className="grid grid-cols-12 gap-6">
@@ -84,6 +82,8 @@ function Dashboard() {
                 <OrdersPendingCard allpending={pending.length} />
                 <OrderCancelCard allreturned={returned.length} />
                 <UserRoles />
+                <AllOrders orders={orders} />
+                <AllCustomers customer={customers} />
               </div>
             </div>
           </main>

@@ -180,6 +180,15 @@ function Orders({ orders }) {
                         ) : (
                           ""
                         )}
+                        {order.returned ? (
+                          <td className="p-2">
+                            <span className=" px-3 py-2 rounded-full text-red-700 bg-red-100">
+                              Returned
+                            </span>
+                          </td>
+                        ) : (
+                          ""
+                        )}
                       </tr>
                     </Link>
                   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   AdjustmentsIcon,
   CheckCircleIcon,
@@ -13,11 +13,39 @@ import Modal from "../Modal";
 import ReviewModal from "../ReviewModal";
 import { timeConverter } from "../../lib/utilities";
 import { productData } from "../../utils/sample-data";
+import { AuthContext } from "../../utils/AuthProvider";
+
 function Orders({ order }) {
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("") as any;
+  const { address, signer } = useContext(AuthContext);
+
+  const receiveOrder = async (id) => {
+    // console.log("called");
+    try {
+      const transaction = await signer.receiveOrder(id);
+
+      await transaction.wait();
+      alert("order recieved succesfully");
+    } catch (err) {
+      alert("You dont have permission to perform this action");
+    }
+  };
+
+  const returnOrder = async (id) => {
+    console.log("called");
+    try {
+      const transaction = await signer.returnOrder(id);
+      await transaction.wait();
+      alert("order returned succesfully");
+    } catch (err) {
+      // console.log(err);
+      alert("You dont have permission to perform this action");
+    }
+  };
 
   type orderType = {
+    id?: string;
     product?: string;
     orderdate?: any;
     confirmed?: boolean;
@@ -43,16 +71,26 @@ function Orders({ order }) {
               <img src={filterImage[0].imageUrl} />
               <div className="py-4 flex md:flex-row flex-col  text-gray-600 md:items-center md:space-x-2 space-y-2 md:space-y-0">
                 <p className="text-xl font-medium">{order.product} </p>
-                <div className="cursor-pointer font-medium text-sm bg-red-500 w-max text-white rounded-full text-center  hover:text-gray-200 flex justify-center  items-center py-1 px-3">
+                <div
+                  onClick={() => {
+                    receiveOrder(order.id.toString());
+                  }}
+                  className="cursor-pointer font-medium text-sm bg-green-500 w-max text-white rounded-full text-center  hover:text-gray-200 flex justify-center  items-center py-1 px-3"
+                >
                   Recieve order
                 </div>
-                <div className="cursor-pointer font-medium text-sm bg-green-500 w-max text-white rounded-full text-center  hover:text-gray-200 flex justify-center  items-center py-1 px-3">
+                <div
+                  onClick={() => {
+                    returnOrder(order.id.toString());
+                  }}
+                  className="cursor-pointer font-medium text-sm bg-red-500 w-max text-white rounded-full text-center  hover:text-gray-200 flex justify-center  items-center py-1 px-3"
+                >
                   Return order
                 </div>
                 <div
                   onClick={() => {
                     setOpen(!open);
-                    setComp(<ReviewModal />);
+                    setComp(<ReviewModal id={order.id.toString()} />);
                   }}
                   className="cursor-pointer font-medium text-sm bg-blue-500 w-max text-white rounded-full text-center  hover:text-gray-200 flex justify-center  items-center py-1 px-3"
                 >
@@ -176,7 +214,7 @@ function Orders({ order }) {
                     </div>
                     <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
                       {order.tested
-                        ? `Order made on ${timeConverter(
+                        ? `Order tested on ${timeConverter(
                             order.testdate.toString()
                           )}`
                         : "This order has not been Tested yet "}
@@ -207,7 +245,7 @@ function Orders({ order }) {
                     </div>
                     <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
                       {order.transported
-                        ? `Order made on ${timeConverter(
+                        ? `Order shipped on ${timeConverter(
                             order.transportdate.toString()
                           )}`
                         : "This order has not been Shipped yet "}

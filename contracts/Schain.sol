@@ -236,12 +236,13 @@ contract Schain {
 
     ///work on this......
     //return order
-     function returnOrder(uint _id, string memory _review) public{
+     function returnOrder(uint _id) public{
       require(_id > 0 && _id <= ordersCount,"order id not valid");
       OrderItem storage order = orders[_id];
       order.returned = true;
       order.confirmed = false;
       order.produced = false;
+      order.recieved = false;
       order.tested = false;
       order.transported = false;
       orders[_id] = order;

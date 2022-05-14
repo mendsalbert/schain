@@ -132,7 +132,6 @@ function ApproveOrder({ orders, confirmedorders }) {
                           <div className="text-slate-800">{order.product}</div>
                         </div>
                       </td>
-
                       <td className="p-2">
                         <div className="flex items-center">
                           <img src={filterImage[0].imageUrl} />
@@ -158,7 +157,6 @@ function ApproveOrder({ orders, confirmedorders }) {
                       <td className="p-2">
                         <div className="text-center ">{order.addressLine}</div>
                       </td>
-
                       <td className="p-2">
                         <div className="text-center ">{order.state}</div>
                       </td>
