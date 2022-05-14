@@ -1,6 +1,7 @@
 import { EyeIcon } from "@heroicons/react/outline";
 import React from "react";
 import Link from "next/link";
+
 function ApproveOrder() {
   return (
     <div className="col-span-full xl:col-span-12 bg-white shadow-lg w-full rounded-md border border-slate-200">

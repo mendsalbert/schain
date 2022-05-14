@@ -382,7 +382,12 @@ contract Schain {
 
       OrderItem[] memory items = new OrderItem[](itemCount);
       for (uint i = 0; i < totalItemCount; i++) {
-        if (orders[i + 1].owner == msg.sender) {
+        if (
+        orders[i + 1].confirmed == true && 
+        orders[i + 1].produced == false && 
+        orders[i + 1].tested == false &&
+        orders[i + 1].transported == false 
+        ) {
           uint currentId = i + 1;
           OrderItem storage order = orders[currentId];
           items[currentIndex] = order;
@@ -411,7 +416,12 @@ contract Schain {
 
       OrderItem[] memory items = new OrderItem[](itemCount);
       for (uint i = 0; i < totalItemCount; i++) {
-        if (orders[i + 1].owner == msg.sender) {
+        if (
+          orders[i + 1].confirmed == true && 
+          orders[i + 1].produced == true && 
+          orders[i + 1].tested == false &&
+          orders[i + 1].transported == false 
+          ) {
           uint currentId = i + 1;
           OrderItem storage order = orders[currentId];
           items[currentIndex] = order;
@@ -440,7 +450,12 @@ contract Schain {
 
       OrderItem[] memory items = new OrderItem[](itemCount);
       for (uint i = 0; i < totalItemCount; i++) {
-        if (orders[i + 1].owner == msg.sender) {
+        if (
+          orders[i + 1].confirmed == true && 
+          orders[i + 1].produced == true && 
+          orders[i + 1].tested == true &&
+          orders[i + 1].transported == false 
+          ) {
           uint currentId = i + 1;
           OrderItem storage order = orders[currentId];
           items[currentIndex] = order;

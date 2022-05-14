@@ -29,10 +29,13 @@ function Dashboard() {
       const loadOrders = async () => {
         const data = await signer.fetchOrderItems();
         const pending = data.filter((p) => p.confirmed === false);
+        const confirm = data.filter((p) => p.confirmed === true);
         const orders = await signer.fetchOrdersConfirm();
+        // const orders = await signer.fetchOrdersConfirm();
 
         setpending(pending);
-
+        setconfirmed(confirm);
+        setorders(orders);
         console.log(orders);
       };
       loadOrders();
@@ -73,8 +76,8 @@ function Dashboard() {
 
               <div className="grid grid-cols-12 gap-6">
                 <OrdersPendingCard pendingorders={pending.length} />
-                <ConfrimOrders />
-                <ApproveOrder />
+                <ConfrimOrders confirmed={confirmed.length} />
+                <ApproveOrder orders={orders} />
               </div>
             </div>
           </main>
