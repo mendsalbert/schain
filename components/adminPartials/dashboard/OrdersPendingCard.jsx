@@ -6,6 +6,7 @@ function OrdersPendingCard({
   allpending,
   pendingorders,
   pendingProduced,
+  desc,
 }) {
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white shadow-lg rounded-md border border-slate-200">
@@ -17,7 +18,7 @@ function OrdersPendingCard({
           All Pending Orders
         </h2>
         <div className="text-xs font-semibold text-slate-400 uppercase mb-1">
-          Total number of pending orders
+          Total number of pending orders {desc || ""}
         </div>
         <div className="flex items-start">
           <div className="text-3xl font-bold text-slate-800 mr-2">

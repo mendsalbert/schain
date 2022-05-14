@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
+import OrdersToTest from "../../../components/adminPartials/dashboard/OrdersToTest";
+import React, { useState, useRef, useEffect, useContext } from "react";
 
 import Sidebar from "../../../components/adminPartials/Sidebar";
 import Header from "../../../components/adminPartials/Header";
@@ -9,18 +10,48 @@ import OrdersPendingCard from "../../../components/adminPartials/dashboard/Order
 import OrderCancelCard from "../../../components/adminPartials/dashboard/OrderCancelCard";
 import Modal from "../../../components/Modal";
 import { useRouter } from "next/router";
-import OrdersToTest from "../../../components/adminPartials/dashboard/OrdersToTest";
+import ApproveOrder from "../../../components/adminPartials/dashboard/ApproveOrder";
+import ConfrimOrders from "../../../components/adminPartials/dashboard/ConfirmOrders";
+import { AuthContext } from "../../../utils/AuthProvider";
+
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
+  const [orders, setorders] = useState([]);
+  const [_orders, _setorders] = useState([]);
+  const [tested, settested] = useState([]);
+  const [pending, setpending] = useState([]);
   const router = useRouter();
+
+  const { address, signer } = useContext(AuthContext);
+
   useEffect(() => {
-    let manufactureAddr = localStorage.getItem("manufactureAddr");
-    if (manufactureAddr !== "0x0") {
-      router.push("/");
+    if (address) {
+      const loadOrders = async () => {
+        const data = await signer.fetchOrderItems();
+        const pending = data.filter((p) => p.tested === false);
+        const tested = data.filter((p) => p.tested === true);
+        const orders = await signer.fetchOrdersTested();
+
+        setpending(pending);
+        settested(tested);
+        setorders(orders);
+      };
+      loadOrders();
     }
-  }, []);
+  }, [signer]);
+
+  if (address) {
+    if (typeof window !== "undefined") {
+      let managerAddr = localStorage.getItem("managerAddr");
+      if (managerAddr !== address) {
+        router.push("/");
+      } else {
+      }
+    }
+  } else {
+  }
 
   return (
     <>
@@ -38,18 +69,15 @@ function Dashboard() {
             <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
               {/* Welcome banner */}
               <WelcomeBanner
-                type="Tester"
-                message="Here are some order to test on:"
+                type="Manager"
+                message="Here are some orders to confirm"
               />
               {/* Cards */}
 
               <div className="grid grid-cols-12 gap-6">
-                {/* <O /> */}
-                {/* <OrdersPendingCard /> */}
-                {/* <ConfrimOrders /> */}
-                {/* <ApproveOrder /> */}
-                {/* <OrdersProduced /> */}
-                <OrdersToTest />
+                {/* <OrdersPendingCard pendingorders={pending.length} />
+                <ConfrimOrders confirmed={confirmed.length} /> */}
+                <OrdersToTest orders={orders} testedorders={tested} />
               </div>
             </div>
           </main>

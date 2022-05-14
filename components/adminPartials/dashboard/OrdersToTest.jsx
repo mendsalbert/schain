@@ -1,7 +1,43 @@
 import { EyeIcon } from "@heroicons/react/outline";
-import React from "react";
+import React, { useContext, useState } from "react";
 import Link from "next/link";
-function OrdersToTest() {
+import { productData } from "../../../utils/sample-data";
+import { ethers } from "ethers";
+import { timeConverter } from "../../../lib/utilities";
+import { AuthContext } from "../../../utils/AuthProvider";
+import Spinner from "../../spinner";
+
+function OrdersToTest({ orders, testedorders }) {
+  const { address, signer, provider } = useContext(AuthContext);
+  let orders_ = orders;
+  const [type, settype] = useState("");
+  // console.log(type);
+  if (type == "tested") {
+    orders_ = testedorders;
+  }
+  const testOrder = async (id) => {
+    let validate = await signer.validateRole("tester", address);
+    if (validate) {
+      try {
+        const transaction = await signer.testOrder(id, "tester");
+        console.log(id);
+        await transaction.wait();
+        alert("order tested succesfully");
+        window.location.reload();
+
+        console.log(id);
+      } catch (err) {
+        alert("You dont have permission to perform this action");
+        // const code = err.data.replace("Reverted ", "");
+        // console.log(err.data,);
+        // let reason = ethers.utils.toUtf8String("0x" + code.substr(138));
+        // console.log("revert reason:", reason);
+      }
+    } else {
+      alert("You dont have permission to perform this action");
+    }
+  };
+
   return (
     <div className="col-span-full xl:col-span-12 bg-white shadow-lg w-full rounded-md border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100 flex flex-row items-center space-x-4">
@@ -10,13 +46,15 @@ function OrdersToTest() {
         <div className="w-max md:w-max px-3">
           <div className="relative">
             <select
+              onChange={(e) => {
+                settype(e.target.value);
+              }}
               className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-state"
             >
-              {/* <option>All</option> */}
-              <option>All</option>
-              <option>Pending</option>
-              <option>Produced</option>
+              {/* <option type="all">All</option> */}
+              <option value="pending">Pending</option>
+              <option value="tested">Confirmed</option>
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
               <svg
@@ -40,104 +78,126 @@ function OrdersToTest() {
                 <th className="p-2">
                   <div className="font-semibold text-left">Name</div>
                 </th>
-
+                <th className="p-2">
+                  <div className="font-semibold text-left">IMAGE</div>
+                </th>
                 <th className="p-2">
                   <div className="font-semibold text-center">Order date</div>
                 </th>
                 <th className="p-2">
                   <div className="font-semibold text-center">Quantity</div>
                 </th>
+
                 <th className="p-2">
                   <div className="font-semibold text-center">Price</div>
                 </th>
+
                 <th className="p-2">
                   <div className="font-semibold text-center">Address</div>
                 </th>
+                <th className="p-2">
+                  <div className="font-semibold text-center">State</div>
+                </th>
+                <th className="p-2">
+                  <div className="font-semibold text-center">City</div>
+                </th>
+                <th className="p-2">
+                  <div className="font-semibold text-center">Contact</div>
+                </th>
+                <th className="p-2">
+                  <div className="font-semibold text-center">zipcode</div>
+                </th>
+
                 <th className="p-2"></th>
                 <th className="p-2"></th>
               </tr>
             </thead>
             {/* Table body */}
             <tbody className="text-sm  font-medium divide-y divide-slate-100">
-              {/* Row */}
-              <Link href={"/dashboard/customer/order"}>
-                <tr>
-                  <td className="p-2">
-                    <div className="flex items-center">
-                      <div className="text-slate-800">Milo</div>
-                    </div>
-                  </td>
+              {orders_
+                .filter((p) =>
+                  type === "tested" ? p.confirmed === true : orders_
+                )
+                .map((order) => {
+                  const object = {
+                    id: order.id.toString(),
+                  };
+                  const filterImage = productData.filter(
+                    (p) => p.name === order.product
+                  );
+                  return (
+                    <tr>
+                      <td className="p-2">
+                        <div className="flex items-center">
+                          <div className="text-slate-800">{order.product}</div>
+                        </div>
+                      </td>
 
-                  <td className="p-2">
-                    <div className="text-center ">22/05/22</div>
-                  </td>
-                  <td className="p-2">
-                    <div className="text-center">57</div>
-                  </td>
-                  <td className="p-2">
-                    <div className="text-center text-sky-500">$3,877</div>
-                  </td>
-                  <td className="p-2">
-                    <div className="text-center">57</div>
-                  </td>
+                      <td className="p-2">
+                        <div className="flex items-center">
+                          <img src={filterImage[0].imageUrl} />
+                        </div>
+                      </td>
+                      <td className="p-2">
+                        <div className="text-center ">
+                          {timeConverter(order.orderdate.toString())}
+                        </div>
+                      </td>
+                      <td className="p-2">
+                        <div className="text-center">
+                          {order.quantity.toString()}
+                        </div>
+                      </td>
+                      <td className="p-2">
+                        <div className="text-center text-sky-500">
+                          {Number(
+                            ethers.utils.formatEther(order.price.toString())
+                          )}
+                        </div>
+                      </td>
+                      <td className="p-2">
+                        <div className="text-center ">{order.addressLine}</div>
+                      </td>
 
-                  <td className="p-2">
-                    <span className=" px-2 py-2 rounded-full text-green-700 bg-green-100">
-                      Tested
-                    </span>
-                  </td>
-                </tr>
-              </Link>
-              <tr>
-                <td className="p-2">
-                  <div className="flex items-center">
-                    <div className="text-slate-800">Milo</div>
-                  </div>
-                </td>
+                      <td className="p-2">
+                        <div className="text-center ">{order.state}</div>
+                      </td>
+                      <td className="p-2">
+                        <div className="text-center ">{order.city}</div>
+                      </td>
+                      <td className="p-2">
+                        <div className="text-center ">{order.contact}</div>
+                      </td>
+                      <td className="p-2">
+                        <div className="text-center ">{order.zipcode}</div>
+                      </td>
 
-                <td className="p-2">
-                  <div className="text-center ">22/05/22</div>
-                </td>
-                <td className="p-2">
-                  <div className="text-center">57</div>
-                </td>
-                <td className="p-2">
-                  <div className="text-center text-sky-500">$3,877</div>
-                </td>
-                <td className="p-2">
-                  <div className="text-center">57</div>
-                </td>
-                <td className="p-2">
-                  <span className=" px-2 py-2 rounded-full text-red-700 bg-red-100">
-                    Tested{" "}
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">
-                  <div className="flex items-center">
-                    <div className="text-slate-800">Milo</div>
-                  </div>
-                </td>
-
-                <td className="p-2">
-                  <div className="text-center ">22/05/22</div>
-                </td>
-                <td className="p-2">
-                  <div className="text-center">57</div>
-                </td>
-                <td className="p-2">
-                  <div className="text-center text-sky-500">$3,877</div>
-                </td>
-                <td className="p-2">
-                  <div className="text-center">57</div>
-                </td>
-                <td className="p-2">
-                  <span className=" px-2 py-2 rounded-full text-green-700 bg-green-100">
-                    Tested{" "}
-                  </span>
-                </td>
-              </tr>
+                      {!order.tested ? (
+                        <td
+                          onClick={() => {
+                            testOrder(order.id.toString());
+                          }}
+                          className="p-2"
+                        >
+                          <span className="cursor-pointer px-2 py-2 rounded-full text-yellow-700 bg-yellow-100">
+                            Test order
+                          </span>
+                        </td>
+                      ) : (
+                        ""
+                      )}
+                      {order.tested ? (
+                        <td className="p-2">
+                          <span className=" px-3 py-2 rounded-full text-green-700 bg-green-100">
+                            Tested
+                          </span>
+                        </td>
+                      ) : (
+                        ""
+                      )}
+                    </tr>
+                  );
+                })}
             </tbody>
           </table>
         </div>

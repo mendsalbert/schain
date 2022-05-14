@@ -75,8 +75,11 @@ function Dashboard() {
               {/* Cards */}
 
               <div className="grid grid-cols-12 gap-6">
-                {/* <OrdersPendingCard pendingorders={pending.length} /> */}
-                {/* <ConfrimOrders confirmed={confirmed.length} /> */}
+                <OrdersPendingCard
+                  desc={"Need to be worked on by authorised user first"}
+                  pendingProduced={pending.length}
+                />
+                <ConfrimOrders produced={produced.length} />
                 <OrdersProduced orders={orders} producedOrders={produced} />
               </div>
             </div>
