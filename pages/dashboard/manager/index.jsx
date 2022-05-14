@@ -29,10 +29,11 @@ function Dashboard() {
       const loadOrders = async () => {
         const data = await signer.fetchOrderItems();
         const pending = data.filter((p) => p.confirmed === false);
-        const confirmed = data.filter((r) => r.confirmed === true);
+        const orders = await signer.fetchOrdersConfirm();
 
         setpending(pending);
         setconfirmed(returned);
+        console.log(orders);
       };
       loadOrders();
     }

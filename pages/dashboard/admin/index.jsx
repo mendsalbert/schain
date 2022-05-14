@@ -31,7 +31,7 @@ function Dashboard() {
         let customers = data.filter(
           (v, i, a) => a.findIndex((v2) => v2.owner === v.owner) === i
         );
-        const pending = data.filter((p) => p.pending === true);
+        const pending = data.filter((p) => p.confirmed === false);
         const returned = data.filter((r) => r.returned === true);
         const allOrders = await signer.fetchOrderItems();
         setcustomers(customers);
