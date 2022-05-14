@@ -1,22 +1,51 @@
-import React, { useState, useEffect, useContext } from "react";
+import OrdersProduced from "../../../components/adminPartials/dashboard/OrdersProduced";
+import React, { useState, useRef, useEffect, useContext } from "react";
 
 import Sidebar from "../../../components/adminPartials/Sidebar";
 import Header from "../../../components/adminPartials/Header";
 import WelcomeBanner from "../../../components/adminPartials/dashboard/WelcomeBanner";
+import Orders from "../../../components/adminPartials/dashboard/Orders";
+import OrdersCard from "../../../components/adminPartials/dashboard/OdersCards";
+import OrdersPendingCard from "../../../components/adminPartials/dashboard/OrdersPendingCard";
+import OrderCancelCard from "../../../components/adminPartials/dashboard/OrderCancelCard";
 import Modal from "../../../components/Modal";
-import OrdersProduced from "../../../components/adminPartials/dashboard/OrdersProduced";
-import { AuthContext } from "../../../utils/AuthProvider";
 import { useRouter } from "next/router";
+import ApproveOrder from "../../../components/adminPartials/dashboard/ApproveOrder";
+import ConfrimOrders from "../../../components/adminPartials/dashboard/ConfirmOrders";
+import { AuthContext } from "../../../utils/AuthProvider";
+
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
+  const [orders, setorders] = useState([]);
+  const [_orders, _setorders] = useState([]);
+  const [produced, setproducedorder] = useState([]);
+  const [pending, setpending] = useState([]);
   const router = useRouter();
-  const { address } = useContext(AuthContext);
+
+  const { address, signer } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (address) {
+      const loadOrders = async () => {
+        const data = await signer.fetchOrderItems();
+        const pending = data.filter((p) => p.produced === false);
+        const confirm = data.filter((p) => p.produced === true);
+        const orders = await signer.fetchOrdersProduced();
+
+        setpending(pending);
+        setproducedorder(confirm);
+        setorders(orders);
+      };
+      loadOrders();
+    }
+  }, [signer]);
+
   if (address) {
     if (typeof window !== "undefined") {
-      let manufactureAddr = localStorage.getItem("manufactureAddr");
-      if (manufactureAddr !== address) {
+      let managerAddr = localStorage.getItem("managerAddr");
+      if (managerAddr !== address) {
         router.push("/");
       } else {
       }
@@ -40,17 +69,15 @@ function Dashboard() {
             <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
               {/* Welcome banner */}
               <WelcomeBanner
-                type="Manufacturer"
-                message="Here are some order to work on:"
+                type="Manager"
+                message="Here are some orders to confirm"
               />
               {/* Cards */}
 
               <div className="grid grid-cols-12 gap-6">
-                {/* <O /> */}
-                {/* <OrdersPendingCard /> */}
-                {/* <ConfrimOrders /> */}
-                {/* <ApproveOrder /> */}
-                <OrdersProduced />
+                {/* <OrdersPendingCard pendingorders={pending.length} /> */}
+                {/* <ConfrimOrders confirmed={confirmed.length} /> */}
+                <OrdersProduced orders={orders} producedOrders={produced} />
               </div>
             </div>
           </main>

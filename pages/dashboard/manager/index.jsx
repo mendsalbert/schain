@@ -18,6 +18,7 @@ function Dashboard() {
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
   const [orders, setorders] = useState([]);
+  const [_orders, _setorders] = useState([]);
   const [confirmed, setconfirmed] = useState([]);
   const [pending, setpending] = useState([]);
   const router = useRouter();
@@ -31,13 +32,10 @@ function Dashboard() {
         const pending = data.filter((p) => p.confirmed === false);
         const confirm = data.filter((p) => p.confirmed === true);
         const orders = await signer.fetchOrdersConfirm();
-        // const orders = await signer.fetchOrdersConfirm();
 
-        console.log(confirm);
         setpending(pending);
         setconfirmed(confirm);
         setorders(orders);
-        console.log(orders);
       };
       loadOrders();
     }
@@ -78,7 +76,7 @@ function Dashboard() {
               <div className="grid grid-cols-12 gap-6">
                 <OrdersPendingCard pendingorders={pending.length} />
                 <ConfrimOrders confirmed={confirmed.length} />
-                <ApproveOrder orders={orders} />
+                <ApproveOrder orders={orders} confirmedorders={confirmed} />
               </div>
             </div>
           </main>

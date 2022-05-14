@@ -7,18 +7,20 @@ import { timeConverter } from "../../../lib/utilities";
 import { AuthContext } from "../../../utils/AuthProvider";
 import Spinner from "../../spinner";
 
-function ApproveOrder({ orders }) {
+function ApproveOrder({ orders, confirmedorders }) {
   const { address, signer, provider } = useContext(AuthContext);
   let orders_ = orders;
   const [type, settype] = useState("");
-
+  // console.log(type);
+  if (type == "confirmed") {
+    orders_ = confirmedorders;
+  }
   const confirmOrder = async (id) => {
     let validate = await signer.validateRole("manager", address);
     if (validate) {
       try {
         const transaction = await signer.confrimOrder(id, "manager");
         console.log(id);
-
         await transaction.wait();
         alert("order confirmed succesfully");
         window.location.reload();
@@ -50,7 +52,7 @@ function ApproveOrder({ orders }) {
               className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-state"
             >
-              <option>All</option>
+              {/* <option type="all">All</option> */}
               <option value="pending">Pending</option>
               <option value="confirmed">Confirmed</option>
             </select>
@@ -184,7 +186,7 @@ function ApproveOrder({ orders }) {
                       ) : (
                         ""
                       )}
-                      {order.confrimed ? (
+                      {order.confirmed ? (
                         <td className="p-2">
                           <span className=" px-3 py-2 rounded-full text-green-700 bg-green-100">
                             Confirmed
