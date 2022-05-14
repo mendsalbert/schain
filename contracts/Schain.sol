@@ -185,9 +185,7 @@ contract Schain {
     function confrimOrder(uint _id, string memory _role) public{
       console.log('confirming................');
       require(_id > 0 && _id <= ordersCount,"order id not valid");
-      require(roles[_role].roleaddress != msg.sender , 'You dont have permission to confirm order');
-      console.log(roles[_role].roleaddress);
-      console.log(msg.sender);
+      require(roles[_role].roleaddress == msg.sender , 'You dont have permission to confirm order');
       OrderItem storage order = orders[_id];
       require(order.confirmed == false);
       order.confirmed = true;
@@ -198,7 +196,7 @@ contract Schain {
     //produced order
     function produceOrder(uint _id, string memory _role) public{
       require(_id > 0 && _id <= ordersCount,"order id not valid");
-      require(roles[_role].roleaddress != msg.sender , 'You dont have permission to produce order');
+      require(roles[_role].roleaddress == msg.sender , 'You dont have permission to produce order');
       OrderItem storage order = orders[_id];
       require(order.produced == false);
       order.produced = true;
@@ -209,7 +207,7 @@ contract Schain {
     //test order
      function testOrder(uint _id, string memory _role) public{
       require(_id > 0 && _id <= ordersCount,"order id not valid");
-      require(roles[_role].roleaddress != msg.sender , 'You dont have permission to test order');
+      require(roles[_role].roleaddress == msg.sender , 'You dont have permission to test order');
       OrderItem storage order = orders[_id];
       require(order.tested == false);
       order.tested = true;
@@ -220,7 +218,7 @@ contract Schain {
     //transported order
      function transportOrder(uint _id, string memory _role) public{
       require(_id > 0 && _id <= ordersCount,"order id not valid");
-      require(roles[_role].roleaddress != msg.sender , 'You dont have permission to transport order');
+      require(roles[_role].roleaddress == msg.sender , 'You dont have permission to transport order');
       OrderItem storage order = orders[_id];
       require(order.transported == false);
       order.transported = true;

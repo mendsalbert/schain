@@ -25,10 +25,11 @@ function ApproveOrder({ orders }) {
 
         console.log(id);
       } catch (err) {
+        alert("You dont have permission to perform this action");
         // const code = err.data.replace("Reverted ", "");
-        console.log(err);
+        // console.log(err.data,);
         // let reason = ethers.utils.toUtf8String("0x" + code.substr(138));
-        console.log("revert reason:", reason);
+        // console.log("revert reason:", reason);
       }
     } else {
       alert("You dont have permission to perform this action");
