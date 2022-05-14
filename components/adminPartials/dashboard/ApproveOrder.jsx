@@ -4,12 +4,19 @@ import Link from "next/link";
 import { productData } from "../../../utils/sample-data";
 import { ethers } from "ethers";
 import { timeConverter } from "../../../lib/utilities";
+import { AuthContext } from "../../../utils/AuthProvider";
+import Spinner from "../../spinner";
 
 function ApproveOrder({ orders }) {
+  const { address, signer } = useContext(AuthContext);
   let orders_ = orders;
   const [type, settype] = useState("");
 
   const confirmOrder = async (id) => {
+    const transaction = await signer.confrimOrder(id, "manager");
+    await transaction.wait();
+    alert("order confirmed succesfully");
+    window.location.reload();
     console.log(id);
   };
 
@@ -154,7 +161,7 @@ function ApproveOrder({ orders }) {
                           }}
                           className="p-2"
                         >
-                          <span className=" px-2 py-2 rounded-full text-yellow-700 bg-yellow-100">
+                          <span className="cursor-pointer px-2 py-2 rounded-full text-yellow-700 bg-yellow-100">
                             Confirm order
                           </span>
                         </td>

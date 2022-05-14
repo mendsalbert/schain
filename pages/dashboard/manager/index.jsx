@@ -33,6 +33,7 @@ function Dashboard() {
         const orders = await signer.fetchOrdersConfirm();
         // const orders = await signer.fetchOrdersConfirm();
 
+        console.log(confirm);
         setpending(pending);
         setconfirmed(confirm);
         setorders(orders);
