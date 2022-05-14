@@ -16,7 +16,7 @@ function OrderCancelCard({ length, allreturned }) {
         </div>
         <div className="flex items-start">
           <div className="text-3xl font-bold text-slate-800 mr-2">
-            {allreturned || length}
+            {allreturned || length || 0}
           </div>
         </div>
       </div>

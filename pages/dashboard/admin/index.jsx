@@ -43,16 +43,12 @@ function Dashboard() {
           "manager",
           "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
         );
-        console.log(verifyRole);
-        // console.log(customers);
-
-        // console.log(items);
       };
       loadOrders();
     }
   }, [signer]);
 
-  console.log(returned.length);
+  // console.log(returned.length);
   useEffect(() => {
     let auth = localStorage.getItem("auth");
     console.log(auth);
@@ -86,7 +82,7 @@ function Dashboard() {
                 <UsersCard users={customers.length} />
                 <OrdersCard allorders={orders.length} />
                 <OrdersPendingCard allpending={pending.length} />
-                {/* <OrderCancelCard allreturned={returned.length} /> */}
+                <OrderCancelCard allreturned={returned.length} />
                 <UserRoles />
               </div>
             </div>

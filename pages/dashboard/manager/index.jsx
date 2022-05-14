@@ -17,8 +17,27 @@ function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("");
+  const [orders, setorders] = useState([]);
+  const [confirmed, setconfirmed] = useState([]);
+  const [pending, setpending] = useState([]);
   const router = useRouter();
-  const { address } = useContext(AuthContext);
+
+  const { address, signer } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (address) {
+      const loadOrders = async () => {
+        const data = await signer.fetchOrderItems();
+        const pending = data.filter((p) => p.confirmed === false);
+        const confirmed = data.filter((r) => r.confirmed === true);
+
+        setpending(pending);
+        setconfirmed(returned);
+      };
+      loadOrders();
+    }
+  }, [signer]);
+
   if (address) {
     if (typeof window !== "undefined") {
       let managerAddr = localStorage.getItem("managerAddr");
@@ -52,7 +71,7 @@ function Dashboard() {
               {/* Cards */}
 
               <div className="grid grid-cols-12 gap-6">
-                <OrdersPendingCard />
+                <OrdersPendingCard pendingorders={pending.length} />
                 <ConfrimOrders />
                 <ApproveOrder />
               </div>
