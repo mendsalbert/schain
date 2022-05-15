@@ -58,8 +58,6 @@ This is application is having six (6) users:
 
 - customer : A regular customer that can make order(s) on the application, add reviews on an order and also cancel an order.
 - Administrator: User in charge of assigning roles to other users in the suppy chain processes.
-  To use the admin acount you have to use the following credentials: username:"admin" and password:
-  "63CkBcD{B),M;h2>"
 - Manager: Approves orders to be set for production
 - Manufacturer: Start production of order once approved by the manager
 - Tester: Tests the product and update the state to the transport department
@@ -71,11 +69,11 @@ This is application is having six (6) users:
 2. Click on the "add order button" and fill in the details of the order
 3. Click on the order to view the supply chain process or the state of your order.
 
-## Below are the steps to add an order:
+## Below are the steps to use admin account:
 
 1. Connet to the app with your wallet.
-2. Click on the "add order button" and fill in the details of the order
-3. Click on the order to view the supply chain process or the state of your order.
+2. Click on the "add order button" and fill in the details of the order. To use the admin acount you have to use the following credentials: username:"admin" and password:
+   "63CkBcD{B),M;h2>"
 
 ### Built With
 
@@ -110,9 +108,9 @@ To run this project locally, follow these steps.
 1. Clone the project locally, change into the directory, and install the dependencies:
 
 ```sh
-git clone https://github.com/mendsalbert/myDonate
+git clone https://github.com/mendsalbert/schain
 
-cd sympodiumCoin
+cd schain
 
 # install using NPM or Yarn
 npm install

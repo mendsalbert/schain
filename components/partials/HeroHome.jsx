@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Modal from "../../utils/Modal";
-
-// import HeroImage from '';
+import Link from "next/link";
 
 function HeroHome() {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
@@ -66,9 +65,11 @@ function HeroHome() {
                 data-aos="zoom-y-out"
                 data-aos-delay="300"
               >
-                <button className="bg-gradient-to-r text-xl active:outline-none active:border-none from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max   px-6 py-2  rounded-full cursor-pointer text-white">
-                  Read More
-                </button>
+                <Link href="/about">
+                  <button className="bg-gradient-to-r text-xl active:outline-none active:border-none from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max   px-6 py-2  rounded-full cursor-pointer text-white">
+                    Read More
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
