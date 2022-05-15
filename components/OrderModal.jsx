@@ -16,6 +16,7 @@ const OrderModal = (props) => {
   const [loading, setloading] = useState(false);
   const [orders, setorders] = useState([]);
   const [price, setprice] = useState(0);
+  const [price_, setprice_] = useState(0);
   const [_price, _setprice] = useState(0);
   // let filterImage =
   let filterImage = productname.length
@@ -30,7 +31,7 @@ const OrderModal = (props) => {
   console.log(filterImage);
   const { signer, contract } = useContext(AuthContext);
   const onsubmitOrderHandler = async () => {
-    const amount_ = ethers.utils.parseUnits(price, "ether");
+    const amount_ = ethers.utils.parseUnits(price_.toString(), "ether");
     let transaction = await signer.addOrderItem(
       productname,
       quantity,
@@ -40,7 +41,7 @@ const OrderModal = (props) => {
       zip,
       state,
       {
-        value: price,
+        value: amount_,
       }
     );
     setloading(true);
@@ -57,8 +58,10 @@ const OrderModal = (props) => {
     let ethUSDPrice = ethers.utils.formatUnits(number, 8);
     // console.log(res);
     let res = Number(usd / ethUSDPrice).toFixed(5);
+    let res_ = (usd / ethUSDPrice).toFixed(7);
 
     setprice(res);
+    setprice_(res_);
 
     // const getUsd = await contract.getEthUsd();
     // let number = Number(getUsd.toString()) as any;

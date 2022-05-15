@@ -36,13 +36,13 @@ export const productData = [
   {
     id: 5,
     name: "Lion Cereals",
-    price: 0.9,
+    price: 1.9,
     imageUrl: "/images/lionCereals.png",
   },
   {
     id: 6,
     name: "Kitkat",
-    price: 0.5,
+    price: 4.5,
     imageUrl: "/images/kitkat.png",
   },
   {
