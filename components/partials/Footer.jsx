@@ -92,12 +92,11 @@ function Footer() {
                 </Link>
               </li>
               <li className="mb-2">
-                <div
-                  href="/about"
-                  className="cursor-pointer text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
-                >
-                  About us
-                </div>
+                <Link href="/about">
+                  <div className="cursor-pointer text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">
+                    About us
+                  </div>
+                </Link>
               </li>
             </ul>
           </div>
