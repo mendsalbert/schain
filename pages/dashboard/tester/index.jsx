@@ -35,7 +35,10 @@ function Dashboard() {
         const pending = data.filter((p) => p.tested === false);
         const tested = data.filter((p) => p.tested === true);
         const orders = await signer.fetchOrdersTested();
-
+        let validate = await signer.validateRole("tester", address);
+        if (!validate) {
+          router.push("/");
+        }
         const getUsd = await signer.getEthUsd();
         let number = Number(getUsd.toString());
         let ethUSDPrice = ethers.utils.formatUnits(number, 8);

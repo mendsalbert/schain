@@ -33,6 +33,10 @@ function Dashboard() {
     if (address) {
       const loadOrders = async () => {
         const data = await signer.fetchOrderItems();
+        let validate = await signer.validateRole("transporter", address);
+        if (!validate) {
+          router.push("/");
+        }
         const pending = data.filter((p) => p.transported === false);
         const transported = data.filter((p) => p.transported === true);
         const orders = await signer.fetchOrdersTransported();

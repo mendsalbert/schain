@@ -1,6 +1,6 @@
 import React from "react";
 // import { div } from "react-router-dom";
-// import div from "next/link";
+import Link from "next/link";
 function Footer() {
   return (
     <footer>
@@ -8,7 +8,7 @@ function Footer() {
         {/* Top area: Blocks */}
         <div className="grid sm:grid-cols-12 gap-8 py-8 md:py-12 border-t border-gray-200">
           {/* 1st block */}
-          <div className="sm:col-span-12 lg:col-span-3">
+          <div className="sm:col-span-12 lg:col-span-4">
             <div className="mb-2">
               {/* Logo */}
               <div href="/" className="inline-block" aria-label="Cruip">
@@ -16,16 +16,18 @@ function Footer() {
               </div>
             </div>
             <div className="text-sm text-gray-600">
+              <Link href="/terms">
+                <div
+                  href="#"
+                  className=" cursor-pointer text-gray-600 hover:text-gray-900 hover:underline transition duration-150 ease-in-out"
+                >
+                  Terms
+                </div>
+              </Link>
+              ·
               <div
                 href="#"
-                className="text-gray-600 hover:text-gray-900 hover:underline transition duration-150 ease-in-out"
-              >
-                Terms
-              </div>{" "}
-              ·{" "}
-              <div
-                href="#"
-                className="text-gray-600 hover:text-gray-900 hover:underline transition duration-150 ease-in-out"
+                className=" cursor-pointer text-gray-600 hover:text-gray-900 hover:underline transition duration-150 ease-in-out"
               >
                 Privacy Policy
               </div>
@@ -33,7 +35,7 @@ function Footer() {
           </div>
 
           {/* 2nd block */}
-          <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
+          {/* <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
             <h6 className="text-gray-800 font-medium mb-2">Products</h6>
             <ul className="text-sm">
               <li className="mb-2">
@@ -45,10 +47,10 @@ function Footer() {
                 </div>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           {/* 3rd block */}
-          <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
+          {/* <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
             <h6 className="text-gray-800 font-medium mb-2">Resources</h6>
             <ul className="text-sm">
               <li className="mb-2">
@@ -69,10 +71,10 @@ function Footer() {
                 </div>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           {/* 4th block */}
-          <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
+          <div className="sm:col-span-6 md:col-span-3 lg:col-span-3">
             <h6 className="text-gray-800 font-medium mb-2">Company</h6>
             <ul className="text-sm">
               <li className="mb-2">
@@ -95,7 +97,7 @@ function Footer() {
           </div>
 
           {/* 5th block */}
-          <div className="sm:col-span-6 md:col-span-3 lg:col-span-3">
+          <div className="sm:col-span-6 md:col-span-3 lg:col-span-4">
             <h6 className="text-gray-800 font-medium mb-2">Subscribe</h6>
             <p className="text-sm text-gray-600 mb-4">
               Get the latest news and articles href your inbox every month.

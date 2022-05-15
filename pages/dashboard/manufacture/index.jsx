@@ -32,6 +32,10 @@ function Dashboard() {
     if (address) {
       const loadOrders = async () => {
         const data = await signer.fetchOrderItems();
+        let validate = await signer.validateRole("manufacturer", address);
+        if (!validate) {
+          router.push("/");
+        }
         const pending = data.filter((p) => p.produced === false);
         const confirm = data.filter((p) => p.produced === true);
         const orders = await signer.fetchOrdersProduced();

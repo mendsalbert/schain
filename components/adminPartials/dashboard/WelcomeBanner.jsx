@@ -1,5 +1,5 @@
 import React from "react";
-import { ellipseAddress } from "../../../lib/utilities";
+import { ellipseAddress, greeter } from "../../../lib/utilities";
 function WelcomeBanner({ type, message, address }) {
   return (
     <div className="relative bg-indigo-100 p-4 sm:p-6 rounded-md overflow-hidden mb-8">
@@ -69,7 +69,7 @@ function WelcomeBanner({ type, message, address }) {
       {/* Content */}
       <div className="relative">
         <h1 className="text-2xl md:text-3xl text-slate-800 font-bold mb-1">
-          Good afternoon , {type || ""}{" "}
+          {greeter()}, {type || ""}{" "}
           {ellipseAddress(address).toLocaleLowerCase() || ""} 👋
         </h1>
         <p>{message || "Here is what’s happening with your orders today:"}</p>

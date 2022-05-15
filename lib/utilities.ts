@@ -70,3 +70,15 @@ export function timeConverter(UNIX_timestamp) {
     date + " " + month + " " + year + " " + hour + ":" + min + ":" + sec;
   return time;
 }
+
+export function greeter() {
+  var d = new Date();
+  var hour = d.getHours();
+  if (hour >= 6 && hour < 12) {
+    return "Good Morning";
+  } else if (hour > +12 && hour < 18) {
+    return "Good Afternoon";
+  } else {
+    return "Good Evening";
+  }
+}
