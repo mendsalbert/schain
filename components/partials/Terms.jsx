@@ -21,13 +21,9 @@ function Terms() {
       <div className="relative max-w-6xl mx-auto pt-12 px-4 sm:px-6">
         <div className="py-12 md:py-20">
           {/* Section header */}
-          <div className="max-w-3xl mx-auto  pb-12 md:pb-20">
+          <div className="max-w-3xl mx-auto space-y-4  pb-12 md:pb-20">
             <h2 className="h2 mb-4 text-2xl text-center">
-              Schain Terms and Conditiona
-            </h2>
-
-            <h2>
-              <strong>Terms and Conditions</strong>
+              Terms and Conditions
             </h2>
 
             <p>Welcome to Schain!</p>

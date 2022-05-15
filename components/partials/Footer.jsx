@@ -21,16 +21,18 @@ function Footer() {
                   href="#"
                   className=" cursor-pointer text-gray-600 hover:text-gray-900 hover:underline transition duration-150 ease-in-out"
                 >
-                  Terms
+                  Terms and conditions
                 </div>
               </Link>
               ·
-              <div
-                href="#"
-                className=" cursor-pointer text-gray-600 hover:text-gray-900 hover:underline transition duration-150 ease-in-out"
-              >
-                Privacy Policy
-              </div>
+              <Link href="/policy">
+                <div
+                  href="#"
+                  className=" cursor-pointer text-gray-600 hover:text-gray-900 hover:underline transition duration-150 ease-in-out"
+                >
+                  Privacy Policy
+                </div>
+              </Link>
             </div>
           </div>
 
