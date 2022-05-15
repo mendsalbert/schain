@@ -24,7 +24,32 @@ function Terms() {
           <div className="max-w-3xl mx-auto space-y-4  pb-12 md:pb-20">
             <h2 className="h2 mb-4 text-2xl text-center">About schain</h2>
 
-            <p>Welcome to Schain!</p>
+            <p>
+              Welcome to Schain`, your number one platform to track your order
+              along the supply chain process on the blockchain.
+            </p>
+            <p>
+              We're dedicated to giving you the very best of your order, with
+              focus from time of order and every other updates about the order
+              as it moves along the processes of the supply chain all happening
+              on the blockchain.
+            </p>
+            <p>
+              Founded in 2022, by Sympodium, Schain` has come a long way from
+              its beginnings in Ghana. When Albert, Sarkodie and Brilliant first
+              started out with Schain, the passion for solving supply chain
+              problems with blockchain drove them to undertake several
+              researches so that Schain can offer the very best services it does
+              now along the supply chain of many organizations here in Ghana and
+              abroad and we are thrilled that we are able to turn our passion
+              into such a revolutionary solution in supply chain.
+            </p>
+
+            <p>
+              We hope you enjoy the services of the platform as much as we enjoy
+              offering them to you. If you have any questions or comments,
+              please don't hesitate to contact us.{" "}
+            </p>
           </div>
         </div>
       </div>

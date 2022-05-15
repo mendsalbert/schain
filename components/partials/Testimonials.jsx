@@ -48,8 +48,8 @@ function Testimonials() {
               Accepted by over 500 cryptocurrencies all over the world
             </h2>
             <p className="text-xl text-gray-600" data-aos="zoom-y-out">
-              Order payment can be made in any cryptocurrency of the users
-              choice
+              Payment for an order can be made in any cryptocurrency of the
+              user's choice
             </p>
           </div>
 

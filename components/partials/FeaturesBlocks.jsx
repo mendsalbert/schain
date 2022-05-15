@@ -24,8 +24,10 @@ function FeaturesBlocks() {
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
             <h2 className="h2 mb-4">How Simple it works</h2>
             <p className="text-xl text-gray-600">
-              The Supply Chain is the movement of materials as they flow from
-              their source to the end customer
+              We're dedicated to giving you the very best of your order, with
+              focus from time of order and every other updates about the order
+              as it moves along the processes of the supply chain all happening
+              on the blockchain.
             </p>
           </div>
 
@@ -79,7 +81,7 @@ function FeaturesBlocks() {
                 Testing
               </h4>
               <p className="text-gray-600 text-center">
-                The products are pushed on the quality testing
+                The products are pushed on for quality testing
               </p>
             </div>
 
