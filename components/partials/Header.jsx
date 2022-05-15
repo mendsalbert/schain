@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../utils/AuthProvider";
 import AuthModal from "../AuthModal";
 import Modal from "../Modal";
+import Link from "next/link";
 function Header() {
   const [top, setTop] = useState(true);
   const [open, setOpen] = useState(false);
@@ -29,9 +30,11 @@ function Header() {
           {/* Site branding */}
           <div className="flex-shrink-0 mr-4">
             {/* Logo */}
-            <div to="/" className="block" aria-label="Cruip">
-              <img src="/images/logo.svg" className="w-28" />
-            </div>
+            <Link href="/">
+              <div to="/" className="block" aria-label="Cruip">
+                <img src="/images/logo.svg" className="w-28" />
+              </div>
+            </Link>
           </div>
 
           {/* Site navigation */}

@@ -11,9 +11,11 @@ function Footer() {
           <div className="sm:col-span-12 lg:col-span-4">
             <div className="mb-2">
               {/* Logo */}
-              <div href="/" className="inline-block" aria-label="Cruip">
-                <img src="/images/logo.svg" className="w-24" />
-              </div>
+              <Link href="/">
+                <div className="inline-block" aria-label="Cruip">
+                  <img src="/images/logo.svg" className="w-24" />
+                </div>
+              </Link>
             </div>
             <div className="text-sm text-gray-600">
               <Link href="/terms">

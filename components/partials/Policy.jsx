@@ -207,11 +207,11 @@ function Policy() {
               For any questions or concerns regarding your privacy, you may
               contact us using the following details:{" "}
             </p>
-            {/* <p>
+            <p>
               Mends Albert
               <br />
               mendsalbert@gmail.com{" "}
-            </p> */}
+            </p>
           </div>
         </div>
       </div>
