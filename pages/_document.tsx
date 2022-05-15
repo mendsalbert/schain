@@ -15,7 +15,7 @@ export default function Document() {
           rel="stylesheet"
         />
 
-        <link rel="icon" type="image/png" href="/images/logo.png" />
+        <link rel="icon" type="image/png" href="/images/logo.svg" />
       </Head>
       <body>
         <Main />
