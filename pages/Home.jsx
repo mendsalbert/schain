@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import Header from "../components/partials/Header";
 import HeroHome from "../components/partials/HeroHome";

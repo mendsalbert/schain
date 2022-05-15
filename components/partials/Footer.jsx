@@ -82,17 +82,19 @@ function Footer() {
             <h6 className="text-gray-800 font-medium mb-2">Company</h6>
             <ul className="text-sm">
               <li className="mb-2">
-                <div
-                  href="#"
-                  className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
-                >
-                  Home
-                </div>
+                <Link href="/">
+                  <div
+                    href="#"
+                    className="cursor-pointer text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
+                  >
+                    Home
+                  </div>
+                </Link>
               </li>
               <li className="mb-2">
                 <div
-                  href="#"
-                  className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
+                  href="/about"
+                  className="cursor-pointer text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
                 >
                   About us
                 </div>
