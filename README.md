@@ -54,26 +54,26 @@ We're dedicated to giving you the very best of your order, with focus from time 
 
 Founded in 2022, by Sympodium, Schain` has come a long way from its beginnings in Ghana. When Albert, Sarkodie and Brilliant first started out with Schain, the passion for solving supply chain problems with blockchain drove them to undertake several researches so that Schain can offer the very best services it does now along the supply chain of many organizations here in Ghana and abroad and we are thrilled that we are able to turn our passion into such a revolutionary solution in supply chain.
 
-This is application is having six (6) users:
+There are about six (6) user types (that is customer, administrator, manager, manufacturer, tester and transporter) that is captured on the platform. Among the six (6) types, user cannot perform an activity of the other user type unless assigned to that role by the administrator.
+The customer only can make an order(s) and track them as they move along the supply chain process on the blockchain to get updated. The customer can also add reviews on an order and also cancel an order. Below are steps the customer can undertake to make an order:
 
-- customer : A regular customer that can make order(s) on the application, add reviews on an order and also cancel an order.
-- Administrator: User in charge of assigning roles to other users in the suppy chain processes.
-- Manager: Approves orders to be set for production
-- Manufacturer: Start production of order once approved by the manager
-- Tester: Tests the product and update the state to the transport department
-- Transporter: The department in charge of dispatching orders to customers.
-
-## Below are the steps to add an order:
-
-1. Connet to the app with your wallet.
-2. Click on the "add order button" and fill in the details of the order
+1. Connect to the app with preferred wallet.
+2. Click on the "add order button" and fill in the details of the order.
 3. Click on the order to view the supply chain process or the state of your order.
 
-## Below are the steps to use admin account:
+The Administrator is the user in charge of assigning roles to other users as user type to undertake an action in the supply chain. These roles assigned to a user type, can be overridden by assigning same role to another user of different account.  
+username:"admin"
+password: "63CkBcD{B),M;h2>"
 
-1. Connet to the app with your wallet.
-2. Click on the "add order button" and fill in the details of the order. To use the admin acount you have to use the following credentials: username:"admin" and password:
-   "63CkBcD{B),M;h2>"
+The Manager is the first user type in the supply chain process to approve an order(s) as received to be set up for the next step in the supply chain process.
+
+The Manufacturer undertake his or her activities with regards to an order(s) and then confirms it once done for the next step of the supply chain process.
+
+The Tester undertakes testing activities with regards to an order(s) and then confirms it for the next step of the supply chain process.
+
+The Transporter undertake dispatching activities with regards to an order(s) to be delivered to customers. And once delivered to the customer, he or she confirms the delivery.
+
+All these processes can be seen by the customer with regards to an order(s). And once the customer receives the item, he or she has the liberty to accept the orders or return it.
 
 ### Built With
 
