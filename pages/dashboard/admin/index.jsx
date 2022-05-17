@@ -14,7 +14,9 @@ import UsersCard from "../../../components/adminPartials/dashboard/UsersCard";
 import UserRoles from "../../../components/adminPartials/dashboard/UserRoles";
 import AllOrders from "../../../components/adminPartials/dashboard/AllOrders";
 import AllCustomers from "../../../components/adminPartials/dashboard/AllCustomers";
+import FundraisingModal from "../../../components/FundraisingModal";
 import { ethers } from "ethers";
+import { setUncaughtExceptionCaptureCallback } from "process";
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -26,6 +28,7 @@ function Dashboard() {
   const [pending, setpending] = useState([]);
   const [returned, setreturned] = useState([]);
   const [ethprice, setethprice] = useState(0);
+  const [auth, setauth] = useState(false);
   useEffect(() => {
     if (address) {
       const loadOrders = async () => {
@@ -54,6 +57,7 @@ function Dashboard() {
   useEffect(() => {
     let auth = localStorage.getItem("auth");
     console.log(auth);
+    setauth(auth);
     if (!auth || auth === "false") {
       setOpen(true);
       setComp(<AdminAuthModal />);
@@ -79,7 +83,25 @@ function Dashboard() {
               {/* Welcome banner */}
               <WelcomeBanner type="Admin" />
               {/* Cards */}
-
+              <div className="sm:flex sm:justify-end sm:items-center mb-8">
+                <div className="grid grid-flow-col sm:auto-cols-max justify-end sm:justify-end gap-2">
+                  <button
+                    onClick={() => {
+                      setOpen(!open);
+                      setComp(<FundraisingModal />);
+                    }}
+                    className="px-4 py-2 flex flex-row items-center justify-center bg-indigo-500 rounded-md hover:bg-indigo-600 text-white"
+                  >
+                    <svg
+                      className="w-4 h-4 fill-current opacity-50 shrink-0"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
+                    </svg>
+                    <span className=" xs:block ml-2">Add Order</span>
+                  </button>
+                </div>
+              </div>
               <div className="grid grid-cols-12 gap-6">
                 <UsersCard users={customers.length} />
                 <OrdersCard allorders={orders.length} />
