@@ -15,7 +15,8 @@ import UsersCard from "../../../components/adminPartials/dashboard/UsersCard";
 import UserRoles from "../../../components/adminPartials/dashboard/UserRoles";
 import AllOrders from "../../../components/adminPartials/dashboard/AllOrders";
 import AllCustomers from "../../../components/adminPartials/dashboard/AllCustomers";
-import FundraisingModal from "../../../components/FundraisingModal";
+// import AddProductModal from ".../../../components/AddProductModal";
+import AddProductModal from "../../../components/AddProductModal";
 import { ethers } from "ethers";
 import AllProducts from "../../../components/adminPartials/dashboard/AllProducts";
 import AllProductsAdded from "../../../components/adminPartials/dashboard/AllProductsAdded";
@@ -93,7 +94,7 @@ function Dashboard() {
                   <button
                     onClick={() => {
                       setOpen(!open);
-                      setComp(<FundraisingModal />);
+                      setComp(<AddProductModal />);
                     }}
                     className="px-4 py-2 flex flex-row items-center justify-center bg-indigo-500 rounded-md hover:bg-indigo-600 text-white"
                   >

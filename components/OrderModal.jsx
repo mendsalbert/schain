@@ -60,8 +60,7 @@ const OrderModal = (props) => {
     await transaction.wait();
     setloading(false);
     alert("Order sent succesfully");
-
-    window.location.href = "/dashboard/customer";
+    window.location.reload();
   };
 
   const convertEthusd = async (usd) => {

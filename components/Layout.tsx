@@ -9,7 +9,7 @@ import React, {
 
 import Link from "next/link";
 import Head from "next/head";
-import FundRaising from "./FundraisingModal.js";
+import FundRaising from "./AddProductModal.js/index.js";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import Modal from "./Modal";
 import { ethers, providers } from "ethers";

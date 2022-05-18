@@ -39,11 +39,12 @@ const FundRaising = (props) => {
     await transaction.wait();
     setloading(false);
     alert("Product uploaded succesfully");
+    window.location.reload();
   }
 
   return (
     <div className="p-5 font-Montserrat overflow-auto">
-      <p className="text-center text-gray-500 text-lg">Add a donation(ETH)</p>
+      <p className="text-center text-gray-500 text-lg">Add a Product</p>
       <div className="py-3 space-y-3">
         <input
           type="text"
