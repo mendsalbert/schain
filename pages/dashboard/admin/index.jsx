@@ -18,6 +18,7 @@ import AllCustomers from "../../../components/adminPartials/dashboard/AllCustome
 import FundraisingModal from "../../../components/FundraisingModal";
 import { ethers } from "ethers";
 import AllProducts from "../../../components/adminPartials/dashboard/AllProducts";
+import AllProductsAdded from "../../../components/adminPartials/dashboard/AllProductsAdded";
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -112,14 +113,15 @@ function Dashboard() {
                 <OrdersPendingCard allpending={pending.length} />
                 <OrderCancelCard allreturned={returned.length} />
                 <OrderCancelCard allreturned={returned.length} />
-                <UserRoles />
                 <AllProducts allproducts={productData.length} />
                 <AllOrders
                   productData={productData}
                   orders={orders}
                   ethprice={ethprice}
                 />
+                <UserRoles />
                 <AllCustomers customer={customers} />
+                <AllProductsAdded products={productData} />
               </div>
             </div>
           </main>
