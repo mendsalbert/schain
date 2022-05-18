@@ -61,7 +61,8 @@ The customer only can make an order(s) and track them as they move along the sup
 2. Click on the "add order button" and fill in the details of the order.
 3. Click on the order to view the supply chain process or the state of your order.
 
-The Administrator is the user in charge of assigning roles to other users as user type to undertake an action in the supply chain. These roles assigned to a user type, can be overridden by assigning same role to another user of different account.  
+The Administrator is the user in charge of assigning roles to other users as user type to undertake an action in the supply chain. These roles assigned to a user type, can be overridden by assigning same role to another user of different account. The Administrator can as well add products to the platform by adding the product media, the price of the product and any other details which all will be available to customers.
+to access the admin panel use the following;
 username:"admin"
 password: "63CkBcD{B),M;h2>"
 
