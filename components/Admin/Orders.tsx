@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   AdjustmentsIcon,
   CheckCircleIcon,
@@ -19,7 +19,17 @@ function Orders({ order }) {
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("") as any;
   const { address, signer } = useContext(AuthContext);
+  const [productData, setproductData] = useState([]);
 
+  useEffect(() => {
+    if (address) {
+      const loadOrders = async () => {
+        const data_ = await signer.fetchProductItems();
+        setproductData(data_);
+      };
+      loadOrders();
+    }
+  }, [signer]);
   const receiveOrder = async (id) => {
     // console.log("called");
     try {
@@ -68,7 +78,7 @@ function Orders({ order }) {
           );
           return (
             <>
-              <img src={filterImage[0].imageUrl} />
+              <img src={filterImage[0].hash} />
               <div className="py-4 flex md:flex-row flex-col  text-gray-600 md:items-center md:space-x-2 space-y-2 md:space-y-0">
                 <p className="text-xl font-medium">{order.product} </p>
                 <div
