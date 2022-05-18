@@ -17,10 +17,11 @@ contract Schain {
     mapping(string => UserRole ) roles;
     // mapping(uint=>  mapping (string => UserRole)) roless;
     mapping(uint256 => OrderItem ) orders;
-
+    mapping(uint256 => ProductItem) public idToProductItem;
     uint public usersCount = 0;
     uint public ordersCount = 0;
     uint private rolesCount = 0;
+    uint public productCount = 0;
     address payable companyAddress;
     // uint public orderConfirmed = 0;
     // uint public ordersRecieved = 0;
@@ -29,6 +30,13 @@ contract Schain {
     constructor(){
      companyAddress = payable(msg.sender);
      eth_usd_price_feed = AggregatorV3Interface(0x9326BFA02ADD2366b30bacB125260Af641031331);
+    }
+
+   struct ProductItem {
+      uint256 id;
+      string name;
+      uint price;
+      string hash;
     }
 
     struct UserRole {
@@ -113,6 +121,20 @@ contract Schain {
 
     //modifier functions
 
+    //add product
+     function addProduct(string memory _name, uint _price , string memory _imageHash ) public payable {
+      require(bytes(_name).length > 0,'Image name is required');
+      require(bytes(_imageHash).length > 0 ,'Image Hash is required');
+      require(_price > 0,' Image price shouldnt be 0');
+      
+      productCount++;
+      ProductItem storage product = idToProductItem[productCount];
+      product.id = productCount;
+      product.name = _name;
+      product.price = _price;
+      product.hash = _imageHash;
+    }
+
     //add role
     function addRole(string memory _role, address _roleaddress) public payable {
       UserRole storage role = roles[_role];
@@ -120,10 +142,6 @@ contract Schain {
       rolesCount++;
       role.role = _role;
       role.roleaddress = _roleaddress;
-      // console.log(role.role);
-      // console.log(role.roleaddress);
-      // console.log(_role);
-      // console.log(_roleaddress);
       emit RoleAdded(_role, _roleaddress);
     }
 
@@ -260,6 +278,21 @@ contract Schain {
     //get function
 
      //users get
+
+       //all orders
+    function fetchProductItems() public view returns (ProductItem[] memory) {
+      uint itemCount = productCount;
+      uint currentIndex = 0;
+      ProductItem[] memory items = new ProductItem[](itemCount);
+      for (uint i = 0; i < itemCount; i++) {
+          uint currentId = i + 1;
+          ProductItem storage currentItem = idToProductItem[currentId];
+          items[currentIndex] = currentItem;
+          currentIndex += 1;
+      }
+      return items;
+    }
+
     //my orders
      function fetchMyOrders() public view returns (OrderItem[] memory) {
       uint totalItemCount = ordersCount;

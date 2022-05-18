@@ -1,11 +1,26 @@
 import { EyeIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import { ethers } from "ethers";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../../../utils/AuthProvider";
 import { productData } from "../../../utils/sample-data";
 import { timeConverter } from "../../../lib/utilities";
 
 function Orders({ orders, ethprice }) {
+  const [productData, setproductData] = useState([]);
+  const { signer, address } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (address) {
+      const loadOrders = async () => {
+        const data = await signer.fetchProductItems();
+        console.log(data);
+        setproductData(data);
+      };
+      loadOrders();
+    }
+  }, [signer]);
+
   let orders_ = orders;
   const [type, settype] = useState("");
 
@@ -118,7 +133,8 @@ function Orders({ orders, ethprice }) {
 
                         <td className="p-2">
                           <div className="flex items-center">
-                            <img src={filterImage[0].imageUrl} />
+                            <img src={filterImage[0].hash} />
+                            {/* <img src={""} /> */}
                           </div>
                         </td>
                         <td className="p-2">

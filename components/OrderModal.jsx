@@ -3,39 +3,51 @@ import { productData } from "../utils/sample-data";
 import { AuthContext } from "../utils/AuthProvider";
 import { ethers } from "ethers";
 import Spinner from "./spinner";
-import { SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG } from "constants";
 
 const OrderModal = (props) => {
   const [quantity, setquantity] = useState(1);
   const [productname, setproductname] = useState("");
-  const [address, setaddress] = useState("");
+  const [address_, setaddress] = useState("");
   const [phonenumber, setphonenumber] = useState("");
   const [city, setcity] = useState("");
   const [state, setstate] = useState("");
   const [zip, setzip] = useState("");
   const [loading, setloading] = useState(false);
   const [orders, setorders] = useState([]);
+  const [productData, setproductData] = useState([]);
   const [price, setprice] = useState(0);
   const [price_, setprice_] = useState(0);
   const [_price, _setprice] = useState(0);
-  // let filterImage =
+  const { signer, address } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (address) {
+      const loadOrders = async () => {
+        const data = await signer.fetchProductItems();
+        console.log(data);
+        setproductData(data);
+      };
+      loadOrders();
+    }
+  }, [signer]);
+
   let filterImage = productname.length
     ? productData.filter((p) => p.name === productname)
     : [
         {
           price: 0,
-          imageUrl: "",
+          hash: "",
         },
       ];
 
   console.log(filterImage);
-  const { signer, contract } = useContext(AuthContext);
+
   const onsubmitOrderHandler = async () => {
     const amount_ = ethers.utils.parseUnits(price_.toString(), "ether");
     let transaction = await signer.addOrderItem(
       productname,
       quantity,
-      address,
+      address_,
       phonenumber,
       city,
       zip,
@@ -53,6 +65,7 @@ const OrderModal = (props) => {
   };
 
   const convertEthusd = async (usd) => {
+    // console.log(usd);
     const data = await signer.getEthUsd();
     let number = Number(data.toString());
     let ethUSDPrice = ethers.utils.formatUnits(number, 8);
@@ -62,13 +75,6 @@ const OrderModal = (props) => {
 
     setprice(res);
     setprice_(res_);
-
-    // const getUsd = await contract.getEthUsd();
-    // let number = Number(getUsd.toString()) as any;
-    // let ethUSDPrice = ethers.utils.formatUnits(number, 8) as any;
-
-    // setethprice(ethUSDPrice);
-    // return res;
   };
   convertEthusd(Math.floor(filterImage[0].price * quantity));
 
@@ -130,7 +136,7 @@ const OrderModal = (props) => {
         </div>
         <div>
           <img
-            src={filterImage.length > 0 ? filterImage[0].imageUrl : ""}
+            src={filterImage.length > 0 ? filterImage[0].hash : ""}
             className="mb-4"
           />
         </div>
@@ -143,7 +149,7 @@ const OrderModal = (props) => {
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-password"
               type="text"
-              value={address}
+              value={address_}
               onChange={(e) => {
                 setaddress(e.target.value);
               }}

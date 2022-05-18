@@ -9,6 +9,7 @@ import OrdersPendingCard from "../../../components/adminPartials/dashboard/Order
 import OrderCancelCard from "../../../components/adminPartials/dashboard/OrderCancelCard";
 import Modal from "../../../components/Modal";
 import { AuthContext } from "../../../utils/AuthProvider";
+
 import AdminAuthModal from "../../../components/AdminAuthModal.jsx";
 import UsersCard from "../../../components/adminPartials/dashboard/UsersCard";
 import UserRoles from "../../../components/adminPartials/dashboard/UserRoles";
@@ -16,7 +17,6 @@ import AllOrders from "../../../components/adminPartials/dashboard/AllOrders";
 import AllCustomers from "../../../components/adminPartials/dashboard/AllCustomers";
 import FundraisingModal from "../../../components/FundraisingModal";
 import { ethers } from "ethers";
-import { setUncaughtExceptionCaptureCallback } from "process";
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
