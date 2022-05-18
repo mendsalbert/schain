@@ -24,17 +24,21 @@ function Dashboard() {
   const [pending, setpending] = useState([]);
   const router = useRouter();
   const [ethprice, setethprice] = useState(0);
+  const [productData, setproductData] = useState([]);
 
   const { address, signer } = useContext(AuthContext);
 
   useEffect(() => {
     if (address) {
       const loadOrders = async () => {
+        const data_ = await signer.fetchProductItems();
+        setproductData(data_);
         const data = await signer.fetchOrderItems();
         let validate = await signer.validateRole("manager", address);
         if (!validate) {
           router.push("/");
         }
+
         const pending = data.filter((p) => p.confirmed === false);
         const confirm = data.filter((p) => p.confirmed === true);
         const orders = await signer.fetchOrdersConfirm();
@@ -89,6 +93,7 @@ function Dashboard() {
                   orders={orders}
                   confirmedorders={confirmed}
                   ethprice={ethprice}
+                  productData={productData}
                 />
               </div>
             </div>

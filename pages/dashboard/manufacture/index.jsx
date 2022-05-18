@@ -25,12 +25,15 @@ function Dashboard() {
   const [pending, setpending] = useState([]);
   const router = useRouter();
   const [ethprice, setethprice] = useState(0);
+  const [productData, setproductData] = useState([]);
 
   const { address, signer } = useContext(AuthContext);
 
   useEffect(() => {
     if (address) {
       const loadOrders = async () => {
+        const data_ = await signer.fetchProductItems();
+        setproductData(data_);
         const data = await signer.fetchOrderItems();
         let validate = await signer.validateRole("manufacturer", address);
         if (!validate) {
@@ -95,6 +98,7 @@ function Dashboard() {
                   orders={orders}
                   producedOrders={produced}
                   ethprice={ethprice}
+                  productData={productData}
                 />
               </div>
             </div>

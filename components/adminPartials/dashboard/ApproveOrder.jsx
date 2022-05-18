@@ -7,10 +7,11 @@ import { timeConverter } from "../../../lib/utilities";
 import { AuthContext } from "../../../utils/AuthProvider";
 import Spinner from "../../spinner";
 
-function ApproveOrder({ orders, confirmedorders, ethprice }) {
+function ApproveOrder({ orders, confirmedorders, ethprice, productData }) {
   const { address, signer, provider } = useContext(AuthContext);
   let orders_ = orders;
   const [type, settype] = useState("");
+
   // console.log(type);
   if (type == "confirmed") {
     orders_ = confirmedorders;
@@ -134,7 +135,7 @@ function ApproveOrder({ orders, confirmedorders, ethprice }) {
                       </td>
                       <td className="p-2">
                         <div className="flex items-center">
-                          <img src={filterImage[0].imageUrl} />
+                          <img src={filterImage[0].hash} />
                         </div>
                       </td>
                       <td className="p-2">
