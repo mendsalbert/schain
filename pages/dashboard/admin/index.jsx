@@ -111,9 +111,9 @@ function Dashboard() {
                 <OrdersCard allorders={orders.length} />
                 <OrdersPendingCard allpending={pending.length} />
                 <OrderCancelCard allreturned={returned.length} />
-                <AllProducts allproducts={productData.length} />
                 <OrderCancelCard allreturned={returned.length} />
                 <UserRoles />
+                <AllProducts allproducts={productData.length} />
                 <AllOrders
                   productData={productData}
                   orders={orders}
