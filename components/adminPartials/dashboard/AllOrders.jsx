@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { productData } from "../../../utils/sample-data";
 import { timeConverter } from "../../../lib/utilities";
 
-function AllOrders({ orders, ethprice }) {
+function AllOrders({ orders, ethprice, productData }) {
   console.log(ethprice);
   let orders_ = orders;
   const [type, settype] = useState("");
@@ -113,7 +113,7 @@ function AllOrders({ orders, ethprice }) {
 
                       <td className="p-2">
                         <div className="flex items-center">
-                          <img src={filterImage[0].imageUrl} />
+                          <img src={filterImage[0].hash} />
                         </div>
                       </td>
                       <td className="p-2">

@@ -17,6 +17,7 @@ import AllOrders from "../../../components/adminPartials/dashboard/AllOrders";
 import AllCustomers from "../../../components/adminPartials/dashboard/AllCustomers";
 import FundraisingModal from "../../../components/FundraisingModal";
 import { ethers } from "ethers";
+import AllProducts from "../../../components/adminPartials/dashboard/AllProducts";
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -29,9 +30,12 @@ function Dashboard() {
   const [returned, setreturned] = useState([]);
   const [ethprice, setethprice] = useState(0);
   const [auth, setauth] = useState(false);
+  const [productData, setproductData] = useState([]);
   useEffect(() => {
     if (address) {
       const loadOrders = async () => {
+        const data_ = await signer.fetchProductItems();
+        setproductData(data_);
         const data = await signer.fetchOrderItems();
         const getUsd = await signer.getEthUsd();
         let number = Number(getUsd.toString());
@@ -107,8 +111,14 @@ function Dashboard() {
                 <OrdersCard allorders={orders.length} />
                 <OrdersPendingCard allpending={pending.length} />
                 <OrderCancelCard allreturned={returned.length} />
+                <AllProducts allproducts={productData.length} />
+                <OrderCancelCard allreturned={returned.length} />
                 <UserRoles />
-                <AllOrders orders={orders} ethprice={ethprice} />
+                <AllOrders
+                  productData={productData}
+                  orders={orders}
+                  ethprice={ethprice}
+                />
                 <AllCustomers customer={customers} />
               </div>
             </div>

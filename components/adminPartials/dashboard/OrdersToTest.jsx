@@ -7,7 +7,7 @@ import { timeConverter } from "../../../lib/utilities";
 import { AuthContext } from "../../../utils/AuthProvider";
 import Spinner from "../../spinner";
 
-function OrdersToTest({ orders, testedorders, ethprice }) {
+function OrdersToTest({ orders, testedorders, ethprice, productData }) {
   const { address, signer, provider } = useContext(AuthContext);
   let orders_ = orders;
   const [type, settype] = useState("");
@@ -135,7 +135,7 @@ function OrdersToTest({ orders, testedorders, ethprice }) {
 
                       <td className="p-2">
                         <div className="flex items-center">
-                          <img src={filterImage[0].imageUrl} />
+                          <img src={filterImage[0].hash} />
                         </div>
                       </td>
                       <td className="p-2">
