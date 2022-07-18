@@ -209,6 +209,22 @@ const supportedChains: IChainData[] = [
       balance: "",
     },
   },
+  {
+    name: "Matic",
+    short_name: "MTC",
+    chain: "smartchain",
+    network: "mainnet",
+    chain_id: 80001,
+    network_id: 80001,
+    rpc_url: "	https://rpc-mumbai.matic.today",
+    native_currency: {
+      symbol: "MATIC",
+      name: "MATIC",
+      decimals: "18",
+      contractAddress: "",
+      balance: "",
+    },
+  },
 ];
 
 export default supportedChains;
