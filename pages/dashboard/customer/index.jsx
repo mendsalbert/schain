@@ -32,9 +32,8 @@ function Dashboard() {
         const data_ = await signer.fetchProductItems();
         setproductData(data_);
         const data = await signer.fetchMyOrders();
-        const getUsd = await signer.getEthUsd();
-        let number = Number(getUsd.toString());
-        let ethUSDPrice = ethers.utils.formatUnits(number, 8);
+
+        let ethUSDPrice = 1178.23;
         setethprice(ethUSDPrice);
         const pending = data.filter((p) => p.pending === true);
         const returned = data.filter((r) => r.returned === true);

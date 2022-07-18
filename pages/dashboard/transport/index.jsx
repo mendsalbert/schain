@@ -44,9 +44,7 @@ function Dashboard() {
         const transported = data.filter((p) => p.transported === true);
         const orders = await signer.fetchOrdersTransported();
 
-        const getUsd = await signer.getEthUsd();
-        let number = Number(getUsd.toString());
-        let ethUSDPrice = ethers.utils.formatUnits(number, 8);
+        let ethUSDPrice = 1178.23;
         setethprice(ethUSDPrice);
 
         setpending(pending);

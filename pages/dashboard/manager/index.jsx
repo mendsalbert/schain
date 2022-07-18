@@ -42,9 +42,8 @@ function Dashboard() {
         const pending = data.filter((p) => p.confirmed === false);
         const confirm = data.filter((p) => p.confirmed === true);
         const orders = await signer.fetchOrdersConfirm();
-        const getUsd = await signer.getEthUsd();
-        let number = Number(getUsd.toString());
-        let ethUSDPrice = ethers.utils.formatUnits(number, 8);
+
+        let ethUSDPrice = 1178.23;
         setethprice(ethUSDPrice);
         setpending(pending);
         setconfirmed(confirm);

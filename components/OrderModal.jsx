@@ -67,7 +67,7 @@ const OrderModal = (props) => {
     // console.log(usd);
     const data = await signer.getEthUsd();
     let number = Number(data.toString());
-    let ethUSDPrice = ethers.utils.formatUnits(number, 8);
+    let ethUSDPrice = 1178.23;
     // console.log(res);
     let res = Number(usd / ethUSDPrice).toFixed(5);
     let res_ = (usd / ethUSDPrice).toFixed(7);

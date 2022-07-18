@@ -155,7 +155,7 @@ const Layout = ({ children, title = "myDonate" }) => {
 
       const getUsd = await contract.getEthUsd();
       let number = Number(getUsd.toString()) as any;
-      let ethUSDPrice = ethers.utils.formatUnits(number, 8) as any;
+      let ethUSDPrice = 1178.23 as any;
 
       setethprice(ethUSDPrice);
 

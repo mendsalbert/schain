@@ -39,9 +39,8 @@ function Dashboard() {
         const data_ = await signer.fetchProductItems();
         setproductData(data_);
         const data = await signer.fetchOrderItems();
-        const getUsd = await signer.getEthUsd();
-        let number = Number(getUsd.toString());
-        let ethUSDPrice = ethers.utils.formatUnits(number, 8);
+
+        let ethUSDPrice = 1178.23;
         setethprice(ethUSDPrice);
         let customers = data.filter(
           (v, i, a) => a.findIndex((v2) => v2.owner === v.owner) === i
