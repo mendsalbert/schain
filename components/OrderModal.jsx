@@ -43,7 +43,8 @@ const OrderModal = (props) => {
   console.log(filterImage);
 
   const onsubmitOrderHandler = async () => {
-    const amount_ = ethers.utils.parseUnits(price_.toString(), "ether");
+    let price = ((filterImage[0].price * quantity) / 1174.33).toFixed(7);
+    const amount_ = ethers.utils.parseUnits(price.toString(), "ether");
     let transaction = await signer.addOrderItem(
       productname,
       quantity,
@@ -63,19 +64,19 @@ const OrderModal = (props) => {
     window.location.reload();
   };
 
-  const convertEthusd = async (usd) => {
-    // console.log(usd);
-    const data = await signer.getEthUsd();
-    let number = Number(data.toString());
-    let ethUSDPrice = 1178.23;
-    // console.log(res);
-    let res = Number(usd / ethUSDPrice).toFixed(5);
-    let res_ = (usd / ethUSDPrice).toFixed(7);
+  // const convertEthusd = async (usd) => {
+  //   // console.log(usd);
+  //   const data = await signer.getEthUsd();
+  //   let number = Number(data.toString());
+  //   let ethUSDPrice = 1178.23;
+  //   // console.log(res);
+  //   let res = Number(usd / ethUSDPrice).toFixed(5);
+  //   let res_ = (usd / ethUSDPrice).toFixed(7);
 
-    setprice(res);
-    setprice_(res_);
-  };
-  convertEthusd(Math.floor(filterImage[0].price * quantity));
+  //   setprice(res);
+  //   setprice_(res_);
+  // };
+  // convertEthusd(Math.floor(filterImage[0].price * quantity));
 
   return (
     <>
@@ -227,7 +228,7 @@ const OrderModal = (props) => {
         </div>
         <div className="flex items-start">
           <div className="text-xl font-bold text-slate-800 mr-2">
-            Total cost : ${filterImage[0].price * quantity} - ETH {price}
+            Total cost : ${filterImage[0].price * quantity}
           </div>
         </div>
         <div className="flex flex-wrap -mx-3 mb-6 mt-4">
