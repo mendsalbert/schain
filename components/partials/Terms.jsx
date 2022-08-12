@@ -314,7 +314,7 @@ function Terms() {
               We do not ensure that the information on this website is correct,
               we do not warrant its completeness or accuracy; nor do we promise
               to ensure that the website remains available or that the material
-              on the website is kept up to date.
+              on the website is kept up to .
             </p>
 
             <h3>

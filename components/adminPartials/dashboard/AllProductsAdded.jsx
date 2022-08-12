@@ -27,6 +27,15 @@ function AllProductsAdded({ products }) {
                 <th className="p-2">
                   <div className="font-semibold text-left">Image</div>
                 </th>
+                <th className="p-2">
+                  <div className="font-semibold text-left">Category</div>
+                </th>
+                <th className="p-2">
+                  <div className="font-semibold text-left">Manufacture Date</div>
+                </th>
+                <th className="p-2">
+                  <div className="font-semibold text-left">Expiry Date</div>
+                </th>
               </tr>
             </thead>
             {/* Table body */}
@@ -46,10 +55,30 @@ function AllProductsAdded({ products }) {
                         </div>
                       </div>
                     </td>
+                   
                     <td className="p-2">
                       <div className="flex items-center">
                         <img src={product.hash} className="w-14" />
                         {/* <img src={""} /> */}
+                      </div>
+                    </td>
+                    <td className="p-2">
+                      <div className="flex items-center">
+                        <div className="text-slate-800">
+                          ${product.category.toString()}
+                        </div>
+                      </div>
+                    </td>
+                    <td className="p-2">
+                      <div className="flex items-center">
+                        <div className="text-slate-800">
+                        {timeConverter(product.manufactureDate.toString())}                        </div>
+                      </div>
+                    </td>
+                    <td className="p-2">
+                      <div className="flex items-center">
+                        <div className="text-slate-800">
+                        {timeConverter(product.expiryDate.toString())}                        </div>
                       </div>
                     </td>
                   </tr>

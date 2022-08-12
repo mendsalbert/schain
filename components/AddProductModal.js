@@ -30,19 +30,12 @@ const FundRaising = (props) => {
   const [formInput, updateFormInput] = useState({
     name: "",
     price: "",
+    category: "",
+    manufactureDate: "",
+    expiryDate: "",
   });
 
   async function onChange(e) {
-    // const file = e.target.files[0];
-    // try {
-    //   const added = await client.add(file, {
-    //     progress: (prog) => console.log(`received: ${prog}`),
-    //   });
-    //   const url = `https://ipfs.infura.io/ipfs/${added.path}`;
-    //   setFileUrl(url);
-    // } catch (error) {
-    //   console.log("Error uploading file: ", error);
-    // }
     const files = e.target.files[0];
     const client = makeStorageClient();
     const cid = await client.put([files]);
@@ -67,10 +60,16 @@ const FundRaising = (props) => {
   }
 
   async function addProduct() {
+    const manufactureDate = new Date(formInput.manufactureDate);
+    const expiryDate = new Date(formInput.expiryDate);
+
     let transaction = await signer.addProduct(
       formInput.name,
       formInput.price,
-      fileUrl
+      fileUrl,
+      formInput.category,
+      Math.floor(manufactureDate.getTime() / 1000),
+      Math.floor(expiryDate.getTime() / 1000)
     );
 
     setloading(true);
@@ -92,6 +91,37 @@ const FundRaising = (props) => {
           }
           className="w-full py-3 outline-none ring-2 rounded-lg p-3"
           placeholder="Enter Product name "
+        />
+        <input
+          type="text"
+          required={true}
+          onChange={(e) =>
+            updateFormInput({ ...formInput, category: e.target.value })
+          }
+          className="w-full py-3 outline-none ring-2 rounded-lg p-3"
+          placeholder="Enter category name "
+        />
+
+        <p>Manufacture date</p>
+        <input
+          type="date"
+          required={true}
+          onChange={(e) =>
+            updateFormInput({ ...formInput, manufactureDate: e.target.value })
+          }
+          className="w-full py-3 outline-none ring-2 rounded-lg p-3"
+          placeholder="Enter manufacturer date "
+        />
+
+        <p>Expiry date</p>
+        <input
+          type="date"
+          required={true}
+          onChange={(e) =>
+            updateFormInput({ ...formInput, expiryDate: e.target.value })
+          }
+          className="w-full py-3 outline-none ring-2 rounded-lg p-3"
+          placeholder="Enter expiry date"
         />
         <input
           type="number"
