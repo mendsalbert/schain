@@ -4,7 +4,24 @@ import { create as ipfsHttpClient } from "ipfs-http-client";
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 import Spinner from "./spinner";
-const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
+// const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
+import { Web3Storage } from "web3.storage";
+
+function getAccessToken() {
+  // If you're just testing, you can paste in a token
+  // and uncomment the following line:
+  // return 'paste-your-token-here'
+
+  // In a real app, it's better to read an access token from an
+  // environement variable or other configuration that's kept outside of
+  // your code base. For this to work, you need to set the
+  // WEB3STORAGE_TOKEN environment variable before you run your code.
+  return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDQ2ZjJBNTUzOTQ0Y2EwNzRlOGE0NzA5ZTg1MzEyM2VmNzcxODRBNzkiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NjAxNTM2NTUzNDAsIm5hbWUiOiJteWRvbmF0ZSJ9.GdZsK2GJfQSyIUhcokLjvCnijLy2zMjrdolfb8uusbQ";
+}
+
+function makeStorageClient() {
+  return new Web3Storage({ token: getAccessToken() });
+}
 
 const FundRaising = (props) => {
   const [fileUrl, setFileUrl] = useState(null);
@@ -16,16 +33,37 @@ const FundRaising = (props) => {
   });
 
   async function onChange(e) {
-    const file = e.target.files[0];
-    try {
-      const added = await client.add(file, {
-        progress: (prog) => console.log(`received: ${prog}`),
-      });
-      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
-      setFileUrl(url);
-    } catch (error) {
-      console.log("Error uploading file: ", error);
+    // const file = e.target.files[0];
+    // try {
+    //   const added = await client.add(file, {
+    //     progress: (prog) => console.log(`received: ${prog}`),
+    //   });
+    //   const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+    //   setFileUrl(url);
+    // } catch (error) {
+    //   console.log("Error uploading file: ", error);
+    // }
+    const files = e.target.files[0];
+    const client = makeStorageClient();
+    const cid = await client.put([files]);
+    console.log("stored files with cid:", cid);
+
+    const res = await client.get(cid);
+    console.log(`Got a response! [${res.status}] ${res.statusText}`);
+    if (!res.ok) {
+      throw new Error(
+        `failed to get ${cid} - [${res.status}] ${res.statusText}`
+      );
     }
+
+    // unpack File objects from the response
+    const filess = await res.files();
+    setFileUrl(`https://${cid}.ipfs.dweb.link/${files.name}`);
+    console.log(files);
+    for (const file of filess) {
+      console.log(`${file.cid} -- ${file.path} -- ${file.size}`);
+    }
+    return cid;
   }
 
   async function addProduct() {

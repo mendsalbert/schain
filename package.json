@@ -36,6 +36,7 @@
     "react-transition-group": "^4.4.2",
     "walletlink": "^2.5.0",
     "web3": "^1.7.3",
+    "web3.storage": "^4.3.0",
     "web3modal": "^1.9.7"
   },
   "devDependencies": {
@@ -45,5 +46,11 @@
     "postcss-preset-env": "^7.4.3",
     "tailwindcss": "^3.0.24",
     "typescript": "4.0"
-  }
+  },
+  "name": "schain",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:mendsalbert/schain.git",
+  "author": "mendsalbert <mendsalbert@gmail.com>",
+  "license": "MIT"
 }
