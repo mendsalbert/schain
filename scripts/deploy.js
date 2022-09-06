@@ -12,6 +12,7 @@ async function main() {
   await schain.deployed();
 
   txHash = schain.deployTransaction.hash;
+  
   txReceipt = await ethers.provider.waitForTransaction(txHash);
   let schainAddress = txReceipt.contractAddress;
 

@@ -16,6 +16,7 @@ const supportedChains: IChainData[] = [
       contractAddress: "",
       balance: "",
     },
+    
   },
   {
     name: "Ethereum Mainnet",

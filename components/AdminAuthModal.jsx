@@ -5,6 +5,7 @@ const AdminAuthModal = (props) => {
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
   const router = useRouter();
+  
   const onAuthenticateHandler = () => {
     if (username === uName && password === uPassword) {
       console.log("authenticated");
