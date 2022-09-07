@@ -18,6 +18,7 @@ import { sign, verify } from "crypto";
 
 //write a type for status and user
 
+
 type authContextType = {
   provider?: any;
   signer?: any;

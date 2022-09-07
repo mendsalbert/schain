@@ -5,6 +5,7 @@ async function main() {
 
   console.log("Deploying contracts with the account:", deployer.address);
 
+  
   let txHash, txReceipt;
 
   const Schain = await hre.ethers.getContractFactory("Schain");

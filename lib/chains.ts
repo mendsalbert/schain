@@ -1,5 +1,6 @@
 import { IChainData } from "./types";
 
+
 const supportedChains: IChainData[] = [
   {
     name: "Localhost Testnet",

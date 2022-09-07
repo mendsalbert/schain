@@ -3,6 +3,7 @@ import React from "react";
 import Header from "../components/partials/Header";
 import AboutPage from "../components/partials/About";
 
+
 import Footer from "../components/partials/Footer";
 
 function About() {
