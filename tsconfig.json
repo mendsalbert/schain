@@ -16,6 +16,4 @@
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Layout.jsx"],
   "exclude": ["node_modules"]
-  
-  
 }

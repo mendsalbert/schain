@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { sampleUserData } from "../../../utils/sample-data";
 import https from "https";
 
+
 const url = "https://api.coinmarketcap.com/v2/ticker/1027/?convert=USD";
 const handler = (_req: NextApiRequest, res: NextApiResponse) => {
   try {

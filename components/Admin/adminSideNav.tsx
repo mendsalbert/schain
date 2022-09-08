@@ -2,6 +2,7 @@ import React from "react";
 import { ClipboardListIcon, TrashIcon } from "@heroicons/react/outline";
 type Props = {};
 
+
 const AdminSideNav = (props: Props) => {
   return (
     <div className="bg-gradient-to-b hidden  space-y-10 md:flex p-1 flex-col text-center items-center from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  ">
