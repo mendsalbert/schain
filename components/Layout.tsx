@@ -295,6 +295,7 @@ const Layout = ({ children, title = "myDonate" }) => {
                 disconnect();
               }}
             >
+              
               Disconnect
             </div>
           ) : (
